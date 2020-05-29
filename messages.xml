@@ -1349,61 +1349,61 @@
             <param name="timeout">The timeout value in milliseconds.</param>
             <returns>The created NextQueryPageRequestData object.</returns>
         </member>
-        <member name="T:Gds.Websocket.GDSWebSocketClient">
+        <member name="T:Gds.Websocket.WebSocketClient">
             <summary>
             Simple websocket class with basic functionality for sending and receiving messages.
             </summary>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.#ctor(System.String)">
+        <member name="M:Gds.Websocket.WebSocketClient.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Gds.Websocket.GDSWebSocketClient"/> class
+            Initializes a new instance of the <see cref="T:Gds.Websocket.WebSocketClient"/> class
             </summary>
             <param name="uri">websocket server uri</param>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.ConnectAsync">
+        <member name="M:Gds.Websocket.WebSocketClient.ConnectAsync">
             <summary>
             Connect to the server (specified by the uri) asynchronously
             </summary>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.ConnectSync">
+        <member name="M:Gds.Websocket.WebSocketClient.ConnectSync">
             <summary>
             Connect to the server (specified by the uri) synchronously
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.IsConnected">
+        <member name="M:Gds.Websocket.WebSocketClient.IsConnected">
             <summary>
             Whether the client is connected
             </summary>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.CloseAsync">
+        <member name="M:Gds.Websocket.WebSocketClient.CloseAsync">
             <summary>
             Close the connection asynchronously
             </summary>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.CloseSync">
+        <member name="M:Gds.Websocket.WebSocketClient.CloseSync">
             <summary>
             Close the connection synchronously
             </summary>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.IsClosed">
+        <member name="M:Gds.Websocket.WebSocketClient.IsClosed">
             <summary>
             Whether the connection is closed
             </summary>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.GetState">
+        <member name="M:Gds.Websocket.WebSocketClient.GetState">
             <summary>
             Get the client state
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.SendAsync(Gds.Messages.Message)">
+        <member name="M:Gds.Websocket.WebSocketClient.SendAsync(System.Byte[])">
             <summary>
             Send a message to the server asynchronously
             </summary>
             <param name="message">The message to be send</param>
         </member>
-        <member name="M:Gds.Websocket.GDSWebSocketClient.SendSync(Gds.Messages.Message,System.Int32)">
+        <member name="M:Gds.Websocket.WebSocketClient.SendSync(System.Byte[],System.Int32)">
             <summary>
             Send a message to the server synchronously
             </summary>

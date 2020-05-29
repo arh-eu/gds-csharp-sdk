@@ -38,6 +38,50 @@ First, we create the client object and connect to the GDS.
 ```csharp
 GDSWebSocketClient client = new GDSWebSocketClient("ws://127.0.0.1:8080/gate");
 ``` 
+
+There are some listeners you can subscribe.
+
+To get the serialized message objects.
+```java
+client.MessageReceived += Client_MessageReceived;
+
+static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSerializationException> e)
+{
+    //...
+}
+
+```
+
+Or to get the binary representation of the message.
+```java
+client.BinaryMessageReceived += Client_BinaryMessageReceived;
+
+static void Client_BinaryMessageReceived(object sender, byte[] e)
+{
+	//...
+}
+```
+
+If you would like to be notified of changes in the connection status, you can subscribe to the following listeners.
+```java
+client.Connected += Client_Connected;
+
+static void Client_Connected(object sender, EventArgs e)
+{
+    Console.WriteLine("Connected");
+}
+```
+
+```java
+client.Disconnected += Client_Disconnected;
+
+static void Client_Disconnected(object sender, EventArgs e)
+{
+    Console.WriteLine("Disconnected");
+}
+```
+
+
 connect synchronously 
 ```csharp
 client.ConnectSync();
@@ -47,77 +91,55 @@ or asynchronously
 client.ConnectAsync();
 ``` 
 
-Before sending any message to gds, it is also necessary to send a connection type message. So we will send such a message first. 
-This message can be created in the same way as any other (see [How to create messages](##How-to-create-messages)).
+(During the connection, a connection type message is also sent after the websocket connection. If a positive acknowledgment message arrives, the IsConnected() method returns true.)
 
-An example for creating a connection type message.
-```csharp
-MessageHeader connectionMessageHeader = MessageManager.GetHeader("user", "870da92f-7fff-48af-825e-05351ef97acd", 1582612168230, 1582612168230, false, null, null, null, null, DataType.Connection);
-MessageData connectionMessageData = MessageManager.GetConnectionData(false, 1, false, null, "pass");
-Message connectionMessage = MessageManager.GetMessage(connectionMessageHeader, connectionMessageData);
-```
+After you connected, you can send messages to the GDS. You can do that with the SendSync() and SendAsync() methods.
 
-Now, we can send this message to the GDS through the previously created client object. You can send this in both synchronous and asynchronous mode. 
-Let's see the synchronous mode first.
-```csharp
-Tuple<Message, MessagePackSerializationException> connectionResponse = client.SendSync(connectionMessage, 3000);
-```
+Let's see an event message for example.
 
-The second parameter of the SendSync() method is the timeout value in milliseconds. If the timeout is occured, a System.TimeoutException is thrown.
-The response is a Tuple object. The first value is the respone message received by the GDS if the serialization/deserialization was successful.
-If a MessagePack.MessagePackSerializationException is occured, the first value is null and you can get the exception object with the second value. 
-
-Once we have received the response, we can process it as follows, for example.
-```csharp
-if(connectionResponse.Item2 == null)
-{
-    Message connectionResponseMessage = connectionResponse.Item1;
-    if(connectionResponseMessage.Header.DataType.Equals(DataType.ConnectionAck))
-    {
-        ConnectionAckData connectionAckData = connectionResponseMessage.Data.AsConnectionAckData();
-        // do something with the connection response ack data...
-    }
-}
-```
-
-Let's look at the same in asynchronous mode.
-
-First, we need to create and subsribe to the GDSWebSocketClient.MessageReceived event handler. 
-```csharp
-static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSerializationException> e)
-{
-	// do something with the connection response ack data...
-}
-```
-
-```csharp
-client.MessageReceived += Client_MessageReceived;
-```
-
-Now, we can send the message.
-```csharp
-client.SendAsync(connectionMessage);
-```
-
-After you received a positive acknowledgement for the connection message, you can send any message type. Let's see an event message for example. 
-```csharp
-MessageHeader eventMessageHeader = MessageManager.GetHeader("user", "c08ea082-9dbf-4d96-be36-4e4eab6ae624", 1582612168230, 1582612168230, false, null, null, null, null, DataType.Event);
+```java
 string operationsStringBlock = "INSERT INTO events (id, some_field, images) VALUES('EVNT202001010000000000', 'some_field', array('ATID202001010000000000'));INSERT INTO \"events-@attachment\" (id, meta, data) VALUES('ATID202001010000000000', 'some_meta', 0x62696e6172795f6964315f6578616d706c65)";
 Dictionary<string, byte[]> binaryContentsMapping = new Dictionary<string, byte[]> { { "62696e6172795f69645f6578616d706c65", new byte[] { 1, 2, 3 } } };
 MessageData eventMessageData = MessageManager.GetEventData(operationsStringBlock, binaryContentsMapping);
+
+client.SendAsync(eventMessageData);
+```
+
+Or if you want to define the header part explicitly.
+```java
+MessageHeader eventMessageHeader = MessageManager.GetHeader("user", "c08ea082-9dbf-4d96-be36-4e4eab6ae624", 1582612168230, 1582612168230, false, null, null, null, null, DataType.Event);
 Message eventMessage = MessageManager.GetMessage(eventMessageHeader, eventMessageData);
 
-Tuple<Message, MessagePackSerializationException> eventResponse = client.SendSync(eventMessage, 3000);
-if (eventResponse.Item2 == null)
+client.SendAsync(eventMessage);
+```
+
+The response is available through the subscribed listener.
+```java
+static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSerializationException> e)
 {
-    Message eventResponseMessage = eventResponse.Item1;
-    if (eventResponseMessage.Header.DataType.Equals(DataType.EventAck))
+    if (e.Item2 == null)
     {
-        EventAckData eventAckData = eventResponseMessage.Data.AsEventAckData();
-        // do something with the event ack data...
+        Message eventResponseMessage = e.Item1;
+        if (eventResponseMessage.Header.DataType.Equals(DataType.EventAck))
+        {
+            EventAckData eventAckData = eventResponseMessage.Data.AsEventAckData();
+            // do something with the event ack data...
+        }
     }
 }
 ```
+
+Let's look at the same in synchronously.
+```java
+Message response = client.SendSync(eventMessage, 3000);
+
+if (response.Header.DataType.Equals(DataType.EventAck))
+{
+	EventAckData eventAckData = response.Data.AsEventAckData();
+		// do something with the response data...
+}
+```
+
 
 At the end, we close the websocket connection as well.
 ```csharp

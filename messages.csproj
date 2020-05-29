@@ -3,7 +3,7 @@
   <PropertyGroup>
     <DocumentationFile>messages.xml</DocumentationFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Product></Product>
     <Description>C# messages library for GDS</Description>
@@ -48,6 +48,7 @@
 
   <ItemGroup>
     <PackageReference Include="MessagePack" Version="2.1.90" />
+    <PackageReference Include="NLog" Version="4.7.2" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
 
