@@ -42,7 +42,7 @@ GDSWebSocketClient client = new GDSWebSocketClient("ws://127.0.0.1:8080/gate");
 There are some listeners you can subscribe.
 
 To get the serialized message objects.
-```java
+```csharp
 client.MessageReceived += Client_MessageReceived;
 
 static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSerializationException> e)
@@ -53,7 +53,7 @@ static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSeri
 ```
 
 Or to get the binary representation of the message.
-```java
+```csharp
 client.BinaryMessageReceived += Client_BinaryMessageReceived;
 
 static void Client_BinaryMessageReceived(object sender, byte[] e)
@@ -63,7 +63,7 @@ static void Client_BinaryMessageReceived(object sender, byte[] e)
 ```
 
 If you would like to be notified of changes in the connection status, you can subscribe to the following listeners.
-```java
+```csharp
 client.Connected += Client_Connected;
 
 static void Client_Connected(object sender, EventArgs e)
@@ -72,7 +72,7 @@ static void Client_Connected(object sender, EventArgs e)
 }
 ```
 
-```java
+```csharp
 client.Disconnected += Client_Disconnected;
 
 static void Client_Disconnected(object sender, EventArgs e)
@@ -97,7 +97,7 @@ After you connected, you can send messages to the GDS. You can do that with the 
 
 Let's see an event message for example.
 
-```java
+```csharp
 string operationsStringBlock = "INSERT INTO events (id, some_field, images) VALUES('EVNT202001010000000000', 'some_field', array('ATID202001010000000000'));INSERT INTO \"events-@attachment\" (id, meta, data) VALUES('ATID202001010000000000', 'some_meta', 0x62696e6172795f6964315f6578616d706c65)";
 Dictionary<string, byte[]> binaryContentsMapping = new Dictionary<string, byte[]> { { "62696e6172795f69645f6578616d706c65", new byte[] { 1, 2, 3 } } };
 MessageData eventMessageData = MessageManager.GetEventData(operationsStringBlock, binaryContentsMapping);
@@ -106,7 +106,7 @@ client.SendAsync(eventMessageData);
 ```
 
 Or if you want to define the header part explicitly.
-```java
+```csharp
 MessageHeader eventMessageHeader = MessageManager.GetHeader("user", "c08ea082-9dbf-4d96-be36-4e4eab6ae624", 1582612168230, 1582612168230, false, null, null, null, null, DataType.Event);
 Message eventMessage = MessageManager.GetMessage(eventMessageHeader, eventMessageData);
 
@@ -114,7 +114,7 @@ client.SendAsync(eventMessage);
 ```
 
 The response is available through the subscribed listener.
-```java
+```csharp
 static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSerializationException> e)
 {
     if (e.Item2 == null)
@@ -130,7 +130,7 @@ static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSeri
 ```
 
 Let's look at the same in synchronously.
-```java
+```csharp
 Message response = client.SendSync(eventMessage, 3000);
 
 if (response.Header.DataType.Equals(DataType.EventAck))
