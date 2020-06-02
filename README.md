@@ -145,8 +145,11 @@ catch(TimeoutException exception)
 {
     // ...
 }
+catch (MessagePackSerializationException exception)
+{
+    // ...
+}
 ```
-
 
 At the end, we close the websocket connection as well.
 ```csharp
