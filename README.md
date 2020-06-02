@@ -2,7 +2,7 @@
 
 The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messages/) package.
 
-`Install-Package gds-messages -Version 1.1.0`
+`Install-Package gds-messages -Version 1.1.1`
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack c# implementation)
 
@@ -36,7 +36,7 @@ A message can be sent as follows.
 
 First, we create the client object and connect to the GDS.
 ```csharp
-GDSWebSocketClient client = new GDSWebSocketClient("ws://127.0.0.1:8080/gate");
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8080/gate");
 ``` 
 
 The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.

@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace messages.Gds.Websocket
 {
-    class GdsWebSocketClient
+    public class GdsWebSocketClient
     {
         private readonly WebSocketClient client;
         private readonly string userName;
