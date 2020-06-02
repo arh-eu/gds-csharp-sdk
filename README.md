@@ -132,12 +132,18 @@ static void Client_MessageReceived(object sender, Tuple<Message, MessagePackSeri
 
 Let's look at the same in synchronously.
 ```csharp
-Message response = client.SendSync(eventMessage, 3000);
-
-if (response.Header.DataType.Equals(DataType.EventAck))
+try
 {
-	EventAckData eventAckData = response.Data.AsEventAckData();
-		// do something with the response data...
+    Message response = client.SendSync(eventMessage, 3000);
+    if (response.Header.DataType.Equals(DataType.EventAck))
+    {
+        EventAckData eventAckData = response.Data.AsEventAckData();
+        // do something with the response data...
+    }
+}
+catch(TimeoutException exception)
+{
+    // ...
 }
 ```
 
