@@ -16,7 +16,6 @@
 
 using Gds.Messages;
 using MessagePack;
-using NLog;
 using System;
 using System.Threading;
 using WebSocket4Net;
@@ -39,7 +38,7 @@ namespace Gds.Websocket
 
         private readonly string uri;
 
-        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebSocketClient"/> class
@@ -56,28 +55,12 @@ namespace Gds.Websocket
             this.uri = uri;
         }
 
-        private void Info(string msg)
-        {
-            if (logger != null)
-            {
-                logger.Info(msg);
-            }
-        }
-
-        private void error(string msg)
-        {
-            if(logger != null)
-            {
-                logger.Error(msg);
-            }
-        }
-
         /// <summary>
         /// Connect to the server (specified by the uri) asynchronously
         /// </summary>
         public void ConnectAsync()
         {
-            Info("WebSocketClient connecting to " + uri);
+            log.Info("WebSocketClient connecting to " + uri);
             client.Open();
         }
 
@@ -105,7 +88,7 @@ namespace Gds.Websocket
         /// </summary>
         public void CloseAsync()
         {
-            Info("WebSocketClient close connection");
+            log.Info("WebSocketClient close connection");
             client.Close();
         }
 
@@ -144,10 +127,10 @@ namespace Gds.Websocket
         {
             if (message == null)
             {
-                error("An error occurred while sending binary message. Message cannot be null.");
+                log.Error("An error occurred while sending binary message. Message cannot be null.");
                 throw new InvalidOperationException("Parameter 'message' cannot be null");
             }
-            Info("WebSocketClient sending binary message...");
+            log.Info("WebSocketClient sending binary message...");
             client.Send(message, 0, message.Length);
         }
 
@@ -162,7 +145,7 @@ namespace Gds.Websocket
             SendAsync(message);
             if (!messageReceiveEvent.WaitOne(timeout))
             {
-                error("A timeout occurred while sending binary message");
+                log.Error("A timeout occurred while sending binary message");
                 throw new TimeoutException("The timeout period elapsed");
             }
             return lastMessageReceived;
@@ -170,7 +153,7 @@ namespace Gds.Websocket
 
         private void DataReceived(object sender, DataReceivedEventArgs e)
         {
-            Info("WebSocketClient received binary message");
+            log.Info("WebSocketClient received binary message");
             lastMessageReceived = e.Data;
             MessageReceived?.Invoke(sender, lastMessageReceived);
             messageReceiveEvent.Set();
@@ -178,17 +161,17 @@ namespace Gds.Websocket
 
         private void Opened(object sender, EventArgs e)
         {
-            Info("WebSocketClient connected to " + uri);
+            log.Info("WebSocketClient connected to " + uri);
             Connected?.Invoke(sender, e);
         }
         private void Closed(object sender, EventArgs e) 
         {
-            Info("WebSocketClient disconnected from " + uri);
+            log.Info("WebSocketClient disconnected from " + uri);
             Disconnected?.Invoke(sender, e);
         }
         private void Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e) 
         {
-            error(e.Exception.Message);
+            log.Error(e.Exception.Message);
         }
     }
 }

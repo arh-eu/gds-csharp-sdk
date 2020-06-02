@@ -39,6 +39,13 @@ First, we create the client object and connect to the GDS.
 GDSWebSocketClient client = new GDSWebSocketClient("ws://127.0.0.1:8080/gate");
 ``` 
 
+The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.
+Logging to the console is easy. Put this code in the beginning of your main() method.
+```csharp
+var logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());    
+log4net.Config.BasicConfigurator.Configure(logRepository);
+```
+
 There are some listeners you can subscribe.
 
 To get the serialized message objects.

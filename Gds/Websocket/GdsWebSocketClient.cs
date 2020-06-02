@@ -3,7 +3,6 @@ using Gds.Messages.Data;
 using Gds.Messages.Header;
 using Gds.Websocket;
 using MessagePack;
-using NLog;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,7 +23,7 @@ namespace messages.Gds.Websocket
 
         private bool connectionAckMessageReceived = false;
 
-        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly string uri;
 
@@ -38,22 +37,6 @@ namespace messages.Gds.Websocket
             client.Disconnected += Client_Disconnected;
 
             this.uri = uri;
-        }
-
-        private void Info(string msg)
-        {
-            if (logger != null)
-            {
-                logger.Info(msg);
-            }
-        }
-
-        private void error(string msg)
-        {
-            if (logger != null)
-            {
-                logger.Error(msg);
-            }
         }
 
         private void Client_MessageReceived(object sender, byte[] e)
@@ -102,7 +85,7 @@ namespace messages.Gds.Websocket
                     {
                         if (ack.Data.AsConnectionAckData().Status.Equals(StatusCode.OK))
                         {
-                            Info("GdsWebSocketClient connected to " + uri);
+                            log.Info("GdsWebSocketClient connected to " + uri);
                             connectionAckMessageReceived = true;
                             Connected?.Invoke(this, null);
                             break;
