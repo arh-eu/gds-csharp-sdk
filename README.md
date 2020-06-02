@@ -36,7 +36,7 @@ A message can be sent as follows.
 
 First, we create the client object and connect to the GDS.
 ```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8080/gate");
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8080/gate", "user", null);
 ``` 
 
 The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.
@@ -88,14 +88,8 @@ static void Client_Disconnected(object sender, EventArgs e)
 }
 ```
 
-
-connect synchronously 
 ```csharp
-client.ConnectSync();
-``` 
-or asynchronously
-```csharp
-client.ConnectAsync();
+client.Connect();
 ``` 
 
 (During the connection, a connection type message is also sent after the websocket connection. If a positive acknowledgment message arrives, the IsConnected() method returns true.)
@@ -150,5 +144,5 @@ if (response.Header.DataType.Equals(DataType.EventAck))
 
 At the end, we close the websocket connection as well.
 ```csharp
-client.CloseSync();
+client.Close();
 ```
