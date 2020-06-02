@@ -141,7 +141,7 @@ try
         // do something with the response data...
     }
 }
-catch(TimeoutException exception)
+catch (TimeoutException exception)
 {
     // ...
 }
