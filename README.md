@@ -8,7 +8,7 @@ The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messag
 
 ## How to create messages
 
-A message consists of two parts, a header and a hata. You can create these objects through the Gds.Messages.MessageManager class.
+A message consists of two parts, a header and a data. You can create these objects through the Gds.Messages.MessageManager class.
 
 The following example shows the process of creating messages by creating an attachment request type message.
 
