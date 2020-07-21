@@ -19,7 +19,7 @@ MessageHeader header = MessageManager.GetHeader("user", "870da92f-7fff-48af-825e
 
 After that, we create the data part.
 ```csharp
-MessageData data = MessageManager.GetAttachmentRequestData("SELECT * FROM \"events-@attachment\" WHERE id='ATID202001010000000000' and ownerid='EVNT202001010000000000' FOR UPDATE WAIT 86400");
+MessageData data = MessageManager.GetAttachmentRequestData("SELECT * FROM \"multi_event-@attachment\" WHERE id='ATID2006241023125470' and ownerid='EVNT2006241023125470' FOR UPDATE WAIT 86400");
 ```
 
 Once we have a header and a data, we can create the message object.
@@ -36,7 +36,7 @@ A message can be sent as follows.
 
 First, we create the client object and connect to the GDS.
 ```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8080/gate", "user", null);
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", null);
 ``` 
 
 The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.
@@ -99,7 +99,7 @@ After you connected, you can send messages to the GDS. You can do that with the 
 Let's see an event message for example.
 
 ```csharp
-string operationsStringBlock = "INSERT INTO events (id, some_field, images) VALUES('EVNT202001010000000000', 'some_field', array('ATID202001010000000000'));INSERT INTO \"events-@attachment\" (id, meta, data) VALUES('ATID202001010000000000', 'some_meta', 0x62696e6172795f6964315f6578616d706c65)";
+string operationsStringBlock = "INSERT INTO multi_event (id, plate, images) VALUES('EVNT2006241023125476', 'ABC123', array('ATID2006241023125470'));INSERT INTO \"multi_event-@attachment\" (id, meta, data) VALUES('ATID2006241023125470', 'some_meta', 0x62696e6172795f69645f6578616d706c65)";
 Dictionary<string, byte[]> binaryContentsMapping = new Dictionary<string, byte[]> { { "62696e6172795f69645f6578616d706c65", new byte[] { 1, 2, 3 } } };
 MessageData eventMessageData = MessageManager.GetEventData(operationsStringBlock, binaryContentsMapping);
 
