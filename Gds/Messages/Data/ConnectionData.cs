@@ -25,36 +25,62 @@ namespace Gds.Messages.Data
     public class ConnectionData : MessageData
     {
         [Key(0)]
-        private readonly bool serveOnTheSameConnection;
+        private readonly string clusterName;
 
         [Key(1)]
-        private readonly int protocolVersionNumber;
+        private readonly bool serveOnTheSameConnection;
 
         [Key(2)]
-        private readonly bool fragmentationSupported;
+        private readonly int protocolVersionNumber;
 
         [Key(3)]
-        private readonly int? fragmentationTransmissionUnit;
+        private readonly bool fragmentationSupported;
 
         [Key(4)]
+        private readonly int? fragmentationTransmissionUnit;
+
+        [Key(5)]
         private readonly object[] reservedFields;
+
+
+        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit, object[] reservedFields)
+            : this(null, serveOnTheSameConnection, protocolVersionNumber, fragmentationSupported, fragmentationTransmissionUnit, reservedFields)
+        {
+
+        }
+
+        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit)
+            : this(null, serveOnTheSameConnection, protocolVersionNumber, fragmentationSupported, fragmentationTransmissionUnit, null)
+        {
+            
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectionData"/> class
         /// </summary>
+        /// <param name="clusterName">The name of the cluster the GDS instance is in.</param>
         /// <param name="serveOnTheSameConnection">If true, the clients only accepts the response on the same connection the message was sent (on the connection it established).</param>
         /// <param name="protocolVersionNumber">The version number of the protocol, with which the connected client communicates.</param>
         /// <param name="fragmentationSupported">If true, the client indicates that it accepts messages on this connection fragmented too.</param>
         /// <param name="fragmentationTransmissionUnit">If fragmentation is supported, it determines the size of chunks the other party should fragment the data part of the message.</param>
         /// <param name="reservedFields"></param>
-        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit, object[] reservedFields)
+        /// 
+        public ConnectionData(string clusterName, bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit, object[] reservedFields)
         {
+            this.clusterName = clusterName;
             this.serveOnTheSameConnection = serveOnTheSameConnection;
             this.protocolVersionNumber = protocolVersionNumber;
             this.fragmentationSupported = fragmentationSupported;
             this.fragmentationTransmissionUnit = fragmentationTransmissionUnit;
             this.reservedFields = reservedFields;
         }
+
+
+        /// <summary>
+        /// Returns the assigned GDS cluster.
+        /// </summary>
+        [IgnoreMember]
+        public string ClusterName => clusterName;
 
         /// <summary>
         /// If true, the clients only accepts the response on the same connection the message was sent (on the connection it established).
