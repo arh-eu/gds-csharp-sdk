@@ -202,9 +202,7 @@ namespace Gds.Websocket
         }
         private void Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e) 
         {
-            log.Error("EXC: " + e.Exception);
             log.Error("MESSAGE: " + e.Exception.Message);
-            log.Error("STACK: " + e.Exception.StackTrace);
         }
     }
 }

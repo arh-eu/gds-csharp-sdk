@@ -260,15 +260,22 @@
             The Connection type Data part of the Message.
             </summary>
         </member>
-        <member name="M:Gds.Messages.Data.ConnectionData.#ctor(System.Boolean,System.Int32,System.Boolean,System.Nullable{System.Int32},System.Object[])">
+        <member name="M:Gds.Messages.Data.ConnectionData.#ctor(System.String,System.Boolean,System.Int32,System.Boolean,System.Nullable{System.Int32},System.Object[])">
             <summary>
             Initializes a new instance of the <see cref="T:Gds.Messages.Data.ConnectionData"/> class
             </summary>
+            <param name="clusterName">The name of the cluster the GDS instance is in.</param>
             <param name="serveOnTheSameConnection">If true, the clients only accepts the response on the same connection the message was sent (on the connection it established).</param>
             <param name="protocolVersionNumber">The version number of the protocol, with which the connected client communicates.</param>
             <param name="fragmentationSupported">If true, the client indicates that it accepts messages on this connection fragmented too.</param>
             <param name="fragmentationTransmissionUnit">If fragmentation is supported, it determines the size of chunks the other party should fragment the data part of the message.</param>
             <param name="reservedFields"></param>
+            
+        </member>
+        <member name="P:Gds.Messages.Data.ConnectionData.ClusterName">
+            <summary>
+            Returns the assigned GDS cluster.
+            </summary>
         </member>
         <member name="P:Gds.Messages.Data.ConnectionData.ServeOnTheSameConnection">
             <summary>
