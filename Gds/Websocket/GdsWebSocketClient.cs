@@ -5,6 +5,7 @@ using Gds.Websocket;
 using MessagePack;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading;
 
@@ -27,11 +28,34 @@ namespace messages.Gds.Websocket
 
         private readonly string uri;
 
+
+        public GdsWebSocketClient(String uri, String userName) : this(uri, userName, null)
+        {
+            
+        }
+
         public GdsWebSocketClient(String uri, String userName, String password)
         {
             this.client = new WebSocketClient(uri);
             this.userName = userName;
             this.password = password;
+
+            client.MessageReceived += Client_MessageReceived;
+            client.Disconnected += Client_Disconnected;
+
+            this.uri = uri;
+        }
+
+        public GdsWebSocketClient(String uri, String userName, string certPath, string pw)
+        {
+            FileStream f = File.OpenRead(certPath);
+            byte[] data = new byte[f.Length];
+            f.Read(data, 0, data.Length);
+            f.Close();
+
+            this.client = new WebSocketClient(uri, data, pw);
+            this.userName = userName;
+            this.password = null;
 
             client.MessageReceived += Client_MessageReceived;
             client.Disconnected += Client_Disconnected;

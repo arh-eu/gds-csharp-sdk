@@ -17,6 +17,8 @@
 using Gds.Messages;
 using MessagePack;
 using System;
+using System.Net;
+using System.Net.Security;
 using System.Threading;
 using WebSocket4Net;
 
@@ -53,6 +55,35 @@ namespace Gds.Websocket
             client.DataReceived += new EventHandler<DataReceivedEventArgs>(DataReceived);
 
             this.uri = uri;
+        }
+
+        public WebSocketClient(string uri, byte[] data, string pw)
+        {
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13;
+
+            ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, SslPolicyErrors) => true;
+
+            client = new WebSocket(uri, sslProtocols: System.Security.Authentication.SslProtocols.Tls |
+            System.Security.Authentication.SslProtocols.Tls11 |
+            System.Security.Authentication.SslProtocols.Tls12 |
+            System.Security.Authentication.SslProtocols.Tls13);
+            client.Opened += new EventHandler(Opened);
+            client.Error += new EventHandler<SuperSocket.ClientEngine.ErrorEventArgs>(Error);
+            client.Closed += new EventHandler(Closed);
+            client.DataReceived += new EventHandler<DataReceivedEventArgs>(DataReceived);
+
+            this.uri = uri;
+
+            System.Security.Cryptography.X509Certificates.X509Certificate2 cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(data, pw);
+
+            client.Security.AllowCertificateChainErrors = true;
+            client.Security.AllowNameMismatchCertificate = true;
+            client.Security.AllowUnstrustedCertificate = true;
+            client.Security.Certificates.Add(cert);
+
         }
 
         /// <summary>
@@ -171,7 +202,9 @@ namespace Gds.Websocket
         }
         private void Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e) 
         {
-            log.Error(e.Exception.Message);
+            log.Error("EXC: " + e.Exception);
+            log.Error("MESSAGE: " + e.Exception.Message);
+            log.Error("STACK: " + e.Exception.StackTrace);
         }
     }
 }
