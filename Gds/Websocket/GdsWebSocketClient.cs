@@ -145,7 +145,7 @@ namespace messages.Gds.Websocket
                             null,
                             null,
                             null,
-                            DataType.Connection);
+                            data.GetDataType());
             return SendSync((MessageManager.GetMessage(header, data)), timeout);
         }
 
@@ -176,7 +176,7 @@ namespace messages.Gds.Websocket
                             null,
                             null,
                             null,
-                            DataType.Connection);
+                            data.GetDataType());
             SendAsync(MessageManager.GetMessage(header, data));
         }
 
