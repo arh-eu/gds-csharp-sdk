@@ -95,7 +95,8 @@ namespace messages.Gds.Websocket
                 null,
                 null,
                 DataType.Connection);
-            MessageData data = MessageManager.GetConnectionData(true, 1, false, null, password);
+            //the current GDS version is 5.1
+            MessageData data = MessageManager.GetConnectionData(true, (5 << 16 | 1), false, null, password);
             Message message = MessageManager.GetMessage(header, data);
             byte[] binary = MessageManager.GetBinaryFromMessage(message);
 
