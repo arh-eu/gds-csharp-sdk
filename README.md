@@ -4,11 +4,11 @@ The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messag
 
 `Install-Package gds-messages -Version 1.1.1`
 
-(The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack c# implementation)
+(The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
 
 ## How to create messages
 
-A message consists of two parts, a header and a data. You can create these objects through the Gds.Messages.MessageManager class.
+A message consists of two parts, a header and a data. You can create these objects through the `Gds.Messages.MessageManager` class.
 
 The following example shows the process of creating messages by creating an attachment request type message.
 
@@ -36,7 +36,7 @@ A message can be sent as follows.
 
 First, we create the client object and connect to the GDS.
 ```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", null);
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user");
 ``` 
 
 The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.
@@ -154,4 +154,27 @@ catch (MessagePackSerializationException exception)
 At the end, we close the websocket connection as well.
 ```csharp
 client.Close();
+```
+
+## Connection by password authentication
+
+For simple password authentication an additional parameter can be passed to the client constructor:
+
+```csharp
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", "u$€r_p4$$w0rD");
+```
+
+## Connecting via TLS
+
+If you want to use secured connection you should invoke another constructor when you create the client. This one needs 4 parameters:
+
+ - GDS URL
+ - username
+ - Path to the `PKCS12` formatted private key
+ - Password to unlock the private key 
+ 
+With these the connection will be encrypted over TLS. The GDS URL should be the one with the secure port/gate as well.
+
+```csharp
+GdsWebSocketClient client = new GdsWebSocketClient("wss://127.0.0.1:8443/gates", "tls_user", "tlsuser_private_key.p12", "very_secret_password_for_the_tls_certificate");
 ```
