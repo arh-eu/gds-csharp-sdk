@@ -6,33 +6,16 @@ The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messag
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
 
-## How to create messages
 
-A message consists of two parts, a header and a data. You can create these objects through the `Gds.Messages.MessageManager` class.
 
-The following example shows the process of creating messages by creating an attachment request type message.
-
-First, we create the header part.
-```csharp
-MessageHeader header = MessageManager.GetHeader("user", "870da92f-7fff-48af-825e-05351ef97acd", 1582612168230, 1582612168230, false, null, null, null, null, DataType.AttachmentRequest);
-```
-
-After that, we create the data part.
-```csharp
-MessageData data = MessageManager.GetAttachmentRequestData("SELECT * FROM \"multi_event-@attachment\" WHERE id='ATID2006241023125470' and ownerid='EVNT2006241023125470' FOR UPDATE WAIT 86400");
-```
-
-Once we have a header and a data, we can create the message object.
-```csharp
-Message message = MessageManager.GetMessage(header, data);
-```
-
-## How to send and receive messages
+## Usage
 
 Messages can be sent to the GDS via WebSocket protocol. The SDK contains a WebSocket client with basic functionalities, so you can use this to send and receive messages.
 You can also find a GDS Server Simulator written in Java [here](https://github.com/arh-eu/gds-server-simulator). With this simulator you can test your client code without a real GDS instance.
 
 A message can be sent as follows.
+
+### Creating the client
 
 First, we create the client object and connect to the GDS.
 ```csharp
@@ -65,6 +48,8 @@ Logging to the console is easy. Put this code in the beginning of your main() me
 var logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());    
 log4net.Config.BasicConfigurator.Configure(logRepository);
 ```
+
+### Subscribing to listeners
 
 If you want to use async communication, there are some listeners you can subscribe.
 
@@ -113,6 +98,29 @@ client.Connect();
 ``` 
 
 (During the connection, a connection type message is also sent after the websocket connection. If a positive acknowledgment message arrives, the IsConnected() method returns true.)
+
+### Create messages
+
+A message consists of two parts, a header and a data. You can create these objects through the `Gds.Messages.MessageManager` class.
+
+The following example shows the process of creating messages by creating an attachment request type message.
+
+First, we create the header part.
+```csharp
+MessageHeader header = MessageManager.GetHeader("user", "870da92f-7fff-48af-825e-05351ef97acd", 1582612168230, 1582612168230, false, null, null, null, null, DataType.AttachmentRequest);
+```
+
+After that, we create the data part.
+```csharp
+MessageData data = MessageManager.GetAttachmentRequestData("SELECT * FROM \"multi_event-@attachment\" WHERE id='ATID2006241023125470' and ownerid='EVNT2006241023125470' FOR UPDATE WAIT 86400");
+```
+
+Once we have a header and a data, we can create the message object.
+```csharp
+Message message = MessageManager.GetMessage(header, data);
+```
+
+### Send and receive messages
 
 After you connected, you can send messages to the GDS. You can do that with the SendSync() and SendAsync() methods.
 
