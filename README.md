@@ -66,7 +66,7 @@ var logRepository = log4net.LogManager.GetRepository(System.Reflection.Assembly.
 log4net.Config.BasicConfigurator.Configure(logRepository);
 ```
 
-There are some listeners you can subscribe.
+If you want to use async communication, there are some listeners you can subscribe.
 
 To get the serialized message objects.
 ```csharp
