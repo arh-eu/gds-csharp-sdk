@@ -39,6 +39,26 @@ First, we create the client object and connect to the GDS.
 GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user");
 ``` 
 
+For simple password authentication an additional parameter can be passed to the client constructor:
+
+```csharp
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", "u$€r_p4$$w0rD");
+```
+
+If you want to use secured connection you should invoke another constructor when you create the client. This one needs 4 parameters:
+
+ - GDS URL
+ - username
+ - Path to the `PKCS12` formatted private key
+ - Password to unlock the private key 
+ 
+With these the connection will be encrypted over TLS. The GDS URL should be the one with the secure port/gate as well.
+
+```csharp
+GdsWebSocketClient client = new GdsWebSocketClient("wss://127.0.0.1:8443/gates", "tls_user", "tlsuser_private_key.p12", "very_secret_password_for_the_tls_certificate");
+```
+
+
 The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.
 Logging to the console is easy. Put this code in the beginning of your main() method.
 ```csharp
@@ -154,27 +174,4 @@ catch (MessagePackSerializationException exception)
 At the end, we close the websocket connection as well.
 ```csharp
 client.Close();
-```
-
-## Connection by password authentication
-
-For simple password authentication an additional parameter can be passed to the client constructor:
-
-```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", "u$€r_p4$$w0rD");
-```
-
-## Connecting via TLS
-
-If you want to use secured connection you should invoke another constructor when you create the client. This one needs 4 parameters:
-
- - GDS URL
- - username
- - Path to the `PKCS12` formatted private key
- - Password to unlock the private key 
- 
-With these the connection will be encrypted over TLS. The GDS URL should be the one with the secure port/gate as well.
-
-```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("wss://127.0.0.1:8443/gates", "tls_user", "tlsuser_private_key.p12", "very_secret_password_for_the_tls_certificate");
 ```
