@@ -2,7 +2,7 @@
 
 The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messages/) package.
 
-`Install-Package gds-messages -Version 1.1.1`
+`Install-Package gds-messages -Version 1.1.2`
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
 
@@ -161,7 +161,7 @@ client.Close();
 For simple password authentication an additional parameter can be passed to the client constructor:
 
 ```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", "u$€r_p4$$w0rD");
+GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", "u$â‚¬r_p4$$w0rD");
 ```
 
 ## Connecting via TLS
