@@ -11,6 +11,7 @@ using System.Threading;
 
 namespace messages.Gds.Websocket
 {
+    [Obsolete("You should use the AsyncGDSClient class instead.")]
     public class GdsWebSocketClient
     {
         private readonly WebSocketClient client;

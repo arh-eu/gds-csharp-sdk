@@ -27,6 +27,8 @@ namespace Gds.Websocket
     /// <summary>
     /// Simple websocket class with basic functionality for sending and receiving messages.
     /// </summary>
+    /// 
+    [Obsolete("You should use the AsyncGDSClient class instead.")]
     public class WebSocketClient
     {
         private readonly WebSocket client;
@@ -83,7 +85,6 @@ namespace Gds.Websocket
             client.Security.AllowNameMismatchCertificate = true;
             client.Security.AllowUnstrustedCertificate = true;
             client.Security.Certificates.Add(cert);
-
         }
 
         /// <summary>

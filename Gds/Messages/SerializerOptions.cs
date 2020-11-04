@@ -26,6 +26,7 @@ namespace Gds.Messages
         private static readonly IFormatterResolver PrivateFieldsResolver = MessagePack.Resolvers.StandardResolverAllowPrivate.Instance;
         private static readonly IMessagePackFormatter MessageFormatter = new MessageFormatter();
         private static readonly IMessagePackFormatter MessageHeaderFormatter = new MessageHeaderFormatter();
+        private static readonly IMessagePackFormatter ConnectionTypeDataFormatter = new ConnectionDataTypeFormatter();
         private static readonly IMessagePackFormatter ConnectionAckTypeDataFormatter = new ConnectionAckTypeDataFormatter();
         private static readonly IMessagePackFormatter AttachmentRequestDataFormatter = new AttachmentRequestFormatter();
         private static readonly IMessagePackFormatter QueryRequestFormatter = new QueryRequestFormatter();
@@ -33,8 +34,8 @@ namespace Gds.Messages
 
         public static readonly MessagePackSerializerOptions AllSerializerOptions =
             MessagePackSerializerOptions.Standard.WithResolver(MessagePack.Resolvers.CompositeResolver.Create(
-                new IMessagePackFormatter[] { MessageFormatter, MessageHeaderFormatter, ConnectionAckTypeDataFormatter, AttachmentRequestDataFormatter,
-                    QueryRequestFormatter, EventDocumentAckResultFormatter },
+                new IMessagePackFormatter[] { MessageFormatter, MessageHeaderFormatter,ConnectionTypeDataFormatter,
+                   ConnectionAckTypeDataFormatter, AttachmentRequestDataFormatter, QueryRequestFormatter, EventDocumentAckResultFormatter },
                 new IFormatterResolver[] { PrivateFieldsResolver }));
     }
 }

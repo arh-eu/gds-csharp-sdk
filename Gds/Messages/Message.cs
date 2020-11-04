@@ -24,8 +24,6 @@ namespace Gds.Messages
     /// </summary>
     public class Message
     {
-        private readonly MessageHeader header;
-        private readonly MessageData data;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Message"/> class with the <see cref="MessageHeader"/> and <see cref="MessageData"/> parts
@@ -34,18 +32,18 @@ namespace Gds.Messages
         /// <param name="data">The Data part of the Message</param>
         public Message(MessageHeader header, MessageData data)
         {
-            this.header = header;
-            this.data = data;
+            Header = header;
+            Data = data;
         }
 
         /// <summary>
         /// The Header part of the Message
         /// </summary>
-        public MessageHeader Header => header;
+        public MessageHeader Header { get; }
 
         /// <summary>
         /// The Data part of the Message
         /// </summary>
-        public MessageData Data => data;
+        public MessageData Data { get; }
     }
 }

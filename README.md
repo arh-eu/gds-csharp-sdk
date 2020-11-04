@@ -2,11 +2,9 @@
 
 The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messages/) package. You can install this package with running this command in the Package Manager Console.
 
-`Install-Package gds-messages -Version 1.1.2`
+`Install-Package gds-messages -Version 1.2`
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
-
-
 
 ## Usage
 
@@ -17,30 +15,44 @@ A message can be sent as follows.
 
 ### Creating the client
 
-First, we create the client object and connect to the GDS.
+First, we create the client object and connect to the GDS. The client has an asyncronous API meaning your application will not block when you send your requests but uses a listener.
+
+To make things easier a builder class got introduced, that way you only need to specify the parameters you wish to use.
 ```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user");
+AsyncGDSClient client = AsyncGDSClient.GetBuilder()
+        .WithListener(listener)
+        .WithURI("ws://192.168.1.105:8888/gate")
+        .Build();            
 ``` 
 
-For simple password authentication an additional parameter can be passed to the client constructor:
-
-```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("ws://127.0.0.1:8888/gate", "user", "u$€r_p4$$w0rD");
-```
-
-If you want to use secured connection you should invoke another constructor when you create the client. This one needs 4 parameters:
+If you want to use secured connection you should can also specify your certificate used in the TLS:
 
  - GDS URL
  - username
  - Path to the `PKCS12` formatted private key
  - Password to unlock the private key 
  
-With these the connection will be encrypted over TLS. The GDS URL should be the one with the secure port/gate as well.
+With these the connection will be encrypted over TLS. The GDS URL should be the one with the secure port/gate as well. You should keep in mind that the GDS uses a different port/gate for TLS communication.
+
 
 ```csharp
-GdsWebSocketClient client = new GdsWebSocketClient("wss://127.0.0.1:8443/gates", "tls_user", "tlsuser_private_key.p12", "very_secret_password_for_the_tls_certificate");
-```
+//using System.Security.Cryptography.X509Certificates;
 
+//this example loads the cert from a file named 'my_cert_file.p12'
+FileStream f = File.OpenRead("my_cert_file.p12");
+            byte[] data = new byte[f.Length];
+            f.Read(data, 0, data.Length);
+            f.Close();
+
+//The cert data is encrypted, you have to specify your password to decrypt it
+X509Certificate2 cert = new X509Certificate2(data, "€3RT_$ecReT_P4$sW0RĐ");
+
+AsyncGDSClient client = AsyncGDSClient.GetBuilder()
+        .WithListener(listener)
+        .WithURI("wss://192.168.1.105:8443/gates")
+        .WithCertificate(cert)
+        .Build();            
+``` 
 
 The library uses [log4net](https://logging.apache.org/log4net/) for logging. So the application needs to be configured accordingly.
 Logging to the console is easy. Put this code in the beginning of your main() method.

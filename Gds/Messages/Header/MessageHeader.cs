@@ -23,16 +23,6 @@ namespace Gds.Messages.Header
     /// </summary>
     public class MessageHeader
     {
-        private readonly string userName;
-        private readonly string messageId;
-        private readonly long createTime;
-        private readonly long requestTime;
-        private readonly bool isFragmented;
-        private readonly bool? firstFragment;
-        private readonly bool? lastFragment;
-        private readonly int? offset;
-        private readonly int? fullDataSize;
-        private readonly DataType dataType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageHeader"/> class
@@ -49,66 +39,66 @@ namespace Gds.Messages.Header
         /// <param name="dataType">It specifies what types of information the data carries.</param>
         public MessageHeader(string userName, string messageId, long createTime, long requestTime, bool isFragmented, bool? firstFragment, bool? lastFragment, int? offset, int? fullDataSize, DataType dataType)
         {
-            this.userName = userName;
-            this.messageId = messageId;
-            this.createTime = createTime;
-            this.requestTime = requestTime;
-            this.isFragmented = isFragmented;
-            this.firstFragment = firstFragment;
-            this.lastFragment = lastFragment;
-            this.offset = offset;
-            this.fullDataSize = fullDataSize;
-            this.dataType = dataType;
+            this.UserName = userName;
+            this.MessageId = messageId;
+            this.CreateTime = createTime;
+            this.RequestTime = requestTime;
+            this.IsFragmented = isFragmented;
+            this.FirstFragment = firstFragment;
+            this.LastFragment = lastFragment;
+            this.Offset = offset;
+            this.FullDataSize = fullDataSize;
+            this.DataType = dataType;
         }
 
         /// <summary>
         /// The name of the user.
         /// </summary>
-        public string UserName => userName;
+        public string UserName { get; }
 
         /// <summary>
         /// The identifier of the message, with which the request can be associated.
         /// </summary>
-        public string MessageId => messageId;
+        public string MessageId { get; }
 
         /// <summary>
         /// The time of creating the message, epoch timestamp.
         /// </summary>
-        public long CreateTime => createTime;
+        public long CreateTime { get; }
 
         /// <summary>
         /// The time of the request, epoch timestamp.
         /// </summary>
-        public long RequestTime => requestTime;
+        public long RequestTime { get; }
 
         /// <summary>
         /// Whether the current message is fragmented or not.
         /// </summary>
-        public bool IsFragmented => isFragmented;
+        public bool IsFragmented { get; }
 
         /// <summary>
         /// Whether it's the first fragment of a fragmented message.
         /// </summary>
-        public bool? FirstFragment => firstFragment;
+        public bool? FirstFragment { get; }
 
         /// <summary>
         /// Whether it's the last fragment of a fragmented message.
         /// </summary>
-        public bool? LastFragment => lastFragment;
+        public bool? LastFragment { get; }
 
         /// <summary>
         /// The last byte of the original, fragmented message the receiver has yet received or the last byte of the original message that has yet been forwarded.
         /// </summary>
-        public int? Offset => offset;
+        public int? Offset { get; }
 
         /// <summary>
         /// The size of the full data in bytes.
         /// </summary>
-        public int? FullDataSize => fullDataSize;
+        public int? FullDataSize { get; }
 
         /// <summary>
         /// It specifies what types of information the data carries.
         /// </summary>
-        public DataType DataType => dataType;
+        public DataType DataType { get; }
     }
 }

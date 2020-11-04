@@ -137,8 +137,10 @@ namespace Gds.Messages.Data
 
         public ConnectionAckTypeData() { }
 
+        [IgnoreMember]
         public ConnectionData SuccessAckTypeData => successAckTypeData;
 
+        [IgnoreMember]
         public Dictionary<int, string> UnauthorizedAckTypeData => unauthorizedAckTypeData;
     }
 
@@ -169,8 +171,7 @@ namespace Gds.Messages.Data
             }
             else if (reader.NextMessagePackType.Equals(MessagePackType.Map))
             {
-                return new ConnectionAckTypeData(
-                    MessagePackSerializer.Deserialize<Dictionary<int, string>>(ref reader));
+                return new ConnectionAckTypeData(MessagePackSerializer.Deserialize<Dictionary<int, string>>(ref reader));
             }
             else
             {

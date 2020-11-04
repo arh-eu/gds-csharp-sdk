@@ -19,6 +19,9 @@ using System;
 
 namespace Gds.Messages.Data
 {
+    /// <summary>
+    /// This class represents the Data part of a message
+    /// </summary>
     public abstract class MessageData
     {
         /// <summary>
@@ -131,21 +134,37 @@ namespace Gds.Messages.Data
             return false;
         }
 
+        /// <summary>
+        /// casts the current instance to , or throws an exception if the type is different.
+        /// </summary>
+        /// <returns>this as </returns>
         public virtual ConnectionData AsConnectionData()
         {
             throw new InvalidCastException();
         }
 
+        /// <summary>
+        /// casts the current instance to , or throws an exception if the type is different.
+        /// </summary>
+        /// <returns>this as </returns>
         public virtual ConnectionAckData AsConnectionAckData()
         {
             throw new InvalidCastException();
         }
 
+        /// <summary>
+        /// casts the current instance to , or throws an exception if the type is different.
+        /// </summary>
+        /// <returns>this as </returns>
         public virtual EventData AsEventData()
         {
             throw new InvalidCastException();
         }
 
+        /// <summary>
+        /// casts the current instance to , or throws an exception if the type is different.
+        /// </summary>
+        /// <returns>this as </returns>
         public virtual EventAckData AsEventAckData()
         {
             throw new InvalidCastException();

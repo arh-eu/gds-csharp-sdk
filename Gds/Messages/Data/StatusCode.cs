@@ -77,6 +77,11 @@ namespace Gds.Messages.Data
         Conflict = 409,
 
         /// <summary>
+        /// Gone
+        /// </summary>
+        Gone = 410,
+
+        /// <summary>
         /// Unsuccessful request
         /// </summary>
         PreconditionFailed = 412,

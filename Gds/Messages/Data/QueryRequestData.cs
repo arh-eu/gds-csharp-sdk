@@ -25,11 +25,6 @@ namespace Gds.Messages.Data
     /// </summary>
     public class QueryRequestData : MessageData
     {
-        private readonly string selectStringBlock;
-        private readonly ConsistencyType consistencyType;
-        private readonly long timeout;
-        private readonly int? queryPageSize;
-        private readonly QueryType? queryType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryRequestData"/> class
@@ -39,13 +34,13 @@ namespace Gds.Messages.Data
         /// <param name="timeout">The timeout value in milliseconds.</param>
         /// <param name="queryPageSize">The number of records per page.</param>
         /// <param name="queryType">The query type</param>
-        public QueryRequestData(string selectStringBlock, ConsistencyType consistencyType, long timeout, int queryPageSize, QueryType? queryType)
+        public QueryRequestData(string selectStringBlock, ConsistencyType consistencyType, long timeout, int? queryPageSize, QueryType? queryType)
         {
-            this.selectStringBlock = selectStringBlock;
-            this.consistencyType = consistencyType;
-            this.timeout = timeout;
-            this.queryPageSize = queryPageSize;
-            this.queryType = queryType;
+            SelectStringBlock = selectStringBlock;
+            ConsistencyType = consistencyType;
+            Timeout = timeout;
+            QueryPageSize = queryPageSize;
+            QueryType = queryType;
         }
 
         /// <summary>
@@ -55,39 +50,39 @@ namespace Gds.Messages.Data
         /// <param name="consistencyType">The consistency type used for the query.</param>
         /// <param name="timeout">The timeout value in milliseconds.</param>
         public QueryRequestData(string selectStringBlock, ConsistencyType consistencyType, long timeout)
+            : this(selectStringBlock, consistencyType, timeout, null, null)
         {
-            this.selectStringBlock = selectStringBlock;
-            this.consistencyType = consistencyType;
-            this.timeout = timeout;
-            this.queryPageSize = null;
-            this.queryType = null;
+
         }
 
         /// <summary>
         /// The SELECT statement.
         /// </summary>
-        public string SelectStringBlock => selectStringBlock;
+        public string SelectStringBlock { get; }
 
         /// <summary>
         /// The consistency type used for the query.
         /// </summary>
-        public ConsistencyType ConsistencyType => consistencyType;
+        public ConsistencyType ConsistencyType { get; }
 
         /// <summary>
         /// The timeout value in milliseconds.
         /// </summary>
-        public long Timeout => timeout;
+        public long Timeout { get; }
 
         /// <summary>
         /// The number of records per page.
         /// </summary>
-        public int? QueryPageSize => queryPageSize;
+        public int? QueryPageSize { get; }
 
         /// <summary>
         /// The query type
         /// </summary>
-        public QueryType? QueryType => queryType;
+        public QueryType? QueryType { get; }
 
+        /// <summary>
+        /// returns the DataType assigned to this MessageData
+        /// </summary>
         public override DataType GetDataType()
         {
             return DataType.QueryRequest;
@@ -156,12 +151,9 @@ namespace Gds.Messages.Data
             writer.Write(value.SelectStringBlock);
             writer.Write(value.ConsistencyType.ToString());
             writer.WriteInt64(value.Timeout);
-            if (value.QueryPageSize != null)
+            if (value.QueryPageSize != null && value.QueryType != null)
             {
                 writer.Write(value.QueryPageSize.Value);
-            }
-            if (value.QueryType != null)
-            {
                 writer.Write((int)value.QueryType.Value);
             }
         }

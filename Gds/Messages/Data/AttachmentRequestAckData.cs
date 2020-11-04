@@ -70,15 +70,9 @@ namespace Gds.Messages.Data
             return DataType.AttachmentRequestAck;
         }
 
-        public override bool IsAttachmentRequestAckData()
-        {
-            return true;
-        }
+        public override bool IsAttachmentRequestAckData() => true;
 
-        public override AttachmentRequestAckData AsAttachmentRequestAckData()
-        {
-            return this;
-        }
+        public override AttachmentRequestAckData AsAttachmentRequestAckData() => this;
     }
 
     [MessagePackObject]

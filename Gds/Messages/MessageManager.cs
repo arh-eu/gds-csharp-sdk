@@ -17,6 +17,7 @@
 using Gds.Messages.Data;
 using Gds.Messages.Header;
 using MessagePack;
+using System;
 using System.Collections.Generic;
 
 namespace Gds.Messages
@@ -38,6 +39,18 @@ namespace Gds.Messages
         }
 
         /// <summary>
+        /// Pack the specified header and data to a Message object. 
+        /// </summary>
+        /// <param name="header">The Message Header object.</param>
+        /// <param name="data">The Message Data object.</param>
+        /// <returns>The packed message in byte array format.</returns>
+        /// <exception cref="MessagePackSerializationException"></exception>
+        public static byte[] GetBinaryFromMessage(MessageHeader header, MessageData data)
+        {
+            return GetBinaryFromMessage(GetMessage(header, data));
+        }
+
+        /// <summary>
         /// Unpack the specified binary message.
         /// </summary>
         /// <param name="message">The message in byte array format.</param>
@@ -51,12 +64,39 @@ namespace Gds.Messages
         /// <summary>
         /// Create a Message object with the speficed Header and Data parts.
         /// </summary>
-        /// <param name="header">The Header part of the message. See <see cref="GetHeader"/>.</param>
+        /// <param name="header">The Header part of the message. See <see cref="GetHeader(string,DataType)"/>.</param>
         /// <param name="data">The Data part of the message. See the MessageManager.GetXXXData() methods.</param>
         /// <returns>The created Message object.</returns>
         public static Message GetMessage(MessageHeader header, MessageData data)
         {
             return new Message(header, data);
+        }
+
+        /// <summary>
+        /// Create the Header part of the Message.
+        /// </summary>
+        /// <param name="userName">The name of the user.</param>
+        /// <param name="dataType">It specifies what types of information the data carries.</param>
+        /// <returns>The created MessageHeader object.</returns>
+        public static MessageHeader GetHeader(string userName, DataType dataType)
+        {
+            return GetHeader(userName, null, dataType);
+        }
+
+        /// <summary>
+        /// Create the Header part of the Message.
+        /// </summary>
+        /// <param name="userName">The name of the user.</param>
+        /// <param name="dataType">It specifies what types of information the data carries.</param>
+        /// <param name="messageID">The identifier of the message, with which the request can be associated.</param>
+        /// <returns>The created MessageHeader object.</returns>
+        public static MessageHeader GetHeader(string userName, string messageID, DataType dataType)
+        {
+            return new MessageHeader(userName,
+                messageID ?? Guid.NewGuid().ToString(),
+                DateTimeOffset.Now.ToUnixTimeMilliseconds(),
+                DateTimeOffset.Now.ToUnixTimeMilliseconds(),
+                false, null, null, null, null, dataType);
         }
 
         /// <summary>
@@ -327,21 +367,9 @@ namespace Gds.Messages
         /// <param name="queryPageSize">The number of records per page.</param>
         /// <param name="queryType">The query type</param>
         /// <returns>The created QueryRequestData object.</returns>
-        public static QueryRequestData GetQueryRequest(string selectStringBlock, ConsistencyType consistencyType, long timeout, int queryPageSize, QueryType queryType)
+        public static QueryRequestData GetQueryRequest(string selectStringBlock, ConsistencyType consistencyType, long timeout, int? queryPageSize = null, QueryType? queryType = null)
         {
             return new QueryRequestData(selectStringBlock, consistencyType, timeout, queryPageSize, queryType);
-        }
-
-        /// <summary>
-        /// Create a QueryRequest type data part.
-        /// </summary>
-        /// <param name="selectStringBlock">The SELECT statement.</param>
-        /// <param name="consistencyType">The consistency type used for the query.</param>
-        /// <param name="timeout">The timeout value in milliseconds.</param>
-        /// <returns>The created QueryRequestData object.</returns>
-        public static QueryRequestData GetQueryRequest(string selectStringBlock, ConsistencyType consistencyType, long timeout)
-        {
-            return new QueryRequestData(selectStringBlock, consistencyType, timeout);
         }
 
         /// <summary>

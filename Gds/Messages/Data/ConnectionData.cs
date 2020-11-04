@@ -15,6 +15,8 @@
  */
 
 using MessagePack;
+using MessagePack.Formatters;
+using System;
 
 namespace Gds.Messages.Data
 {
@@ -37,22 +39,22 @@ namespace Gds.Messages.Data
         private readonly bool fragmentationSupported;
 
         [Key(4)]
-        private readonly int? fragmentationTransmissionUnit;
+        private readonly long? fragmentationTransmissionUnit;
 
         [Key(5)]
         private readonly object[] reservedFields;
 
 
-        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit, object[] reservedFields)
+        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, long? fragmentationTransmissionUnit, object[] reservedFields)
             : this(null, serveOnTheSameConnection, protocolVersionNumber, fragmentationSupported, fragmentationTransmissionUnit, reservedFields)
         {
 
         }
 
-        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit)
+        public ConnectionData(bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, long? fragmentationTransmissionUnit)
             : this(null, serveOnTheSameConnection, protocolVersionNumber, fragmentationSupported, fragmentationTransmissionUnit, null)
         {
-            
+
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace Gds.Messages.Data
         /// <param name="fragmentationTransmissionUnit">If fragmentation is supported, it determines the size of chunks the other party should fragment the data part of the message.</param>
         /// <param name="reservedFields"></param>
         /// 
-        public ConnectionData(string clusterName, bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, int? fragmentationTransmissionUnit, object[] reservedFields)
+        public ConnectionData(string clusterName, bool serveOnTheSameConnection, int protocolVersionNumber, bool fragmentationSupported, long? fragmentationTransmissionUnit, object[] reservedFields)
         {
             this.clusterName = clusterName;
             this.serveOnTheSameConnection = serveOnTheSameConnection;
@@ -104,7 +106,7 @@ namespace Gds.Messages.Data
         /// If fragmentation is supported, it determines the size of chunks the other party should fragment the data part of the message.
         /// </summary>
         [IgnoreMember]
-        public int? FragmentationTransmissionUnit => fragmentationTransmissionUnit;
+        public long? FragmentationTransmissionUnit => fragmentationTransmissionUnit;
 
         [IgnoreMember]
         public object[] ReservedFields => reservedFields;
@@ -142,6 +144,110 @@ namespace Gds.Messages.Data
         public override ConnectionData AsConnectionData()
         {
             return this;
+        }
+    }
+
+
+    public class ConnectionDataTypeFormatter : IMessagePackFormatter<ConnectionData>
+    {
+        public void Serialize(ref MessagePackWriter writer, ConnectionData value, MessagePackSerializerOptions options)
+        {
+            int length = 4;
+            if (value.ClusterName != null) ++length;
+            if (value.Password != null) ++length;
+            writer.WriteArrayHeader(length);
+
+
+            if (value.ClusterName != null)
+            {
+                writer.Write(value.ClusterName);
+            }
+
+            writer.Write(value.ServeOnTheSameConnection);
+            writer.WriteInt32(value.ProtocolVersionNumber);
+            writer.Write(value.FragmentationSupported);
+            if (value.FragmentationTransmissionUnit != null)
+            {
+                writer.WriteInt64((long)value.FragmentationTransmissionUnit);
+            }
+            else
+            {
+                writer.WriteNil();
+            }
+
+
+            if (value.Password != null)
+            {
+                writer.WriteArrayHeader(1);
+                writer.Write(value.Password);
+            }
+        }
+
+        public ConnectionData Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+        {
+            if (reader.IsNil)
+            {
+                reader.ReadNil();
+                return null;
+            }
+            int size = reader.ReadArrayHeader();
+            if (size < 4 || 6 < size)
+            {
+                throw new FormatException(string.Format("ConnectionData expected 4, 5 or 6 elements but found {0} instead!", size));
+            }
+
+            bool clusterIncluded = false;
+            string clusterName = null;
+            if (reader.NextMessagePackType == MessagePackType.String)
+            {
+                clusterName = reader.ReadString();
+                clusterIncluded = true;
+            }
+            else if (reader.IsNil)
+            {
+                clusterIncluded = true;
+                reader.ReadNil();
+            }
+
+            bool serveOnSame = reader.ReadBoolean();
+            int protocol = reader.ReadInt32();
+            bool fragment = reader.ReadBoolean();
+
+            long? fragTransUnit = null;
+            if (reader.IsNil)
+            {
+                reader.ReadNil();
+            }
+            else
+            {
+                fragTransUnit = reader.ReadInt64();
+            }
+
+            string[] reservedFields = null;
+            if ((size == 5 && !clusterIncluded)|| size == 6)
+            {
+                if (reader.IsNil)
+                {
+                    reader.ReadNil();
+                }
+                else
+                {
+                    int innerSize = reader.ReadArrayHeader();
+                    reservedFields = new string[innerSize];
+                    for (int i = 0; i < innerSize; ++i)
+                    {
+                        if (reader.IsNil)
+                        {
+                            reader.ReadNil();
+                        }
+                        else
+                        {
+                            reservedFields[i] = reader.ReadString();
+                        }
+                    }
+                }
+            }
+            return new ConnectionData(clusterName, serveOnSame, protocol, fragment, fragTransUnit, reservedFields);
         }
     }
 }
