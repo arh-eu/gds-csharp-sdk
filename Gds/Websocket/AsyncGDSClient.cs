@@ -39,7 +39,8 @@ namespace messages.Gds.Websocket
         /// <param name="userPassword">The password used for password authentication. Null otherwise</param>
         /// <param name="timeout">Timeout used for the connection establishment. Value most be strictly positive</param>
         /// <param name="cert">The certificate used for TLS authentication</param>
-        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert)
+        /// <param name="log">The log used by the client.</param>
+        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert, ILog log)
         {
             this.listener = Utils.RequireNonNull(listener, "The message listener cannot be set to null!");
 
@@ -55,8 +56,15 @@ namespace messages.Gds.Websocket
             }
 
             countdown = new CountdownEvent(1);
-            log4net.Config.BasicConfigurator.Configure(LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly()));
-            log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            if(log == null)
+            { 
+                log4net.Config.BasicConfigurator.Configure(LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly()));
+                this.log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            }
+            else
+            {
+                this.log = log;
+            }
             this.userName = userName;
             this.userPassword = userPassword;
             this.timeout = timeout;
@@ -114,8 +122,8 @@ namespace messages.Gds.Websocket
         /// <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
         /// <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
         /// <returns>The created EventData object.</returns>
-        public void SendEvent2(string operationsStringBlock, Dictionary<string, byte[]> binaryContentsMapping,
-            List<List<Dictionary<int, bool>>> executionPriorityStructure, string messageID = null, MessageHeader header = null)
+        public void SendEvent2(string operationsStringBlock, Dictionary<string, byte[]> binaryContentsMapping = null,
+            List<List<Dictionary<int, bool>>> executionPriorityStructure = null, string messageID = null, MessageHeader header = null)
         {
             MessageData data = MessageManager.GetEventData(operationsStringBlock, binaryContentsMapping, executionPriorityStructure);
             MessageHeader messageHeader = header ?? MessageManager.GetHeader(userName, messageID, DataType.Event);
@@ -233,10 +241,11 @@ namespace messages.Gds.Websocket
         /// <param name="queryType">The query type</param>
         /// <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
         /// <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
-        public void SendQueryRequest10(string selectStringBlock, ConsistencyType consistencyType, long timeout, int? queryPageSize = null, 
+        public void SendQueryRequest10(string selectStringBlock, ConsistencyType consistencyType, long? timeout = null, int? queryPageSize = null, 
                     QueryType? queryType = null, string messageID = null, MessageHeader header = null)
         {
-            MessageData data = MessageManager.GetQueryRequest(selectStringBlock, consistencyType, timeout, queryPageSize, queryType);
+            if(timeout == null) { timeout = this.timeout; }
+            MessageData data = MessageManager.GetQueryRequest(selectStringBlock, consistencyType, (long)timeout, queryPageSize, queryType);
             MessageHeader messageHeader = header ?? MessageManager.GetHeader(userName, messageID, DataType.QueryRequest);
 
             SendMessage(messageHeader, data);
@@ -368,7 +377,7 @@ namespace messages.Gds.Websocket
             if (State == ConnectionState.DISCONNECTED ||
                 ConnectionState.LOGGED_IN == Interlocked.CompareExchange(ref state, ConnectionState.DISCONNECTED, ConnectionState.LOGGED_IN))
             {
-                listener.OnDisconnect(); //TODO params
+                listener.OnDisconnect();
             }
             else if (State != ConnectionState.FAILED)
             {
@@ -497,6 +506,7 @@ namespace messages.Gds.Websocket
         public sealed class AsyncGDSClientBuilder
         {
             private IGDSMessageListener listener;
+            private ILog log;
             private string URI;
             private string userName;
             private SecureString userPassword;
@@ -515,7 +525,7 @@ namespace messages.Gds.Websocket
             }
 
             /// <summary>
-            /// Sets the listener for the builder
+            /// Sets the listener for the builder to be used when instantiating the client
             /// </summary>
             /// <param name="value">The new value to be used</param>
             /// <returns>itself</returns>
@@ -526,7 +536,18 @@ namespace messages.Gds.Websocket
             }
 
             /// <summary>
-            /// Sets the URI for the builder
+            /// Sets the log for the builder to be used when instantiating the client
+            /// </summary>
+            /// <param name="value">The new value to be used</param>
+            /// <returns>itself</returns>
+            public AsyncGDSClientBuilder WithLog(ILog value)
+            {
+                log = value;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the URI for the builder to be used when instantiating the client
             /// </summary>
             /// <param name="value">The new value to be used</param>
             /// <returns>itself</returns>
@@ -537,7 +558,7 @@ namespace messages.Gds.Websocket
             }
 
             /// <summary>
-            /// Sets the username for the builder
+            /// Sets the username for the builder to be used when instantiating the client
             /// </summary>
             /// <param name="value">The new value to be used</param>
             /// <returns>itself</returns>
@@ -548,7 +569,7 @@ namespace messages.Gds.Websocket
             }
 
             /// <summary>
-            /// Sets the user password for the builder (used in password authentication)
+            /// Sets the user password for the builder to be used when instantiating the client (used in password authentication)
             /// </summary>
             /// <param name="value">The new value to be used</param>
             /// <returns>itself</returns>
@@ -560,7 +581,7 @@ namespace messages.Gds.Websocket
 
 
             /// <summary>
-            /// Sets the timeout for the builder (used for login reply awaiting)
+            /// Sets the timeout for the builder to be used when instantiating the client (used for login reply awaiting)
             /// </summary>
             /// <param name="value">The new value to be used</param>
             /// <returns>itself</returns>
@@ -575,7 +596,7 @@ namespace messages.Gds.Websocket
             }
 
             /// <summary>
-            /// Sets the certificate for the builder (used in TLS communication)
+            /// Sets the certificate for the builder to be used when instantiating the client (used in TLS communication)
             /// </summary>
             /// <param name="value">The new value to be used</param>
             /// <returns>itself</returns>
@@ -589,7 +610,7 @@ namespace messages.Gds.Websocket
             /// Builds the client using the values previously specified.
             /// </summary>
             /// <returns>The created client instance</returns>
-            public AsyncGDSClient Build() => new AsyncGDSClient(listener, URI, userName, userPassword, timeout, certificate);
+            public AsyncGDSClient Build() => new AsyncGDSClient(listener, URI, userName, userPassword, timeout, certificate, log);
         }
     }
 }

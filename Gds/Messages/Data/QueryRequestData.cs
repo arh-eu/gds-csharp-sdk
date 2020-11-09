@@ -160,7 +160,21 @@ namespace Gds.Messages.Data
 
         public QueryRequestData Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
         {
-            throw new NotImplementedException();
+            int size = reader.ReadArrayHeader();
+            string select = reader.ReadString();
+            ConsistencyType consistency = (ConsistencyType)Enum.Parse(typeof(ConsistencyType), reader.ReadString(), true);
+            long timeout = reader.ReadInt64();
+
+            int? querypagesize = null;
+            int? querytype = null;
+
+            if(size == 5)
+            {
+                querypagesize = reader.ReadInt32();
+                querytype = reader.ReadInt32();
+            }
+
+            return new QueryRequestData(select, consistency, timeout, querypagesize, (QueryType)querytype);
         }
     }
 }
