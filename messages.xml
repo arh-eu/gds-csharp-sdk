@@ -260,7 +260,7 @@
             The Connection type Data part of the Message.
             </summary>
         </member>
-        <member name="M:Gds.Messages.Data.ConnectionData.#ctor(System.String,System.Boolean,System.Int32,System.Boolean,System.Nullable{System.Int32},System.Object[])">
+        <member name="M:Gds.Messages.Data.ConnectionData.#ctor(System.String,System.Boolean,System.Int32,System.Boolean,System.Nullable{System.Int64},System.Object[])">
             <summary>
             Initializes a new instance of the <see cref="T:Gds.Messages.Data.ConnectionData"/> class
             </summary>
@@ -452,7 +452,7 @@
             The mime type of the field.
             </summary>
         </member>
-        <member name="M:Gds.Messages.Data.SubResult.#ctor(Gds.Messages.Data.StatusCode,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Collections.Generic.List{System.Object})">
+        <member name="M:Gds.Messages.Data.SubResult.#ctor(Gds.Messages.Data.StatusCode,System.String,System.String,System.Nullable{System.Boolean},System.String,System.Collections.Generic.List{System.Object})">
             <summary>
             Initializes a new instance of the <see cref="T:Gds.Messages.Data.SubResult"/> class
             </summary>
@@ -584,6 +584,11 @@
             The records.
             </summary>
         </member>
+        <member name="T:Gds.Messages.Data.MessageData">
+            <summary>
+            This class represents the Data part of a message
+            </summary>
+        </member>
         <member name="M:Gds.Messages.Data.MessageData.GetDataType">
             <summary>
             Specifies what types of information the data carries.
@@ -654,6 +659,30 @@
             <summary>
             Returns true if it is a <see cref="F:Gds.Messages.Data.DataType.NextQueryPageRequest"/> data.
             </summary>
+        </member>
+        <member name="M:Gds.Messages.Data.MessageData.AsConnectionData">
+            <summary>
+            casts the current instance to , or throws an exception if the type is different.
+            </summary>
+            <returns>this as </returns>
+        </member>
+        <member name="M:Gds.Messages.Data.MessageData.AsConnectionAckData">
+            <summary>
+            casts the current instance to , or throws an exception if the type is different.
+            </summary>
+            <returns>this as </returns>
+        </member>
+        <member name="M:Gds.Messages.Data.MessageData.AsEventData">
+            <summary>
+            casts the current instance to , or throws an exception if the type is different.
+            </summary>
+            <returns>this as </returns>
+        </member>
+        <member name="M:Gds.Messages.Data.MessageData.AsEventAckData">
+            <summary>
+            casts the current instance to , or throws an exception if the type is different.
+            </summary>
+            <returns>this as </returns>
         </member>
         <member name="T:Gds.Messages.Data.NextQueryPageRequestData">
             <summary>
@@ -827,7 +856,7 @@
             Query Request type Data part of the Message
             </summary>
         </member>
-        <member name="M:Gds.Messages.Data.QueryRequestData.#ctor(System.String,Gds.Messages.Data.ConsistencyType,System.Int64,System.Int32,System.Nullable{Gds.Messages.Data.QueryType})">
+        <member name="M:Gds.Messages.Data.QueryRequestData.#ctor(System.String,Gds.Messages.Data.ConsistencyType,System.Int64,System.Nullable{System.Int32},System.Nullable{Gds.Messages.Data.QueryType})">
             <summary>
             Initializes a new instance of the <see cref="T:Gds.Messages.Data.QueryRequestData"/> class
             </summary>
@@ -868,6 +897,11 @@
         <member name="P:Gds.Messages.Data.QueryRequestData.QueryType">
             <summary>
             The query type
+            </summary>
+        </member>
+        <member name="M:Gds.Messages.Data.QueryRequestData.GetDataType">
+            <summary>
+            returns the DataType assigned to this MessageData
             </summary>
         </member>
         <member name="T:Gds.Messages.Data.ConsistencyType">
@@ -963,6 +997,11 @@
         <member name="F:Gds.Messages.Data.StatusCode.Conflict">
             <summary>
             Version conflict
+            </summary>
+        </member>
+        <member name="F:Gds.Messages.Data.StatusCode.Gone">
+            <summary>
+            Gone
             </summary>
         </member>
         <member name="F:Gds.Messages.Data.StatusCode.PreconditionFailed">
@@ -1095,6 +1134,15 @@
             <returns>The packed message in byte array format.</returns>
             <exception cref="T:MessagePack.MessagePackSerializationException"></exception>
         </member>
+        <member name="M:Gds.Messages.MessageManager.GetBinaryFromMessage(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.MessageData)">
+            <summary>
+            Pack the specified header and data to a Message object. 
+            </summary>
+            <param name="header">The Message Header object.</param>
+            <param name="data">The Message Data object.</param>
+            <returns>The packed message in byte array format.</returns>
+            <exception cref="T:MessagePack.MessagePackSerializationException"></exception>
+        </member>
         <member name="M:Gds.Messages.MessageManager.GetMessageFromBinary(System.Byte[])">
             <summary>
             Unpack the specified binary message.
@@ -1107,9 +1155,26 @@
             <summary>
             Create a Message object with the speficed Header and Data parts.
             </summary>
-            <param name="header">The Header part of the message. See <see cref="M:Gds.Messages.MessageManager.GetHeader(System.String,System.String,System.Int64,System.Int64,System.Boolean,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},Gds.Messages.Data.DataType)"/>.</param>
+            <param name="header">The Header part of the message. See <see cref="M:Gds.Messages.MessageManager.GetHeader(System.String,Gds.Messages.Data.DataType)"/>.</param>
             <param name="data">The Data part of the message. See the MessageManager.GetXXXData() methods.</param>
             <returns>The created Message object.</returns>
+        </member>
+        <member name="M:Gds.Messages.MessageManager.GetHeader(System.String,Gds.Messages.Data.DataType)">
+            <summary>
+            Create the Header part of the Message.
+            </summary>
+            <param name="userName">The name of the user.</param>
+            <param name="dataType">It specifies what types of information the data carries.</param>
+            <returns>The created MessageHeader object.</returns>
+        </member>
+        <member name="M:Gds.Messages.MessageManager.GetHeader(System.String,System.String,Gds.Messages.Data.DataType)">
+            <summary>
+            Create the Header part of the Message.
+            </summary>
+            <param name="userName">The name of the user.</param>
+            <param name="dataType">It specifies what types of information the data carries.</param>
+            <param name="messageID">The identifier of the message, with which the request can be associated.</param>
+            <returns>The created MessageHeader object.</returns>
         </member>
         <member name="M:Gds.Messages.MessageManager.GetHeader(System.String,System.String,System.Int64,System.Int64,System.Boolean,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},Gds.Messages.Data.DataType)">
             <summary>
@@ -1303,7 +1368,7 @@
             <param name="exception">The description of an error.</param>
             <returns>The created EventDocumentAckData object.</returns>
         </member>
-        <member name="M:Gds.Messages.MessageManager.GetQueryRequest(System.String,Gds.Messages.Data.ConsistencyType,System.Int64,System.Int32,Gds.Messages.Data.QueryType)">
+        <member name="M:Gds.Messages.MessageManager.GetQueryRequest(System.String,Gds.Messages.Data.ConsistencyType,System.Int64,System.Nullable{System.Int32},System.Nullable{Gds.Messages.Data.QueryType})">
             <summary>
             Create a QueryRequest type data part.
             </summary>
@@ -1312,15 +1377,6 @@
             <param name="timeout">The timeout value in milliseconds.</param>
             <param name="queryPageSize">The number of records per page.</param>
             <param name="queryType">The query type</param>
-            <returns>The created QueryRequestData object.</returns>
-        </member>
-        <member name="M:Gds.Messages.MessageManager.GetQueryRequest(System.String,Gds.Messages.Data.ConsistencyType,System.Int64)">
-            <summary>
-            Create a QueryRequest type data part.
-            </summary>
-            <param name="selectStringBlock">The SELECT statement.</param>
-            <param name="consistencyType">The consistency type used for the query.</param>
-            <param name="timeout">The timeout value in milliseconds.</param>
             <returns>The created QueryRequestData object.</returns>
         </member>
         <member name="M:Gds.Messages.MessageManager.GetQueryRequestAck(Gds.Messages.Data.StatusCode,Gds.Messages.Data.QueryRequestAckTypeData)">
@@ -1356,10 +1412,82 @@
             <param name="timeout">The timeout value in milliseconds.</param>
             <returns>The created NextQueryPageRequestData object.</returns>
         </member>
+        <member name="T:Gds.Utils.Either`2">
+            <summary>
+            Class that represent a Pair type that can only have one of its variables set.
+            </summary>
+            <typeparam name="TL">The possible type of the Left side</typeparam>
+            <typeparam name="TR">The possible type of the Right side</typeparam>
+        </member>
+        <member name="P:Gds.Utils.Either`2.IsLeft">
+            <summary>
+            Returns whether the instance has its left side set.
+            </summary>
+        </member>
+        <member name="P:Gds.Utils.Either`2.IsRight">
+            <summary>
+            Returns whether the instance has its right side set.
+            </summary>
+        </member>
+        <member name="P:Gds.Utils.Either`2.Left">
+            <summary>
+            Can be used to retrieve the Left side object.
+            </summary>
+        </member>
+        <member name="P:Gds.Utils.Either`2.Right">
+            <summary>
+            Can be used to retrieve the Right side object.
+            </summary>
+        </member>
+        <member name="M:Gds.Utils.Either`2.#ctor(`0)">
+            <summary>
+            Constructs a new Either object with the left side specified
+            </summary>
+            <param name="left"></param>
+        </member>
+        <member name="M:Gds.Utils.Either`2.#ctor(`1)">
+            <summary>
+            /// Constructs a new Either object with the right side specified
+            </summary>
+            <param name="right"></param>
+        </member>
+        <member name="M:Gds.Utils.Either`2.ToString">
+            <summary>
+            Returns the string representation based on which side is set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gds.Utils.Either`2.op_Implicit(`0)~Gds.Utils.Either{`0,`1}">
+            <summary>
+            implicitly creates an instance using a left value
+            </summary>
+            <param name="left">The object to be wrapped</param>
+        </member>
+        <member name="M:Gds.Utils.Either`2.op_Implicit(`1)~Gds.Utils.Either{`0,`1}">
+            <summary>
+            implicitly creates an instance using a right value
+            </summary>
+            <param name="right">The object to be wrapped</param>
+        </member>
+        <member name="T:Gds.Utils.Utils">
+            <summary>
+            Utility class
+            </summary>
+        </member>
+        <member name="M:Gds.Utils.Utils.RequireNonNull``1(``0,System.String)">
+            <summary>
+            Ensures the given parameter is not null, throwing exception otherwise.
+            </summary>
+            <typeparam name="T">type of the object</typeparam>
+            <param name="o">The object to be checked</param>
+            <param name="message">Error message on null value</param>
+            <returns>The object specified</returns>
+        </member>
         <member name="T:Gds.Websocket.WebSocketClient">
             <summary>
             Simple websocket class with basic functionality for sending and receiving messages.
             </summary>
+            
         </member>
         <member name="M:Gds.Websocket.WebSocketClient.#ctor(System.String)">
             <summary>
@@ -1417,6 +1545,337 @@
             <param name="message">The message to be send</param>
             <param name="timeout">The timeout value in milliseconds</param>
             <returns></returns>
+        </member>
+        <member name="T:messages.Gds.Websocket.AsyncGDSClient">
+            <summary>
+            A client class that can be used to communicate with a GDS instance by WebSocket connection.
+            The class is thread-safe, meaning can be used from multiple threads to send messages (still only uses one listener).
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.#ctor(messages.Gds.Websocket.IGDSMessageListener,System.String,System.String,System.Security.SecureString,System.Int32,System.Security.Cryptography.X509Certificates.X509Certificate2,log4net.ILog)">
+            <summary>
+            Creates a new Client instance with the specified parameters
+            </summary>
+            <param name="listener">The Listener used for callbacks</param>
+            <param name="uri">The URI of the GDS instance</param>
+            <param name="userName">The username used for communication. Cannot be null or empty</param>
+            <param name="userPassword">The password used for password authentication. Null otherwise</param>
+            <param name="timeout">Timeout used for the connection establishment. Value most be strictly positive</param>
+            <param name="cert">The certificate used for TLS authentication</param>
+            <param name="log">The log used by the client.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.Finalize">
+            <summary>
+            disposes the countdown if it was still present and closes the connection if it was still open.
+            </summary>
+        </member>
+        <member name="P:messages.Gds.Websocket.AsyncGDSClient.State">
+            <summary>
+            Used to check the current state of the client. See <see cref="T:messages.Gds.Websocket.ConnectionState"/> for possible values.
+            </summary>
+        </member>
+        <member name="P:messages.Gds.Websocket.AsyncGDSClient.IsConnected">
+            <summary>
+            Used to check whether the client is already connected to the GDS.
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.Close">
+            <summary>
+            Used to close the underlying WebSocket connection.
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendEvent2(System.String,System.Collections.Generic.Dictionary{System.String,System.Byte[]},System.Collections.Generic.List{System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.Int32,System.Boolean}}},System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an event message
+            </summary>
+            <param name="operationsStringBlock">The operations in standard SQL statements, separated with ';' characters.</param>
+            <param name="binaryContentsMapping">The mapping of the binary contents.</param>
+            <param name="executionPriorityStructure">The execution priority structure.</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+            <returns>The created EventData object.</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendAttachmentRequest4(System.String,System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an Attachment Request.
+            </summary>
+            <param name="request"></param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendAttachmentRequestACK5(Gds.Messages.Data.StatusCode,Gds.Messages.Data.AttachmentRequestAckTypeData,System.String,System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an Attachment Request ACK.
+            </summary>
+            <param name="status">The status code</param>
+            <param name="ackData">The ack data for the request</param>
+            <param name="exception">The global exception</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendAttachmentResponse6(Gds.Messages.Data.AttachmentResult,System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an Attachment Response.
+            </summary>
+            <param name="result">The result of the attachment</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendAttachmentResponseAck7(Gds.Messages.Data.StatusCode,Gds.Messages.Data.AttachmentResponseAckTypeData,System.String,System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an Attachment Response ACK.
+            </summary>
+            <param name="status">The status code</param>
+            <param name="ackData">The ack data for the request</param>
+            <param name="exception">The global exception</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendEventDocument8(System.String,System.Collections.Generic.List{Gds.Messages.Data.FieldDescriptor},System.Collections.Generic.List{System.Collections.Generic.List{System.Object}},System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an Event Document
+            </summary>
+            <param name="tableName">The name of the table</param>
+            <param name="fieldDescriptors">The field descriptors</param>
+            <param name="records">The records</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendEventDocumentAck9(Gds.Messages.Data.StatusCode,System.Collections.Generic.List{Gds.Messages.Data.EventDocumentAckResult},System.String,System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends an Event Document ACK.
+            </summary>
+            <param name="status">The status code</param>
+            <param name="ackData">The ack data for the request</param>
+            <param name="exception">The global exception</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendQueryRequest10(System.String,Gds.Messages.Data.ConsistencyType,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Nullable{Gds.Messages.Data.QueryType},System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends a Query Request
+            </summary>
+            <param name="selectStringBlock">The SELECT statement.</param>
+            <param name="consistencyType">The consistency type used for the query.</param>
+            <param name="timeout">The timeout value in milliseconds.</param>
+            <param name="queryPageSize">The number of records per page.</param>
+            <param name="queryType">The query type</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendNextQueryPageRequest12(Gds.Messages.Data.QueryContextDescriptor,System.Int64,System.String,Gds.Messages.Header.MessageHeader)">
+            <summary>
+            Sends a Next Query Page Request
+            </summary>
+            <param name="queryContextDescriptor">Query status descriptor for querying the next pages.</param>
+            <param name="timeout">The timeout value in milliseconds.</param>
+            <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
+            <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendMessage(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.MessageData)">
+            <summary>
+            Sends a message to the GDS the client is currently connected to.
+            <exception cref="T:System.InvalidOperationException">If the client state is invalid (ie. sending messages before the connection is ready)
+            or if the header and data types mismatch</exception>
+            </summary>
+            <param name="header"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.Connect">
+            <summary>
+            Connects to the GDS instance using the values specified in the constructor.
+            <exception cref="T:System.InvalidOperationException">If the client state is invalid (ie. was already used)</exception>
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.GetBuilder">
+            <summary>
+            Returns a Builder instance that can be used to customize the parameters more easily.
+            </summary>
+            <returns>The new Builder instance</returns>
+        </member>
+        <member name="T:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder">
+            <summary>
+            Builder class used to make instantation of the client easier
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.#ctor">
+            <summary>
+            Creates the builder with default values for userName, URI and timeout ("user", "ws://127.0.0.1:8888/gate", 3000ms)
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithListener(messages.Gds.Websocket.IGDSMessageListener)">
+            <summary>
+            Sets the listener for the builder to be used when instantiating the client
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithLog(log4net.ILog)">
+            <summary>
+            Sets the log for the builder to be used when instantiating the client
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithURI(System.String)">
+            <summary>
+            Sets the URI for the builder to be used when instantiating the client
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithUserName(System.String)">
+            <summary>
+            Sets the username for the builder to be used when instantiating the client
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithUserPassword(System.Security.SecureString)">
+            <summary>
+            Sets the user password for the builder to be used when instantiating the client (used in password authentication)
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithTimeout(System.Int32)">
+            <summary>
+            Sets the timeout for the builder to be used when instantiating the client (used for login reply awaiting)
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Sets the certificate for the builder to be used when instantiating the client (used in TLS communication)
+            </summary>
+            <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.Build">
+            <summary>
+            Builds the client using the values previously specified.
+            </summary>
+            <returns>The created client instance</returns>
+        </member>
+        <member name="T:messages.Gds.Websocket.ConnectionState">
+            <summary>
+            Class holding possible state values.
+            This is a class instead of an enum to make the values useable with Interlocked.CompareExchange(..) 
+            </summary>
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.NOT_CONNECTED">
+            The client is instantiated but connect() was not yet called.
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.INITIALIZING">
+            The connect() method was called on the client, the underlying channels are being created
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.CONNECTING">
+            Channels successfully initialized, trying to establish the TCP/WebSocket Connection
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.CONNECTED">
+            The WebSocket connection (and TLS) is successfully established
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.LOGGING_IN">
+            The login message was successfully sent to the GDS
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.LOGGED_IN">
+            The login was successful. Client is ready to use
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.DISCONNECTED">
+            The connection was closed after a successful login (from either the client or the GDS side).
+        </member>
+        <member name="F:messages.Gds.Websocket.ConnectionState.FAILED">
+            Error happened during the initialization of the client.
+        </member>
+        <member name="M:messages.Gds.Websocket.ConnectionState.AsText(System.Int32)">
+            <summary>
+            Returns a text representation for the given value
+            </summary>
+            <param name="value">The status code</param>
+            <returns>The string version of it</returns>
+        </member>
+        <member name="T:messages.Gds.Websocket.IGDSMessageListener">
+            <summary>
+            Abstract class used as a Message Listener (callback) for the GDS communication.
+            The methods are not mandatory to be overwritten, but if they are called (that kind of message is received)
+            without an implementation in the subclass most of them will throw a NotImplementedException.
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnConnectionSuccess(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.ConnectionAckData)">
+            <summary>
+            Called upon successfully establishing a connection (with accepted login) towards the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received login data</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnConnectionFailure(Gds.Utils.Either{System.Exception,System.Collections.Generic.KeyValuePair{Gds.Messages.Header.MessageHeader,Gds.Messages.Data.ConnectionAckData}})">
+            <summary>
+            Called if the connection (or the login) is unsuccessful.
+            The error is either caused by an exception or a login failure, this can be retreived from the parameter.
+            </summary>
+            <param name="cause">The cause of the failure</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnDisconnect">
+            <summary>
+            Called upon disconnecting from the GDS (only if the connection was already established and successfully logged in).
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnEventAck3(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.EventAckData)">
+            <summary>
+            Called upon receiving an EventAck data from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received event ACK</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnAttachmentRequest4(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.AttachmentRequestData)">
+            <summary>
+            Called upon receiving an Attachment Request from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received attachment request</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnAttachmentRequestAck5(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.AttachmentRequestAckData)">
+            <summary>
+            Called upon receiving an Attachment Request ACK from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received attachment request ack</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnAttachmentResponse6(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.AttachmentResponseData)">
+            <summary>
+            Called upon receiving an Attachment Responsefrom the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received attachment response</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnAttachmentResponseAck7(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.AttachmentResponseAckData)">
+            <summary>
+            Called upon receiving an Attachment Response ACK from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received attachment response ACK</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnEventDocument8(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.EventDocument)">
+            <summary>
+            Called upon receiving an Event Document from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received event document</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnEventDocumentAck9(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.EventDocumentAck)">
+            <summary>
+            Called upon receiving an Event Document ACK from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received event document ACK</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.IGDSMessageListener.OnQueryRequestAck11(Gds.Messages.Header.MessageHeader,Gds.Messages.Data.QueryRequestAckData)">
+            <summary>
+            Called upon receiving an Query Request ACK from the GDS.
+            </summary>
+            <param name="header">The received header</param>
+            <param name="data">The received query request ACK</param>
         </member>
     </members>
 </doc>
