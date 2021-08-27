@@ -196,7 +196,7 @@ namespace Gds.Messages.Data
         private readonly bool? created;
 
         [Key(4)]
-        private readonly int? version;
+        private readonly string? version;
 
         [Key(5)]
         private readonly List<object> returningRecordValues;
@@ -210,7 +210,7 @@ namespace Gds.Messages.Data
         /// <param name="created">Specifies whether the record was created at database level during the operation.</param>
         /// <param name="version">The version number of the record. </param>
         /// <param name="returningRecordValues">The block containing the results requested in the RETURNING clause.</param>
-        public SubResult(StatusCode subStatus, string id, string tableName, bool? created, int? version, List<object> returningRecordValues)
+        public SubResult(StatusCode subStatus, string id, string tableName, bool? created, string? version, List<object> returningRecordValues)
         {
             this.subStatus = subStatus;
             this.id = id;
@@ -248,7 +248,7 @@ namespace Gds.Messages.Data
         /// The version number of the record. 
         /// </summary>
         [IgnoreMember]
-        public int? Version => version;
+        public string? Version => version;
 
         /// <summary>
         ///  The block containing the results requested in the RETURNING clause.
