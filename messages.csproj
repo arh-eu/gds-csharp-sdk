@@ -49,8 +49,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="MessagePack" Version="2.2.85" />
+    <PackageReference Include="log4net" Version="2.0.14" />
+    <PackageReference Include="MessagePack" Version="2.3.85" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
 

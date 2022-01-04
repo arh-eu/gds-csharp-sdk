@@ -102,6 +102,9 @@ namespace Gds.Messages.Data
         [Key(5)]
         private readonly List<List<object>> records;
 
+        [Key(6)]
+        private readonly long numberOfTotalHits;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryRequestAckTypeData"/> class
         /// </summary>
@@ -112,6 +115,22 @@ namespace Gds.Messages.Data
         /// <param name="fieldDescriptors">The field descriptors.</param>
         /// <param name="records">The field values of the query result in the sort order.</param>
         public QueryRequestAckTypeData(long numberOfHits, long numberOfFilteredHits, bool hasMorePage, QueryContextDescriptor queryContextDescriptor, List<FieldDescriptor> fieldDescriptors, List<List<object>> records)
+            : this(numberOfHits, numberOfFilteredHits, hasMorePage, queryContextDescriptor, fieldDescriptors, records, 0)
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryRequestAckTypeData"/> class
+        /// </summary>
+        /// <param name="numberOfHits">This many hits have been returned in this page.</param>
+        /// <param name="numberOfFilteredHits">This many records have been filtered from the original result by the lists.</param>
+        /// <param name="hasMorePage">Its value is true if the result has not fitted into this page, meaning that there are more records.</param>
+        /// <param name="queryContextDescriptor">Query status descriptor for querying the next pages.</param>
+        /// <param name="fieldDescriptors">The field descriptors.</param>
+        /// <param name="records">The field values of the query result in the sort order.</param>
+        /// <param name="numberOfTotalHits">The number of total hits (records) across all pages from the query.</param>
+        public QueryRequestAckTypeData(long numberOfHits, long numberOfFilteredHits, bool hasMorePage, QueryContextDescriptor queryContextDescriptor, List<FieldDescriptor> fieldDescriptors, List<List<object>> records, long numberOfTotalHits)
         {
             this.numberOfHits = numberOfHits;
             this.numberOfFilteredHits = numberOfFilteredHits;
@@ -119,6 +138,7 @@ namespace Gds.Messages.Data
             this.queryContextDescriptor = queryContextDescriptor;
             this.fieldDescriptors = fieldDescriptors;
             this.records = records;
+            this.numberOfTotalHits = numberOfTotalHits;
         }
 
         /// <summary>
@@ -156,6 +176,12 @@ namespace Gds.Messages.Data
         /// </summary>
         [IgnoreMember]
         public List<List<object>> Records => records;
+
+        /// <summary>
+        /// The number of total hits for this query.
+        /// </summary>
+        [IgnoreMember]
+        public long NumberOfTotalHits => numberOfTotalHits;
     }
 
     [MessagePackObject]
