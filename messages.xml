@@ -745,6 +745,18 @@
             <param name="fieldDescriptors">The field descriptors.</param>
             <param name="records">The field values of the query result in the sort order.</param>
         </member>
+        <member name="M:Gds.Messages.Data.QueryRequestAckTypeData.#ctor(System.Int64,System.Int64,System.Boolean,Gds.Messages.Data.QueryContextDescriptor,System.Collections.Generic.List{Gds.Messages.Data.FieldDescriptor},System.Collections.Generic.List{System.Collections.Generic.List{System.Object}},System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gds.Messages.Data.QueryRequestAckTypeData"/> class
+            </summary>
+            <param name="numberOfHits">This many hits have been returned in this page.</param>
+            <param name="numberOfFilteredHits">This many records have been filtered from the original result by the lists.</param>
+            <param name="hasMorePage">Its value is true if the result has not fitted into this page, meaning that there are more records.</param>
+            <param name="queryContextDescriptor">Query status descriptor for querying the next pages.</param>
+            <param name="fieldDescriptors">The field descriptors.</param>
+            <param name="records">The field values of the query result in the sort order.</param>
+            <param name="numberOfTotalHits">The number of total hits (records) across all pages from the query.</param>
+        </member>
         <member name="P:Gds.Messages.Data.QueryRequestAckTypeData.NumberOfHits">
             <summary>
             This many hits have been returned in this page.
@@ -773,6 +785,11 @@
         <member name="P:Gds.Messages.Data.QueryRequestAckTypeData.Records">
             <summary>
             The field values of the query result in the sort order.
+            </summary>
+        </member>
+        <member name="P:Gds.Messages.Data.QueryRequestAckTypeData.NumberOfTotalHits">
+            <summary>
+            The number of total hits for this query.
             </summary>
         </member>
         <member name="M:Gds.Messages.Data.QueryContextDescriptor.#ctor(System.String,System.String,System.Int64,System.Int64,System.String,System.String,Gds.Messages.Data.GDSDescriptor,System.Collections.Generic.List{System.Object},System.Collections.Generic.List{System.String})">

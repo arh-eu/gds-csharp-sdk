@@ -10,15 +10,15 @@
     <PackageId>gds-messages</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.3</Version>
+    <Version>1.4</Version>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-    <Company>Arh Inc.</Company>
-    <Authors>Arh Inc.</Authors>
+    <Company>Adaptive Recognition Inc.</Company>
+    <Authors>Adaptive Recognition Inc.</Authors>
     <PackageProjectUrl>https://github.com/arh-eu/gds</PackageProjectUrl>
     <PackageTags>arh, gds, messages</PackageTags>
     <PackageLicenseFile></PackageLicenseFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageIcon>logo.png</PackageIcon>
+    <PackageIcon>logo_new.jpg</PackageIcon>
     <PackageIconUrl />
     <ApplicationIcon />
     <StartupObject />
@@ -42,7 +42,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <None Include="logo.png">
+    <None Include="logo_new.jpg">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
