@@ -1569,7 +1569,7 @@
             The class is thread-safe, meaning can be used from multiple threads to send messages (still only uses one listener).
             </summary>
         </member>
-        <member name="M:messages.Gds.Websocket.AsyncGDSClient.#ctor(messages.Gds.Websocket.IGDSMessageListener,System.String,System.String,System.Security.SecureString,System.Int32,System.Security.Cryptography.X509Certificates.X509Certificate2,log4net.ILog)">
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.#ctor(messages.Gds.Websocket.IGDSMessageListener,System.String,System.String,System.Security.SecureString,System.Int32,System.Security.Cryptography.X509Certificates.X509Certificate2,log4net.ILog,System.Int32)">
             <summary>
             Creates a new Client instance with the specified parameters
             </summary>
@@ -1580,10 +1580,16 @@
             <param name="timeout">Timeout used for the connection establishment. Value most be strictly positive</param>
             <param name="cert">The certificate used for TLS authentication</param>
             <param name="log">The log used by the client.</param>
+            <param name="PingPongInterval">The interval used to send automatic ping-pong in seconds</param>
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.Finalize">
             <summary>
             disposes the countdown if it was still present and closes the connection if it was still open.
+            </summary>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.Dispose">
+            <summary>
+            Closes the connection towards the GDS, releasing any network resources still held.
             </summary>
         </member>
         <member name="P:messages.Gds.Websocket.AsyncGDSClient.State">
@@ -1760,6 +1766,13 @@
             Sets the timeout for the builder to be used when instantiating the client (used for login reply awaiting)
             </summary>
             <param name="value">The new value to be used</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithPingPongInterval(System.Int32)">
+            <summary>
+            Sets the ping-poing interval for the builder to be used when instantiating the client (used to keep the connection alive)
+            </summary>
+            <param name="value">The interval used to send automatic ping-pong in seconds</param>
             <returns>itself</returns>
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2)">

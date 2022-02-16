@@ -24,7 +24,7 @@
 
 The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messages/) package. You can install this package with running this command in the Package Manager Console.
 
-`Install-Package gds-messages -Version 1.4.0`
+`Install-Package gds-messages -Version 1.4.1`
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
 
@@ -58,8 +58,11 @@ The methods signatures available on the `AsyncGDSClientBuilder` class (which is 
     // Sets the user password for the builder to be used when instantiating the client (used in password authentication)
     AsyncGDSClientBuilder WithUserPassword(SecureString value);
 
-    // Sets the timeout for the builder to be used when instantiating the client (used for login reply awaiting)
-    AsyncGDSClientBuilder WithTimeout(int value);
+    // Sets the timeout for the builder to be used when instantiating the client (used for login reply awaiting). Greater than 0.
+    AsyncGDSClientBuilder WithTimeout(int value); 
+    
+    // Sets the ping-poing interval (in seconds) for the builder to be used when instantiating the client (used to keep the connection alive). Greater than 0.
+    AsyncGDSClientBuilder WithPingPongInterval(int value);
 
     // Sets the certificate for the builder to be used when instantiating the client (used in TLS communication)
     AsyncGDSClientBuilder WithCertificate(X509Certificate2 value);
