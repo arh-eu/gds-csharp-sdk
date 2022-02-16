@@ -19,16 +19,19 @@ namespace messages.Gds.Websocket
     /// A client class that can be used to communicate with a GDS instance by WebSocket connection.
     /// The class is thread-safe, meaning can be used from multiple threads to send messages (still only uses one listener).
     /// </summary>
-    public sealed class AsyncGDSClient
+    public sealed class AsyncGDSClient : IDisposable
     {
         private readonly CountdownEvent countdown;
         private readonly IGDSMessageListener listener;
         private readonly ILog log;
         private readonly string userName;
-        private readonly SecureString userPassword; //todo remove
+        private readonly SecureString userPassword;
         private readonly int timeout;
         private readonly WebSocket websocketClient;
         private volatile int state;
+        private readonly int PingPongInterval;
+
+        private bool disposed = false;
 
         /// <summary>
         /// Creates a new Client instance with the specified parameters
@@ -40,7 +43,8 @@ namespace messages.Gds.Websocket
         /// <param name="timeout">Timeout used for the connection establishment. Value most be strictly positive</param>
         /// <param name="cert">The certificate used for TLS authentication</param>
         /// <param name="log">The log used by the client.</param>
-        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert, ILog log)
+        /// <param name="PingPongInterval">The interval used to send automatic ping-pong in seconds</param>
+        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert, ILog log, int PingPongInterval)
         {
             this.listener = Utils.RequireNonNull(listener, "The message listener cannot be set to null!");
 
@@ -56,8 +60,8 @@ namespace messages.Gds.Websocket
             }
 
             countdown = new CountdownEvent(1);
-            if(log == null)
-            { 
+            if (log == null)
+            {
                 log4net.Config.BasicConfigurator.Configure(LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly()));
                 this.log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             }
@@ -68,6 +72,13 @@ namespace messages.Gds.Websocket
             this.userName = userName;
             this.userPassword = userPassword;
             this.timeout = timeout;
+
+            if (PingPongInterval < 1)
+            {
+                throw new ArgumentOutOfRangeException(string.Format("The ping-pong interval must be to positive! (Specified: {0})", PingPongInterval));
+            }
+            this.PingPongInterval = PingPongInterval;
+
             state = ConnectionState.NOT_CONNECTED;
 
             websocketClient = new WebSocket(uri, sslProtocols: SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Tls12 | SslProtocols.Tls13);
@@ -86,8 +97,28 @@ namespace messages.Gds.Websocket
         /// </summary>
         ~AsyncGDSClient()
         {
-            countdown.Dispose();
-            Close();
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// Closes the connection towards the GDS, releasing any network resources still held.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    countdown.Dispose();
+                    Close();
+                }
+                disposed = true;
+            }
         }
 
         /// <summary>
@@ -241,10 +272,10 @@ namespace messages.Gds.Websocket
         /// <param name="queryType">The query type</param>
         /// <param name="messageID">The messageID to be used. If not present, random one will be generated.</param>
         /// <param name="header">The header to be used in the message. If not present, default one will be generated.</param>
-        public void SendQueryRequest10(string selectStringBlock, ConsistencyType consistencyType, long? timeout = null, int? queryPageSize = null, 
+        public void SendQueryRequest10(string selectStringBlock, ConsistencyType consistencyType, long? timeout = null, int? queryPageSize = null,
                     QueryType? queryType = null, string messageID = null, MessageHeader header = null)
         {
-            if(timeout == null) { timeout = this.timeout; }
+            if (timeout == null) { timeout = this.timeout; }
             MessageData data = MessageManager.GetQueryRequest(selectStringBlock, consistencyType, (long)timeout, queryPageSize, queryType);
             MessageHeader messageHeader = header ?? MessageManager.GetHeader(userName, messageID, DataType.QueryRequest);
 
@@ -304,6 +335,8 @@ namespace messages.Gds.Websocket
                     websocketClient.Error += OnSocketError;
                     websocketClient.DataReceived += OnMessageReceived;
                     websocketClient.Closed += OnSocketClosed;
+                    websocketClient.EnableAutoSendPing = true;
+                    websocketClient.AutoSendPingInterval = PingPongInterval;
                     websocketClient.Open();
                     Interlocked.CompareExchange(ref state, ConnectionState.CONNECTING, ConnectionState.INITIALIZING);
                     try
@@ -511,6 +544,7 @@ namespace messages.Gds.Websocket
             private string userName;
             private SecureString userPassword;
             private int timeout;
+            private int PingPongInterval;
 
             private X509Certificate2 certificate;
 
@@ -596,6 +630,20 @@ namespace messages.Gds.Websocket
             }
 
             /// <summary>
+            /// Sets the ping-poing interval for the builder to be used when instantiating the client (used to keep the connection alive)
+            /// </summary>
+            /// <param name="value">The interval used to send automatic ping-pong in seconds</param>
+            /// <returns>itself</returns>
+            public AsyncGDSClientBuilder WithPingPongInterval(int value)
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentException(string.Format("Ping-Pong interval must be positive! Specified: {0}", value));
+                }
+                PingPongInterval = value;
+                return this;
+            }
+            /// <summary>
             /// Sets the certificate for the builder to be used when instantiating the client (used in TLS communication)
             /// </summary>
             /// <param name="value">The new value to be used</param>
@@ -610,7 +658,7 @@ namespace messages.Gds.Websocket
             /// Builds the client using the values previously specified.
             /// </summary>
             /// <returns>The created client instance</returns>
-            public AsyncGDSClient Build() => new AsyncGDSClient(listener, URI, userName, userPassword, timeout, certificate, log);
+            public AsyncGDSClient Build() => new AsyncGDSClient(listener, URI, userName, userPassword, timeout, certificate, log, PingPongInterval);
         }
     }
 }
