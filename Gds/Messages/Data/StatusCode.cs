@@ -62,6 +62,11 @@ namespace Gds.Messages.Data
         NotFound = 404,
 
         /// <summary>
+        /// Method not Allowed
+        /// </summary>
+        MethodNotAllowed = 405,
+
+        /// <summary>
         /// Unexpected error
         /// </summary>
         NotAcceptable = 406,
@@ -85,6 +90,11 @@ namespace Gds.Messages.Data
         /// Unsuccessful request
         /// </summary>
         PreconditionFailed = 412,
+
+        /// <summary>
+        /// Expectation Failed
+        /// </summary>
+        ExpectationFailed = 417,
 
         /// <summary>
         /// Too many requests
