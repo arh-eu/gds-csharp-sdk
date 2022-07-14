@@ -1001,6 +1001,11 @@
             Failed to serve the request
             </summary>
         </member>
+        <member name="F:Gds.Messages.Data.StatusCode.MethodNotAllowed">
+            <summary>
+            Method not Allowed
+            </summary>
+        </member>
         <member name="F:Gds.Messages.Data.StatusCode.NotAcceptable">
             <summary>
             Unexpected error
@@ -1024,6 +1029,11 @@
         <member name="F:Gds.Messages.Data.StatusCode.PreconditionFailed">
             <summary>
             Unsuccessful request
+            </summary>
+        </member>
+        <member name="F:Gds.Messages.Data.StatusCode.ExpectationFailed">
+            <summary>
+            Expectation Failed
             </summary>
         </member>
         <member name="F:Gds.Messages.Data.StatusCode.TooManyRequests">

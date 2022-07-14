@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Gds.Utils
 {
@@ -15,10 +13,11 @@ namespace Gds.Utils
         /// <typeparam name="T">type of the object</typeparam>
         /// <param name="o">The object to be checked</param>
         /// <param name="message">Error message on null value</param>
+        /// <exception cref="ArgumentNullException">If the specified object is null</exception>
         /// <returns>The object specified</returns>
         public static T RequireNonNull<T>(T o, string message)
         {
-            if(o==null)
+            if (o == null)
             {
                 throw new ArgumentNullException(message);
             }

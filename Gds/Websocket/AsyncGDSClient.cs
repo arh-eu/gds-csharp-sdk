@@ -367,7 +367,7 @@ namespace messages.Gds.Websocket
         /// Returns a Builder instance that can be used to customize the parameters more easily.
         /// </summary>
         /// <returns>The new Builder instance</returns>
-        public static AsyncGDSClientBuilder GetBuilder() => new AsyncGDSClientBuilder();
+        public static AsyncGDSClientBuilder GetBuilder() => new();
 
         private void OnSocketOpened(object sender, EventArgs args)
         {
@@ -658,7 +658,7 @@ namespace messages.Gds.Websocket
             /// Builds the client using the values previously specified.
             /// </summary>
             /// <returns>The created client instance</returns>
-            public AsyncGDSClient Build() => new AsyncGDSClient(listener, URI, userName, userPassword, timeout, certificate, log, PingPongInterval);
+            public AsyncGDSClient Build() => new(listener, URI, userName, userPassword, timeout, certificate, log, PingPongInterval);
         }
     }
 }

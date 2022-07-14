@@ -84,12 +84,12 @@ namespace Gds.Utils
         /// implicitly creates an instance using a left value
         /// </summary>
         /// <param name="left">The object to be wrapped</param>
-        public static implicit operator Either<TL, TR>(TL left) => new Either<TL, TR>(left);
+        public static implicit operator Either<TL, TR>(TL left) => new(left);
 
         /// <summary>
         /// implicitly creates an instance using a right value
         /// </summary>
         /// <param name="right">The object to be wrapped</param>
-        public static implicit operator Either<TL, TR>(TR right) => new Either<TL, TR>(right);
+        public static implicit operator Either<TL, TR>(TR right) => new(right);
     }
 }
