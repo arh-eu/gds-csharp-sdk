@@ -24,7 +24,7 @@
 
 The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messages/) package. You can install this package with running this command in the Package Manager Console.
 
-`Install-Package gds-messages -Version 2.0.1`
+`Install-Package gds-messages -Version 2.0.2`
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
 
