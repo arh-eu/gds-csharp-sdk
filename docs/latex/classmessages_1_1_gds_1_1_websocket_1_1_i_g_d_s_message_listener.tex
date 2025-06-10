@@ -1,0 +1,214 @@
+\doxysection{messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener Class Reference}
+\hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}{}\label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+
+
+Abstract class used as a Message Listener (callback) for the GDS communication. The methods are not mandatory to be overwritten, but if they are called (that kind of message is received) without an implementation in the subclass most of them will throw a Not\+Implemented\+Exception.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a1e7053c62d2c83f77b0eeedd0f11bfea}{On\+Connection\+Success}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon successfully establishing a connection (with accepted login) towards the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_aade1204f7130f18a8f552d2f068c771e}{On\+Connection\+Failure}} (Either$<$ Exception, Key\+Value\+Pair$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} $>$ $>$ cause)
+\begin{DoxyCompactList}\small\item\em Called if the connection (or the login) is unsuccessful. The error is either caused by an exception or a login failure, this can be retreived from the parameter. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_ab10fdf277c230d850f1f2e5e3a357f89}\label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_ab10fdf277c230d850f1f2e5e3a357f89} 
+virtual void {\bfseries On\+Disconnect} ()
+\begin{DoxyCompactList}\small\item\em Called upon disconnecting from the GDS (only if the connection was already established and successfully logged in). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a27e71cab92651a64df0f4ac1b750d8ad}{On\+Event\+Ack3}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_ack_data}{Event\+Ack\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Event\+Ack data from the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_ad36907660dc887914127eb0e90e3dcb3}{On\+Attachment\+Request4}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_data}{Attachment\+Request\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Attachment Request from the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a501480dc1491a3a77c7c8bdf4ff5e058}{On\+Attachment\+Request\+Ack5}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Attachment Request ACK from the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a175cf6824240cf80de8e840ffe0e9337}{On\+Attachment\+Response6}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_data}{Attachment\+Response\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Attachment Responsefrom the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a09ac7cb96aa9770d8be5112444f25f37}{On\+Attachment\+Response\+Ack7}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Attachment Response ACK from the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_aec36a6732a9ca70e169d17bef6206e7a}{On\+Event\+Document8}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document}{Event\+Document}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Event Document from the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a578bcde366e1a27d4d1eca4e9178b15b}{On\+Event\+Document\+Ack9}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Event Document ACK from the GDS. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a813cebb4bac6c58078d0386bfe07e8a9}{On\+Query\+Request\+Ack11}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Called upon receiving an Query Request ACK from the GDS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class used as a Message Listener (callback) for the GDS communication. The methods are not mandatory to be overwritten, but if they are called (that kind of message is received) without an implementation in the subclass most of them will throw a Not\+Implemented\+Exception. 
+
+\label{doc-func-members}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_ad36907660dc887914127eb0e90e3dcb3}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnAttachmentRequest4@{OnAttachmentRequest4}}
+\index{OnAttachmentRequest4@{OnAttachmentRequest4}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnAttachmentRequest4()}{OnAttachmentRequest4()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_ad36907660dc887914127eb0e90e3dcb3} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Attachment\+Request4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_data}{Attachment\+Request\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Attachment Request from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received attachment request\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a501480dc1491a3a77c7c8bdf4ff5e058}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnAttachmentRequestAck5@{OnAttachmentRequestAck5}}
+\index{OnAttachmentRequestAck5@{OnAttachmentRequestAck5}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnAttachmentRequestAck5()}{OnAttachmentRequestAck5()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a501480dc1491a3a77c7c8bdf4ff5e058} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Attachment\+Request\+Ack5 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Attachment Request ACK from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received attachment request ack\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a175cf6824240cf80de8e840ffe0e9337}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnAttachmentResponse6@{OnAttachmentResponse6}}
+\index{OnAttachmentResponse6@{OnAttachmentResponse6}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnAttachmentResponse6()}{OnAttachmentResponse6()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a175cf6824240cf80de8e840ffe0e9337} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Attachment\+Response6 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_data}{Attachment\+Response\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Attachment Responsefrom the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received attachment response\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a09ac7cb96aa9770d8be5112444f25f37}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnAttachmentResponseAck7@{OnAttachmentResponseAck7}}
+\index{OnAttachmentResponseAck7@{OnAttachmentResponseAck7}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnAttachmentResponseAck7()}{OnAttachmentResponseAck7()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a09ac7cb96aa9770d8be5112444f25f37} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Attachment\+Response\+Ack7 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Attachment Response ACK from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received attachment response ACK\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_aade1204f7130f18a8f552d2f068c771e}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnConnectionFailure@{OnConnectionFailure}}
+\index{OnConnectionFailure@{OnConnectionFailure}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnConnectionFailure()}{OnConnectionFailure()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_aade1204f7130f18a8f552d2f068c771e} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Connection\+Failure (\begin{DoxyParamCaption}\item[{Either$<$ Exception, Key\+Value\+Pair$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} $>$ $>$}]{cause}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called if the connection (or the login) is unsuccessful. The error is either caused by an exception or a login failure, this can be retreived from the parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cause} & The cause of the failure\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a1e7053c62d2c83f77b0eeedd0f11bfea}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnConnectionSuccess@{OnConnectionSuccess}}
+\index{OnConnectionSuccess@{OnConnectionSuccess}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnConnectionSuccess()}{OnConnectionSuccess()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a1e7053c62d2c83f77b0eeedd0f11bfea} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Connection\+Success (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon successfully establishing a connection (with accepted login) towards the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received login data\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a27e71cab92651a64df0f4ac1b750d8ad}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnEventAck3@{OnEventAck3}}
+\index{OnEventAck3@{OnEventAck3}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnEventAck3()}{OnEventAck3()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a27e71cab92651a64df0f4ac1b750d8ad} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Event\+Ack3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_ack_data}{Event\+Ack\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Event\+Ack data from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received event ACK\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_aec36a6732a9ca70e169d17bef6206e7a}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnEventDocument8@{OnEventDocument8}}
+\index{OnEventDocument8@{OnEventDocument8}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnEventDocument8()}{OnEventDocument8()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_aec36a6732a9ca70e169d17bef6206e7a} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Event\+Document8 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document}{Event\+Document}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Event Document from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received event document\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a578bcde366e1a27d4d1eca4e9178b15b}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnEventDocumentAck9@{OnEventDocumentAck9}}
+\index{OnEventDocumentAck9@{OnEventDocumentAck9}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnEventDocumentAck9()}{OnEventDocumentAck9()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a578bcde366e1a27d4d1eca4e9178b15b} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Event\+Document\+Ack9 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Event Document ACK from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received event document ACK\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a813cebb4bac6c58078d0386bfe07e8a9}\index{messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}!OnQueryRequestAck11@{OnQueryRequestAck11}}
+\index{OnQueryRequestAck11@{OnQueryRequestAck11}!messages.Gds.Websocket.IGDSMessageListener@{messages.Gds.Websocket.IGDSMessageListener}}
+\doxysubsubsection{\texorpdfstring{OnQueryRequestAck11()}{OnQueryRequestAck11()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener_a813cebb4bac6c58078d0386bfe07e8a9} 
+virtual void messages.\+Gds.\+Websocket.\+IGDSMessage\+Listener.\+On\+Query\+Request\+Ack11 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called upon receiving an Query Request ACK from the GDS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The received header\\
+\hline
+{\em data} & The received query request ACK\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Websocket/IGDSMessage\+Listener.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,802 @@
+\doxysection{Gds.\+Messages.\+Message\+Manager Class Reference}
+\hypertarget{class_gds_1_1_messages_1_1_message_manager}{}\label{class_gds_1_1_messages_1_1_message_manager}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+
+
+Helper class for create, pack and unpack messages.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a37e5986684a46fedbb1fc7db32b4cecb}{Get\+Binary\+From\+Message}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_message}{Message}} message)
+\begin{DoxyCompactList}\small\item\em Pack the specified \doxylink{class_gds_1_1_messages_1_1_message}{Message} object. \end{DoxyCompactList}\item 
+static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a2cfe0fe95a4e87832305fbd9bcb240f9}{Get\+Binary\+From\+Message}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_message_data}{Message\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Pack the specified header and data to a \doxylink{class_gds_1_1_messages_1_1_message}{Message} object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_message}{Message}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_aa3600320f04d4f2d3e0b9d47156fa339}{Get\+Message\+From\+Binary}} (byte\mbox{[}$\,$\mbox{]} message)
+\begin{DoxyCompactList}\small\item\em Unpack the specified binary message. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_message}{Message}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a7220948b6ab2aa4c05e4c145c0a66178}{Get\+Message}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_message_data}{Message\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Create a \doxylink{class_gds_1_1_messages_1_1_message}{Message} object with the speficed \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} and \doxylink{namespace_gds_1_1_messages_1_1_data}{Data} parts. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a26a20d98a307b3ff96275d6f778ec4e4}{Get\+Header}} (string user\+Name, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}} data\+Type)
+\begin{DoxyCompactList}\small\item\em Create the \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a1ed67c8a05c50adf837aa7eaa35863fb}{Get\+Header}} (string user\+Name, string message\+ID, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}} data\+Type)
+\begin{DoxyCompactList}\small\item\em Create the \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a8bfabf7bb533c1dff662c45f5eef2c45}{Get\+Header}} (string user\+Name, string message\+Id, long create\+Time, long request\+Time, bool is\+Fragmented, bool? first\+Fragment, bool? last\+Fragment, int? offset, int? full\+Data\+Size, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}} data\+Type)
+\begin{DoxyCompactList}\small\item\em Create the \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a8745959f0d02e55df2e1a5a3fbd11983}{Get\+Connection\+Data}} (bool serve\+On\+The\+Same\+Connection, int protocol\+Version\+Number, bool fragmentation\+Supported, int? fragmentation\+Transmission\+Unit, string password)
+\begin{DoxyCompactList}\small\item\em Create a Connection type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a18fa8d4b7cfd23574601ab3a07cc2e31}{Get\+Connection\+Data}} (bool serve\+On\+The\+Same\+Connection, int protocol\+Version\+Number, bool fragmentation\+Supported, int? fragmentation\+Transmission\+Unit)
+\begin{DoxyCompactList}\small\item\em Create a Connection type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_aeed86c36cbf312d1ddd97404f09e6e9f}{Get\+Connection\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data}} success\+Ack\+Data)
+\begin{DoxyCompactList}\small\item\em Create a Connection\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_aa2df2be32d1ad260f79bd3fd9086bedf}{Get\+Connection\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, Dictionary$<$ int, string $>$ unauthorized\+Ack\+Data, string exception)
+\begin{DoxyCompactList}\small\item\em Create a Connection\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_affe65af997c09a00e404a2af8750e10b}{Get\+Connection\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, string exception)
+\begin{DoxyCompactList}\small\item\em Create a Connection\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a81cb1a6a7ae3332310ec5f2c5806e1ff}{Get\+Event\+Data}} (string operations\+String\+Block, Dictionary$<$ string, byte\mbox{[}$\,$\mbox{]}$>$ binary\+Contents\+Mapping, List$<$ List$<$ Dictionary$<$ int, bool $>$ $>$ $>$ execution\+Priority\+Structure)
+\begin{DoxyCompactList}\small\item\em Create an Event type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a3fd335a54041653c57d05d0e0013683b}{Get\+Event\+Data}} (string operations\+String\+Block, Dictionary$<$ string, byte\mbox{[}$\,$\mbox{]}$>$ binary\+Contents\+Mapping)
+\begin{DoxyCompactList}\small\item\em Create an Event type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a73c16284b079ceba65bd7adf26cf2a34}{Get\+Event\+Data}} (string operations\+String\+Block, List$<$ List$<$ Dictionary$<$ int, bool $>$ $>$ $>$ execution\+Priority\+Structure)
+\begin{DoxyCompactList}\small\item\em Create an Event type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a032efcb2f68168090394eb71b7d4215e}{Get\+Event\+Data}} (string operations\+String\+Block)
+\begin{DoxyCompactList}\small\item\em Create an Event type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_data}{Attachment\+Request\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a1735604f33b0284d61e2f53626b635b1}{Get\+Attachment\+Request\+Data}} (string request)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Request type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a37e9529509b307faaeb4467764be9668}{Get\+Attachment\+Request\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_type_data}{Attachment\+Request\+Ack\+Type\+Data}} ack\+Data)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Request\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a4b1799999d5b3f0e5c452faf8a768646}{Get\+Attachment\+Request\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_type_data}{Attachment\+Request\+Ack\+Type\+Data}} ack\+Data, string exception)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Request\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a0ae38a007507c37a50402cb0f470c626}{Get\+Attachment\+Request\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, string exception)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Request\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_data}{Attachment\+Response\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_af52dbc946df8564f32522f4483581208}{Get\+Attachment\+Response\+Data}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_result}{Attachment\+Result}} result)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Response type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a506f8dd6045b75cad25b9d5c9db10190}{Get\+Attachment\+Response\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_type_data}{Attachment\+Response\+Ack\+Type\+Data}} ack\+Data)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Response\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a5a8a4b3c005f3dd2927f72c02f4a54fa}{Get\+Attachment\+Response\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_type_data}{Attachment\+Response\+Ack\+Type\+Data}} ack\+Data, string exception)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Response\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_ac6b8e9f4147294f03514be7fea7ce2a4}{Get\+Attachment\+Response\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, string exception)
+\begin{DoxyCompactList}\small\item\em Create an Attachment\+Response\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document}{Event\+Document}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_abe3c5b278ef5ab60c25d2d6bdfefd795}{Get\+Event\+Document\+Data}} (string table\+Name, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ field\+Descriptors, List$<$ List$<$ object $>$ $>$ records)
+\begin{DoxyCompactList}\small\item\em Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document}{Event\+Document} type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a08a65c02c3844435ecc130105caa1a44}{Get\+Event\+Document\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack_result}{Event\+Document\+Ack\+Result}} $>$ ack\+Data)
+\begin{DoxyCompactList}\small\item\em Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack} type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a27286de426ca14844981261198d1c9a5}{Get\+Event\+Document\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack_result}{Event\+Document\+Ack\+Result}} $>$ ack\+Data, string exception)
+\begin{DoxyCompactList}\small\item\em Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack} type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_af09b2e7047f1f7a49a3c83808fc8bc26}{Get\+Event\+Document\+Ack\+Data}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, string exception)
+\begin{DoxyCompactList}\small\item\em Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack} type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_data}{Query\+Request\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_afddbc4f3a58e37611ed885bfeddb9175}{Get\+Query\+Request}} (string select\+String\+Block, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_ae7e788a39c3a0bc9e39ff1a27751f828}{Consistency\+Type}} consistency\+Type, long timeout, int? query\+Page\+Size=null, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a47c69287595c8c6a2920f5ef87566c67}{Query\+Type}}? query\+Type=null)
+\begin{DoxyCompactList}\small\item\em Create a Query\+Request type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_addff21e25e67120bfa78b6ac76e14e06}{Get\+Query\+Request\+Ack}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data}} ack\+Data)
+\begin{DoxyCompactList}\small\item\em Create a Query\+Request\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a79bdc7549bf27c58f39a1ab56b3b6b10}{Get\+Query\+Request\+Ack}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data}} ack\+Data, string exception)
+\begin{DoxyCompactList}\small\item\em Create a Query\+Request\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_a4438330f39db1d5e2e46d88f29f0ebaa}{Get\+Query\+Request\+Ack}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, string exception)
+\begin{DoxyCompactList}\small\item\em Create a Query\+Request\+Ack type data part. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_next_query_page_request_data}{Next\+Query\+Page\+Request\+Data}} \mbox{\hyperlink{class_gds_1_1_messages_1_1_message_manager_ab517855c23b89fac6fb3f489c5ff02b1}{Get\+Next\+Query\+Page\+Request}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}} query\+Context\+Descriptor, long timeout)
+\begin{DoxyCompactList}\small\item\em Create a Next\+Query\+Page\+Request type data part. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helper class for create, pack and unpack messages. 
+
+\label{doc-func-members}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a37e9529509b307faaeb4467764be9668}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentRequestAckData@{GetAttachmentRequestAckData}}
+\index{GetAttachmentRequestAckData@{GetAttachmentRequestAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentRequestAckData()}{GetAttachmentRequestAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a37e9529509b307faaeb4467764be9668} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Request\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_type_data}{Attachment\+Request\+Ack\+Type\+Data}}}]{ack\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Request\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The response object belonging to the acknowledgement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a4b1799999d5b3f0e5c452faf8a768646}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentRequestAckData@{GetAttachmentRequestAckData}}
+\index{GetAttachmentRequestAckData@{GetAttachmentRequestAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentRequestAckData()}{GetAttachmentRequestAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a4b1799999d5b3f0e5c452faf8a768646} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Request\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_type_data}{Attachment\+Request\+Ack\+Type\+Data}}}]{ack\+Data}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Request\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The response object belonging to the acknowledgement.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a0ae38a007507c37a50402cb0f470c626}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentRequestAckData@{GetAttachmentRequestAckData}}
+\index{GetAttachmentRequestAckData@{GetAttachmentRequestAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentRequestAckData()}{GetAttachmentRequestAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a0ae38a007507c37a50402cb0f470c626} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Request\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Request\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_data}{Attachment\+Request\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a1735604f33b0284d61e2f53626b635b1}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentRequestData@{GetAttachmentRequestData}}
+\index{GetAttachmentRequestData@{GetAttachmentRequestData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentRequestData()}{GetAttachmentRequestData()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a1735604f33b0284d61e2f53626b635b1} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_data}{Attachment\+Request\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Request\+Data (\begin{DoxyParamCaption}\item[{string}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Request type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & The SELECT statement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_data}{Attachment\+Request\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a506f8dd6045b75cad25b9d5c9db10190}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentResponseAckData@{GetAttachmentResponseAckData}}
+\index{GetAttachmentResponseAckData@{GetAttachmentResponseAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentResponseAckData()}{GetAttachmentResponseAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a506f8dd6045b75cad25b9d5c9db10190} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Response\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_type_data}{Attachment\+Response\+Ack\+Type\+Data}}}]{ack\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Response\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The response object belonging to the acknowledgement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a5a8a4b3c005f3dd2927f72c02f4a54fa}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentResponseAckData@{GetAttachmentResponseAckData}}
+\index{GetAttachmentResponseAckData@{GetAttachmentResponseAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentResponseAckData()}{GetAttachmentResponseAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a5a8a4b3c005f3dd2927f72c02f4a54fa} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Response\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_type_data}{Attachment\+Response\+Ack\+Type\+Data}}}]{ack\+Data}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Response\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The response object belonging to the acknowledgement.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_ac6b8e9f4147294f03514be7fea7ce2a4}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentResponseAckData@{GetAttachmentResponseAckData}}
+\index{GetAttachmentResponseAckData@{GetAttachmentResponseAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentResponseAckData()}{GetAttachmentResponseAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_ac6b8e9f4147294f03514be7fea7ce2a4} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Response\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Response\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_data}{Attachment\+Response\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_af52dbc946df8564f32522f4483581208}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetAttachmentResponseData@{GetAttachmentResponseData}}
+\index{GetAttachmentResponseData@{GetAttachmentResponseData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetAttachmentResponseData()}{GetAttachmentResponseData()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_af52dbc946df8564f32522f4483581208} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_data}{Attachment\+Response\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Attachment\+Response\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_result}{Attachment\+Result}}}]{result}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Attachment\+Response type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & The description of the result.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_data}{Attachment\+Response\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a37e5986684a46fedbb1fc7db32b4cecb}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetBinaryFromMessage@{GetBinaryFromMessage}}
+\index{GetBinaryFromMessage@{GetBinaryFromMessage}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetBinaryFromMessage()}{GetBinaryFromMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a37e5986684a46fedbb1fc7db32b4cecb} 
+byte\mbox{[}$\,$\mbox{]} Gds.\+Messages.\+Message\+Manager.\+Get\+Binary\+From\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_message}{Message}}}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pack the specified \doxylink{class_gds_1_1_messages_1_1_message}{Message} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The \doxylink{class_gds_1_1_messages_1_1_message}{Message} object. See \doxylink{class_gds_1_1_messages_1_1_message_manager_a7220948b6ab2aa4c05e4c145c0a66178}{Get\+Message}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The packed message in byte array format.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Message\+Pack\+Serialization\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a2cfe0fe95a4e87832305fbd9bcb240f9}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetBinaryFromMessage@{GetBinaryFromMessage}}
+\index{GetBinaryFromMessage@{GetBinaryFromMessage}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetBinaryFromMessage()}{GetBinaryFromMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a2cfe0fe95a4e87832305fbd9bcb240f9} 
+byte\mbox{[}$\,$\mbox{]} Gds.\+Messages.\+Message\+Manager.\+Get\+Binary\+From\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_message_data}{Message\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pack the specified header and data to a \doxylink{class_gds_1_1_messages_1_1_message}{Message} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The \doxylink{class_gds_1_1_messages_1_1_message}{Message} \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} object.\\
+\hline
+{\em data} & The \doxylink{class_gds_1_1_messages_1_1_message}{Message} \doxylink{namespace_gds_1_1_messages_1_1_data}{Data} object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The packed message in byte array format.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Message\+Pack\+Serialization\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_aeed86c36cbf312d1ddd97404f09e6e9f}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetConnectionAckData@{GetConnectionAckData}}
+\index{GetConnectionAckData@{GetConnectionAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetConnectionAckData()}{GetConnectionAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_aeed86c36cbf312d1ddd97404f09e6e9f} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Connection\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data}}}]{success\+Ack\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Connection\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em success\+Ack\+Data} & The sucess response object belonging to the acknowledgement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_aa2df2be32d1ad260f79bd3fd9086bedf}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetConnectionAckData@{GetConnectionAckData}}
+\index{GetConnectionAckData@{GetConnectionAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetConnectionAckData()}{GetConnectionAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_aa2df2be32d1ad260f79bd3fd9086bedf} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Connection\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{Dictionary$<$ int, string $>$}]{unauthorized\+Ack\+Data}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Connection\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em unauthorized\+Ack\+Data} & The unauthorized response object belonging to the acknowledgement.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_affe65af997c09a00e404a2af8750e10b}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetConnectionAckData@{GetConnectionAckData}}
+\index{GetConnectionAckData@{GetConnectionAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetConnectionAckData()}{GetConnectionAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_affe65af997c09a00e404a2af8750e10b} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Connection\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Connection\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regardingg the response.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_connection_ack_data}{Connection\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a18fa8d4b7cfd23574601ab3a07cc2e31}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetConnectionData@{GetConnectionData}}
+\index{GetConnectionData@{GetConnectionData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetConnectionData()}{GetConnectionData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a18fa8d4b7cfd23574601ab3a07cc2e31} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Connection\+Data (\begin{DoxyParamCaption}\item[{bool}]{serve\+On\+The\+Same\+Connection}{, }\item[{int}]{protocol\+Version\+Number}{, }\item[{bool}]{fragmentation\+Supported}{, }\item[{int?}]{fragmentation\+Transmission\+Unit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Connection type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serve\+On\+The\+Same\+Connection} & If true, the clients only accepts the response on the same connection the message was sent (on the connection it established).\\
+\hline
+{\em protocol\+Version\+Number} & The version number of the protocol, with which the connected client communicates.\\
+\hline
+{\em fragmentation\+Supported} & If true, the client indicates that it accepts messages on this connection fragmented too.\\
+\hline
+{\em fragmentation\+Transmission\+Unit} & If fragmentation is supported, it determines the size of chunks the other party should fragment the data part of the message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a8745959f0d02e55df2e1a5a3fbd11983}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetConnectionData@{GetConnectionData}}
+\index{GetConnectionData@{GetConnectionData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetConnectionData()}{GetConnectionData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a8745959f0d02e55df2e1a5a3fbd11983} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Connection\+Data (\begin{DoxyParamCaption}\item[{bool}]{serve\+On\+The\+Same\+Connection}{, }\item[{int}]{protocol\+Version\+Number}{, }\item[{bool}]{fragmentation\+Supported}{, }\item[{int?}]{fragmentation\+Transmission\+Unit}{, }\item[{string}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Connection type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serve\+On\+The\+Same\+Connection} & If true, the clients only accepts the response on the same connection the message was sent (on the connection it established).\\
+\hline
+{\em protocol\+Version\+Number} & The version number of the protocol, with which the connected client communicates.\\
+\hline
+{\em fragmentation\+Supported} & If true, the client indicates that it accepts messages on this connection fragmented too.\\
+\hline
+{\em fragmentation\+Transmission\+Unit} & If fragmentation is supported, it determines the size of chunks the other party should fragment the data part of the message.\\
+\hline
+{\em password} & For a password based authentication.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_connection_data}{Connection\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a032efcb2f68168090394eb71b7d4215e}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventData@{GetEventData}}
+\index{GetEventData@{GetEventData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventData()}{GetEventData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a032efcb2f68168090394eb71b7d4215e} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Data (\begin{DoxyParamCaption}\item[{string}]{operations\+String\+Block}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Event type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operations\+String\+Block} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a3fd335a54041653c57d05d0e0013683b}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventData@{GetEventData}}
+\index{GetEventData@{GetEventData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventData()}{GetEventData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a3fd335a54041653c57d05d0e0013683b} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Data (\begin{DoxyParamCaption}\item[{string}]{operations\+String\+Block}{, }\item[{Dictionary$<$ string, byte\mbox{[}$\,$\mbox{]}$>$}]{binary\+Contents\+Mapping}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Event type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operations\+String\+Block} & The operations in standard SQL statements, separated with \textquotesingle{};\textquotesingle{} characters.\\
+\hline
+{\em binary\+Contents\+Mapping} & The mapping of the binary contents.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a81cb1a6a7ae3332310ec5f2c5806e1ff}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventData@{GetEventData}}
+\index{GetEventData@{GetEventData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventData()}{GetEventData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a81cb1a6a7ae3332310ec5f2c5806e1ff} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Data (\begin{DoxyParamCaption}\item[{string}]{operations\+String\+Block}{, }\item[{Dictionary$<$ string, byte\mbox{[}$\,$\mbox{]}$>$}]{binary\+Contents\+Mapping}{, }\item[{List$<$ List$<$ Dictionary$<$ int, bool $>$ $>$ $>$}]{execution\+Priority\+Structure}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Event type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operations\+String\+Block} & The operations in standard SQL statements, separated with \textquotesingle{};\textquotesingle{} characters.\\
+\hline
+{\em binary\+Contents\+Mapping} & The mapping of the binary contents.\\
+\hline
+{\em execution\+Priority\+Structure} & The execution priority structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a73c16284b079ceba65bd7adf26cf2a34}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventData@{GetEventData}}
+\index{GetEventData@{GetEventData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventData()}{GetEventData()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a73c16284b079ceba65bd7adf26cf2a34} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Data (\begin{DoxyParamCaption}\item[{string}]{operations\+String\+Block}{, }\item[{List$<$ List$<$ Dictionary$<$ int, bool $>$ $>$ $>$}]{execution\+Priority\+Structure}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an Event type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operations\+String\+Block} & The operations in standard SQL statements, separated with \textquotesingle{};\textquotesingle{} characters.\\
+\hline
+{\em execution\+Priority\+Structure} & The execution priority structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a08a65c02c3844435ecc130105caa1a44}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventDocumentAckData@{GetEventDocumentAckData}}
+\index{GetEventDocumentAckData@{GetEventDocumentAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventDocumentAckData()}{GetEventDocumentAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a08a65c02c3844435ecc130105caa1a44} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Document\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack_result}{Event\+Document\+Ack\+Result}} $>$}]{ack\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack} type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The sucess response object belonging to the acknowledgement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created Event\+Document\+Ack\+Data object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a27286de426ca14844981261198d1c9a5}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventDocumentAckData@{GetEventDocumentAckData}}
+\index{GetEventDocumentAckData@{GetEventDocumentAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventDocumentAckData()}{GetEventDocumentAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a27286de426ca14844981261198d1c9a5} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Document\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack_result}{Event\+Document\+Ack\+Result}} $>$}]{ack\+Data}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack} type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The sucess response object belonging to the acknowledgement.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created Event\+Document\+Ack\+Data object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_af09b2e7047f1f7a49a3c83808fc8bc26}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventDocumentAckData@{GetEventDocumentAckData}}
+\index{GetEventDocumentAckData@{GetEventDocumentAckData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventDocumentAckData()}{GetEventDocumentAckData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_af09b2e7047f1f7a49a3c83808fc8bc26} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Document\+Ack\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack}{Event\+Document\+Ack} type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created Event\+Document\+Ack\+Data object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_abe3c5b278ef5ab60c25d2d6bdfefd795}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetEventDocumentData@{GetEventDocumentData}}
+\index{GetEventDocumentData@{GetEventDocumentData}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetEventDocumentData()}{GetEventDocumentData()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_abe3c5b278ef5ab60c25d2d6bdfefd795} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document}{Event\+Document}} Gds.\+Messages.\+Message\+Manager.\+Get\+Event\+Document\+Data (\begin{DoxyParamCaption}\item[{string}]{table\+Name}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$}]{field\+Descriptors}{, }\item[{List$<$ List$<$ object $>$ $>$}]{records}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_document}{Event\+Document} type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & The name of the table.\\
+\hline
+{\em field\+Descriptors} & The field descriptors.\\
+\hline
+{\em records} & The records.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created Event\+Document\+Data object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a26a20d98a307b3ff96275d6f778ec4e4}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetHeader@{GetHeader}}
+\index{GetHeader@{GetHeader}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetHeader()}{GetHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a26a20d98a307b3ff96275d6f778ec4e4} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} Gds.\+Messages.\+Message\+Manager.\+Get\+Header (\begin{DoxyParamCaption}\item[{string}]{user\+Name}{, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}}}]{data\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create the \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Name} & The name of the user.\\
+\hline
+{\em data\+Type} & It specifies what types of information the data carries.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a1ed67c8a05c50adf837aa7eaa35863fb}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetHeader@{GetHeader}}
+\index{GetHeader@{GetHeader}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetHeader()}{GetHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a1ed67c8a05c50adf837aa7eaa35863fb} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} Gds.\+Messages.\+Message\+Manager.\+Get\+Header (\begin{DoxyParamCaption}\item[{string}]{user\+Name}{, }\item[{string}]{message\+ID}{, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}}}]{data\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create the \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Name} & The name of the user.\\
+\hline
+{\em data\+Type} & It specifies what types of information the data carries.\\
+\hline
+{\em message\+ID} & The identifier of the message, with which the request can be associated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a8bfabf7bb533c1dff662c45f5eef2c45}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetHeader@{GetHeader}}
+\index{GetHeader@{GetHeader}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetHeader()}{GetHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a8bfabf7bb533c1dff662c45f5eef2c45} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} Gds.\+Messages.\+Message\+Manager.\+Get\+Header (\begin{DoxyParamCaption}\item[{string}]{user\+Name}{, }\item[{string}]{message\+Id}{, }\item[{long}]{create\+Time}{, }\item[{long}]{request\+Time}{, }\item[{bool}]{is\+Fragmented}{, }\item[{bool?}]{first\+Fragment}{, }\item[{bool?}]{last\+Fragment}{, }\item[{int?}]{offset}{, }\item[{int?}]{full\+Data\+Size}{, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}}}]{data\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create the \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Name} & The name of the user.\\
+\hline
+{\em message\+Id} & The identifier of the message, with which the request can be associated.\\
+\hline
+{\em create\+Time} & The time of creating the message, epoch timestamp.\\
+\hline
+{\em request\+Time} & The time of the request, epoch timestamp.\\
+\hline
+{\em is\+Fragmented} & Whether the current message is fragmented or not.\\
+\hline
+{\em first\+Fragment} & Whether it\textquotesingle{}s the first fragment of a fragmented message\\
+\hline
+{\em last\+Fragment} & Whether it\textquotesingle{}s the last fragment of a fragmented message.\\
+\hline
+{\em offset} & The last byte of the original, fragmented message the receiver has yet received or the last byte of the original message that has yet been forwarded.\\
+\hline
+{\em full\+Data\+Size} & The size of the full data in bytes.\\
+\hline
+{\em data\+Type} & It specifies what types of information the data carries.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a7220948b6ab2aa4c05e4c145c0a66178}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetMessage@{GetMessage}}
+\index{GetMessage@{GetMessage}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetMessage()}{GetMessage()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a7220948b6ab2aa4c05e4c145c0a66178} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_message}{Message}} Gds.\+Messages.\+Message\+Manager.\+Get\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_message_data}{Message\+Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a \doxylink{class_gds_1_1_messages_1_1_message}{Message} object with the speficed \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} and \doxylink{namespace_gds_1_1_messages_1_1_data}{Data} parts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the message. See \doxylink{class_gds_1_1_messages_1_1_message_manager_a26a20d98a307b3ff96275d6f778ec4e4}{Get\+Header(string,\+Data\+Type)}.\\
+\hline
+{\em data} & The \doxylink{namespace_gds_1_1_messages_1_1_data}{Data} part of the message. See the Message\+Manager.\+Get\+XXXData() methods.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_message}{Message} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_aa3600320f04d4f2d3e0b9d47156fa339}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetMessageFromBinary@{GetMessageFromBinary}}
+\index{GetMessageFromBinary@{GetMessageFromBinary}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetMessageFromBinary()}{GetMessageFromBinary()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_aa3600320f04d4f2d3e0b9d47156fa339} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_message}{Message}} Gds.\+Messages.\+Message\+Manager.\+Get\+Message\+From\+Binary (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unpack the specified binary message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message in byte array format.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The unpacked \doxylink{class_gds_1_1_messages_1_1_message}{Message} object.
+\end{DoxyReturn}
+/// 
+\begin{DoxyExceptions}{Exceptions}
+{\em Message\+Pack\+Serialization\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_ab517855c23b89fac6fb3f489c5ff02b1}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetNextQueryPageRequest@{GetNextQueryPageRequest}}
+\index{GetNextQueryPageRequest@{GetNextQueryPageRequest}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetNextQueryPageRequest()}{GetNextQueryPageRequest()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_ab517855c23b89fac6fb3f489c5ff02b1} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_next_query_page_request_data}{Next\+Query\+Page\+Request\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Next\+Query\+Page\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}}}]{query\+Context\+Descriptor}{, }\item[{long}]{timeout}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Next\+Query\+Page\+Request type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\+Context\+Descriptor} & Query status descriptor for querying the next pages.\\
+\hline
+{\em timeout} & The timeout value in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_next_query_page_request_data}{Next\+Query\+Page\+Request\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_afddbc4f3a58e37611ed885bfeddb9175}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetQueryRequest@{GetQueryRequest}}
+\index{GetQueryRequest@{GetQueryRequest}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetQueryRequest()}{GetQueryRequest()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_afddbc4f3a58e37611ed885bfeddb9175} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_data}{Query\+Request\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Query\+Request (\begin{DoxyParamCaption}\item[{string}]{select\+String\+Block}{, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_ae7e788a39c3a0bc9e39ff1a27751f828}{Consistency\+Type}}}]{consistency\+Type}{, }\item[{long}]{timeout}{, }\item[{int?}]{query\+Page\+Size}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a47c69287595c8c6a2920f5ef87566c67}{Query\+Type}}?}]{query\+Type}{ = {\ttfamily null}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Query\+Request type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em select\+String\+Block} & The SELECT statement.\\
+\hline
+{\em consistency\+Type} & The consistency type used for the query.\\
+\hline
+{\em timeout} & The timeout value in milliseconds.\\
+\hline
+{\em query\+Page\+Size} & The number of records per page.\\
+\hline
+{\em query\+Type} & The query type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_data}{Query\+Request\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_addff21e25e67120bfa78b6ac76e14e06}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetQueryRequestAck@{GetQueryRequestAck}}
+\index{GetQueryRequestAck@{GetQueryRequestAck}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetQueryRequestAck()}{GetQueryRequestAck()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_addff21e25e67120bfa78b6ac76e14e06} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Query\+Request\+Ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data}}}]{ack\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Query\+Request\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The sucess response object belonging to the acknowledgement.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a79bdc7549bf27c58f39a1ab56b3b6b10}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetQueryRequestAck@{GetQueryRequestAck}}
+\index{GetQueryRequestAck@{GetQueryRequestAck}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetQueryRequestAck()}{GetQueryRequestAck()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a79bdc7549bf27c58f39a1ab56b3b6b10} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Query\+Request\+Ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data}}}]{ack\+Data}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Query\+Request\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em ack\+Data} & The sucess response object belonging to the acknowledgement.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{class_gds_1_1_messages_1_1_message_manager_a4438330f39db1d5e2e46d88f29f0ebaa}\index{Gds.Messages.MessageManager@{Gds.Messages.MessageManager}!GetQueryRequestAck@{GetQueryRequestAck}}
+\index{GetQueryRequestAck@{GetQueryRequestAck}!Gds.Messages.MessageManager@{Gds.Messages.MessageManager}}
+\doxysubsubsection{\texorpdfstring{GetQueryRequestAck()}{GetQueryRequestAck()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_message_manager_a4438330f39db1d5e2e46d88f29f0ebaa} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data}} Gds.\+Messages.\+Message\+Manager.\+Get\+Query\+Request\+Ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{string}]{exception}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Query\+Request\+Ack type data part. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status incorporates a global signal regarding the response.\\
+\hline
+{\em exception} & The description of an error.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_data}{Query\+Request\+Ack\+Data} object.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Messages/Message\+Manager.\+cs\end{DoxyCompactItemize}

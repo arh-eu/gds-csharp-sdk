@@ -24,7 +24,7 @@
 
 The library is distributed via [NuGet](https://www.nuget.org/packages/gds-messages/) package. You can install this package with running this command in the Package Manager Console.
 
-`Install-Package gds-messages -Version 1.4.1`
+`Install-Package gds-messages -Version 1.5.1`
 
 (The library was made by [this](https://github.com/neuecc/MessagePack-CSharp) messagepack C# implementation)
 
@@ -63,8 +63,11 @@ The methods signatures available on the `AsyncGDSClientBuilder` class (which is 
     
     // Sets the ping-poing interval (in seconds) for the builder to be used when instantiating the client (used to keep the connection alive). Greater than 0.
     AsyncGDSClientBuilder WithPingPongInterval(int value);
+    
+    // Sets whether the GDS should send its replies on the same connection as the original login was sent on. This can make attachment requests be unable to be served if set to true, as if the connection is dropped before the GDS can retrieve the binary it cannot send it later. Additionally, the client only receives Document8 messages pushed by the GDS (based on the output rights) if its value is false.
+    AsyncGDSClientBuilder WithServeOnTheSameConnection(bool value);
 
-    // Sets the certificate for the builder to be used when instantiating the client (used in TLS communication)
+    // Sets the certificate for the builder to be used when instantiating the client (used in TLS communication).
     AsyncGDSClientBuilder WithCertificate(X509Certificate2 value);
     
     // Builds the client using the values previously specified.
@@ -79,6 +82,7 @@ Creating the client is simple, you just have to get a builder instance and speci
 AsyncGDSClient client = AsyncGDSClient.GetBuilder()
         .WithListener(listener)
         .WithURI("ws://192.168.1.105:8888/gate")
+        .WithServeOnTheSameConnection(false)
         .Build();            
 ``` 
 
@@ -102,6 +106,7 @@ f.Close();
 AsyncGDSClient client = AsyncGDSClient.GetBuilder()
         .WithListener(listener)
         .WithURI("wss://192.168.1.105:8443/gates")
+        .WithServeOnTheSameConnection(false)
         //The cert data is encrypted, you have to specify your password to decrypt it
         .WithCertificate(new X509Certificate2(data, "€3RT_$ecReT_P4$sW0RĐ"))
         .Build();            
@@ -552,6 +557,7 @@ namespace GDSExample
             AsyncGDSClient client = AsyncGDSClient.GetBuilder()
                 .WithListener(listener)
                 .WithTimeout(10000)
+                .WithServeOnTheSameConnection(false)
                 .Build();
             clientRef.Value = client;
 

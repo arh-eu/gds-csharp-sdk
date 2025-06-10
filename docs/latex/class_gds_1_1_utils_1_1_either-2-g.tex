@@ -1,0 +1,133 @@
+\doxysection{Gds.\+Utils.\+Either\texorpdfstring{$<$}{<} TL, TR \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_gds_1_1_utils_1_1_either-2-g}{}\label{class_gds_1_1_utils_1_1_either-2-g}\index{Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}}
+
+
+Class that represent a Pair type that can only have one of its variables set.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a65ecd6a453f58a7eee5b22c1ed86ff3a}{Either}} (TL left)
+\begin{DoxyCompactList}\small\item\em Constructs a new Either object with the left side specified. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a35aee3ba88f3bd606906befa642c04e6}{Either}} (TR right)
+\begin{DoxyCompactList}\small\item\em /// Constructs a new Either object with the right side specified \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a651c3707a7ae78614d806c38359c4ebd}{To\+String}} ()
+\begin{DoxyCompactList}\small\item\em Returns the string representation based on which side is set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static implicit \mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a6abc975a667ac98d88d20a0147e18923}{operator Either$<$ TL, TR $>$}} (TL left)
+\begin{DoxyCompactList}\small\item\em implicitly creates an instance using a left value \end{DoxyCompactList}\item 
+static implicit \mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a0363584ed57c00af67f4026ca3bca5f5}{operator Either$<$ TL, TR $>$}} (TR right)
+\begin{DoxyCompactList}\small\item\em implicitly creates an instance using a right value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a17d40d429c5a5a7465a8286a5c744b84}\label{class_gds_1_1_utils_1_1_either-2-g_a17d40d429c5a5a7465a8286a5c744b84} 
+bool {\bfseries Is\+Left}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns whether the instance has its left side set. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_aa72ce0827fa525ed2e214c0ddc29b71a}\label{class_gds_1_1_utils_1_1_either-2-g_aa72ce0827fa525ed2e214c0ddc29b71a} 
+bool {\bfseries Is\+Right}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns whether the instance has its right side set. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a465b73be5913f40c71896035e4a88c22}\label{class_gds_1_1_utils_1_1_either-2-g_a465b73be5913f40c71896035e4a88c22} 
+TL {\bfseries Left}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Can be used to retrieve the Left side object. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a1af75cddaaea6307d31bc2a26df148e9}\label{class_gds_1_1_utils_1_1_either-2-g_a1af75cddaaea6307d31bc2a26df148e9} 
+TR {\bfseries Right}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Can be used to retrieve the Right side object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represent a Pair type that can only have one of its variables set. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TL} & The possible type of the Left side\\
+\hline
+{\em TR} & The possible type of the Right side\\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a65ecd6a453f58a7eee5b22c1ed86ff3a}\index{Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}!Either@{Either}}
+\index{Either@{Either}!Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}}
+\doxysubsubsection{\texorpdfstring{Either()}{Either()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_utils_1_1_either-2-g_a65ecd6a453f58a7eee5b22c1ed86ff3a} 
+Gds.\+Utils.\+Either$<$ TL, TR $>$.Either (\begin{DoxyParamCaption}\item[{TL}]{left}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new Either object with the left side specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a35aee3ba88f3bd606906befa642c04e6}\index{Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}!Either@{Either}}
+\index{Either@{Either}!Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}}
+\doxysubsubsection{\texorpdfstring{Either()}{Either()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_utils_1_1_either-2-g_a35aee3ba88f3bd606906befa642c04e6} 
+Gds.\+Utils.\+Either$<$ TL, TR $>$.Either (\begin{DoxyParamCaption}\item[{TR}]{right}{}\end{DoxyParamCaption})}
+
+
+
+/// Constructs a new Either object with the right side specified 
+
+
+\begin{DoxyParams}{Parameters}
+{\em right} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a6abc975a667ac98d88d20a0147e18923}\index{Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}!operator Either$<$ TL, TR $>$@{operator Either$<$ TL, TR $>$}}
+\index{operator Either$<$ TL, TR $>$@{operator Either$<$ TL, TR $>$}!Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}}
+\doxysubsubsection{\texorpdfstring{operator Either$<$ TL, TR $>$()}{operator Either< TL, TR >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_utils_1_1_either-2-g_a6abc975a667ac98d88d20a0147e18923} 
+implicit Gds.\+Utils.\+Either$<$ TL, TR $>$.operator \mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a65ecd6a453f58a7eee5b22c1ed86ff3a}{Either}}$<$ TL, TR $>$ (\begin{DoxyParamCaption}\item[{TL}]{left}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+implicitly creates an instance using a left value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & The object to be wrapped\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a0363584ed57c00af67f4026ca3bca5f5}\index{Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}!operator Either$<$ TL, TR $>$@{operator Either$<$ TL, TR $>$}}
+\index{operator Either$<$ TL, TR $>$@{operator Either$<$ TL, TR $>$}!Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}}
+\doxysubsubsection{\texorpdfstring{operator Either$<$ TL, TR $>$()}{operator Either< TL, TR >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_utils_1_1_either-2-g_a0363584ed57c00af67f4026ca3bca5f5} 
+implicit Gds.\+Utils.\+Either$<$ TL, TR $>$.operator \mbox{\hyperlink{class_gds_1_1_utils_1_1_either-2-g_a65ecd6a453f58a7eee5b22c1ed86ff3a}{Either}}$<$ TL, TR $>$ (\begin{DoxyParamCaption}\item[{TR}]{right}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+implicitly creates an instance using a right value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em right} & The object to be wrapped\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gds_1_1_utils_1_1_either-2-g_a651c3707a7ae78614d806c38359c4ebd}\index{Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}!ToString@{ToString}}
+\index{ToString@{ToString}!Gds.Utils.Either$<$ TL, TR $>$@{Gds.Utils.Either$<$ TL, TR $>$}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_utils_1_1_either-2-g_a651c3707a7ae78614d806c38359c4ebd} 
+override string Gds.\+Utils.\+Either$<$ TL, TR $>$.To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the string representation based on which side is set. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Utils/Either.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,78 @@
+\doxysection{Gds.\+Messages.\+Data.\+Query\+Context\+Descriptor Class Reference}
+\hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}\index{Gds.Messages.Data.QueryContextDescriptor@{Gds.Messages.Data.QueryContextDescriptor}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ab31014473719104f34e860188513b037}{Query\+Context\+Descriptor}} (string id, string query, long delivered\+Number\+Of\+Hits, long query\+Start\+Time, string consistency\+Type, string last\+Bucket\+Id, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_g_d_s_descriptor}{GDSDescriptor}} gds\+Descriptor, List$<$ object $>$ field\+Values, List$<$ string $>$ partition\+Names)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a1de42b3b59803992e72e663db6a78e64}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a1de42b3b59803992e72e663db6a78e64} 
+string {\bfseries Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Uniquely identifies the query within the entire system. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ae8793e87bc431e9bbf3622cd9145ab07}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ae8793e87bc431e9bbf3622cd9145ab07} 
+string {\bfseries Query}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The original SELECT query sent by the user. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a1cb6cf0753901fb914c4d9c0e7aa1b60}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a1cb6cf0753901fb914c4d9c0e7aa1b60} 
+long {\bfseries Delivered\+Number\+Of\+Hits}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This many records have been forwarded yet to the requester client. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a288a0a13637695dd977b949c5659ef4b}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a288a0a13637695dd977b949c5659ef4b} 
+long {\bfseries Query\+Start\+Time}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A millisecond based epoch timestamp which is important at NONE consistency. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_afd66305ded1f189dc953252fa8a876a9}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_afd66305ded1f189dc953252fa8a876a9} 
+string {\bfseries Consistency\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The consistency type. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a1fc863f499a15c019469878968e30674}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a1fc863f499a15c019469878968e30674} 
+string {\bfseries Last\+Bucket\+Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The bucket id of the last record sent in the page. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ade77ea18612885e4a475d2da9ec4bd40}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ade77ea18612885e4a475d2da9ec4bd40} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_g_d_s_descriptor}{GDSDescriptor}} {\bfseries Gds\+Descriptor}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The descriptor of the GDS Node serving the request. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a60252cb5a9bff684dc99e8b4269f4cba}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a60252cb5a9bff684dc99e8b4269f4cba} 
+List$<$ object $>$ {\bfseries Field\+Values}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The field values (included in the sorting condition) of the last record sent in the page. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a304d023c5d13fe28899da363e8cc52b5}\label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_a304d023c5d13fe28899da363e8cc52b5} 
+List$<$ string $>$ {\bfseries Partition\+Names}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The GDS has not sent data from these partitions yet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ab31014473719104f34e860188513b037}\index{Gds.Messages.Data.QueryContextDescriptor@{Gds.Messages.Data.QueryContextDescriptor}!QueryContextDescriptor@{QueryContextDescriptor}}
+\index{QueryContextDescriptor@{QueryContextDescriptor}!Gds.Messages.Data.QueryContextDescriptor@{Gds.Messages.Data.QueryContextDescriptor}}
+\doxysubsubsection{\texorpdfstring{QueryContextDescriptor()}{QueryContextDescriptor()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor_ab31014473719104f34e860188513b037} 
+Gds.\+Messages.\+Data.\+Query\+Context\+Descriptor.\+Query\+Context\+Descriptor (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{query}{, }\item[{long}]{delivered\+Number\+Of\+Hits}{, }\item[{long}]{query\+Start\+Time}{, }\item[{string}]{consistency\+Type}{, }\item[{string}]{last\+Bucket\+Id}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_g_d_s_descriptor}{GDSDescriptor}}}]{gds\+Descriptor}{, }\item[{List$<$ object $>$}]{field\+Values}{, }\item[{List$<$ string $>$}]{partition\+Names}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Uniquely identifies the query within the entire system.\\
+\hline
+{\em query} & The original SELECT query sent by the user.\\
+\hline
+{\em delivered\+Number\+Of\+Hits} & This many records have been forwarded yet to the requester client.\\
+\hline
+{\em query\+Start\+Time} & A millisecond based epoch timestamp which is important at NONE consistency.\\
+\hline
+{\em consistency\+Type} & The consistency type.\\
+\hline
+{\em last\+Bucket\+Id} & The bucket id of the last record sent in the page.\\
+\hline
+{\em gds\+Descriptor} & The descriptor of the GDS Node serving the request.\\
+\hline
+{\em field\+Values} & The field values (included in the sorting condition) of the last record sent in the page.\\
+\hline
+{\em partition\+Names} & The GDS has not sent data from these partitions yet.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Messages/\+Data/Query\+Request\+Ack\+Data.\+cs\end{DoxyCompactItemize}

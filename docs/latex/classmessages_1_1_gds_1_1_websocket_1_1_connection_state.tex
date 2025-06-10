@@ -1,0 +1,70 @@
+\doxysection{messages.\+Gds.\+Websocket.\+Connection\+State Class Reference}
+\hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state}{}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state}\index{messages.Gds.Websocket.ConnectionState@{messages.Gds.Websocket.ConnectionState}}
+
+
+Class holding possible state values. This is a class instead of an enum to make the values useable with Interlocked.\+Compare\+Exchange(..)  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a903c50a6548291b8b6e78d4208809b57}{As\+Text}} (int value)
+\begin{DoxyCompactList}\small\item\em Returns a text representation for the given value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a5fa085f5d73b7f52bbb0a672aa95dc94}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a5fa085f5d73b7f52bbb0a672aa95dc94} 
+const int {\bfseries NOT\+\_\+\+CONNECTED} = 0
+\begin{DoxyCompactList}\small\item\em The client is instantiated but connect() was not yet called. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a408de8f5417ca298847d93322ffaf6c4}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a408de8f5417ca298847d93322ffaf6c4} 
+const int {\bfseries INITIALIZING} = 1
+\begin{DoxyCompactList}\small\item\em The connect() method was called on the client, the underlying channels are being created. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a1aa93b6383c20e5a5319087524f45b92}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a1aa93b6383c20e5a5319087524f45b92} 
+const int {\bfseries CONNECTING} = 2
+\begin{DoxyCompactList}\small\item\em Channels successfully initialized, trying to establish the TCP/\+Web\+Socket Connection. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a49cbfc24830a2488a3c5a2be9e3a59da}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a49cbfc24830a2488a3c5a2be9e3a59da} 
+const int {\bfseries CONNECTED} = 3
+\begin{DoxyCompactList}\small\item\em The Web\+Socket connection (and TLS) is successfully established. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a2b8650d43e60273effd030351635a5c9}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a2b8650d43e60273effd030351635a5c9} 
+const int {\bfseries LOGGING\+\_\+\+IN} = 4
+\begin{DoxyCompactList}\small\item\em The login message was successfully sent to the GDS. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a494bfdbde93a70677b2ba8d90bff2649}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a494bfdbde93a70677b2ba8d90bff2649} 
+const int {\bfseries LOGGED\+\_\+\+IN} = 5
+\begin{DoxyCompactList}\small\item\em The login was successful. Client is ready to use. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a8d4ee66c7a7be0f7dd0b36acc89ba5b9}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a8d4ee66c7a7be0f7dd0b36acc89ba5b9} 
+const int {\bfseries DISCONNECTED} = 6
+\begin{DoxyCompactList}\small\item\em The connection was closed after a successful login (from either the client or the GDS side). \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a471ebf764ee30b86f60b903abf705cb2}\label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a471ebf764ee30b86f60b903abf705cb2} 
+const int {\bfseries FAILED} = 7
+\begin{DoxyCompactList}\small\item\em Error happened during the initialization of the client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class holding possible state values. This is a class instead of an enum to make the values useable with Interlocked.\+Compare\+Exchange(..) 
+
+\label{doc-func-members}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a903c50a6548291b8b6e78d4208809b57}\index{messages.Gds.Websocket.ConnectionState@{messages.Gds.Websocket.ConnectionState}!AsText@{AsText}}
+\index{AsText@{AsText}!messages.Gds.Websocket.ConnectionState@{messages.Gds.Websocket.ConnectionState}}
+\doxysubsubsection{\texorpdfstring{AsText()}{AsText()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_connection_state_a903c50a6548291b8b6e78d4208809b57} 
+string messages.\+Gds.\+Websocket.\+Connection\+State.\+As\+Text (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a text representation for the given value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The status code\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string version of it
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Websocket/Connection\+State.\+cs\end{DoxyCompactItemize}

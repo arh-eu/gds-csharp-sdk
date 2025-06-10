@@ -1,0 +1,395 @@
+\doxysection{messages.\+Gds.\+Websocket.\+Async\+GDSClient Class Reference}
+\hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client}{}\label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+
+
+A client class that can be used to communicate with a GDS instance by Web\+Socket connection. The class is thread-\/safe, meaning can be used from multiple threads to send messages (still only uses one listener).  
+
+
+Inheritance diagram for messages.\+Gds.\+Websocket.\+Async\+GDSClient\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_1_1_async_g_d_s_client_builder}{Async\+GDSClient\+Builder}}
+\begin{DoxyCompactList}\small\item\em Builder class used to make instantation of the client easier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_ae382f5cbf5cee8b52de47f962f2046c4}{Async\+GDSClient}} (\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}{IGDSMessage\+Listener}} listener, string uri, string user\+Name, Secure\+String user\+Password, int timeout, X509\+Certificate2 cert, ILog log, int Ping\+Pong\+Interval)
+\begin{DoxyCompactList}\small\item\em Creates a new Client instance with the specified parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a5a9647259c4d70fc39de21faa254a0bd}{Async\+GDSClient}} (\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}{IGDSMessage\+Listener}} listener, string uri, string user\+Name, Secure\+String user\+Password, int timeout, X509\+Certificate2 cert, ILog log, int Ping\+Pong\+Interval, bool serve\+On\+The\+Same\+Connection)
+\begin{DoxyCompactList}\small\item\em Creates a new Client instance with the specified parameters. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_aec28122e597dda60eacfe434a5ef538f}\label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_aec28122e597dda60eacfe434a5ef538f} 
+void {\bfseries Dispose} ()
+\begin{DoxyCompactList}\small\item\em Closes the connection towards the GDS, releasing any network resources still held. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a6f60ddcb755bdc678d9116daf6e2350f}\label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a6f60ddcb755bdc678d9116daf6e2350f} 
+void {\bfseries Close} ()
+\begin{DoxyCompactList}\small\item\em Used to close the underlying Web\+Socket connection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a05ee59d26b59dc3a28dad1c3f6927d32}{Send\+Event2}} (string operations\+String\+Block, Dictionary$<$ string, byte\mbox{[}$\,$\mbox{]}$>$ binary\+Contents\+Mapping=null, List$<$ List$<$ Dictionary$<$ int, bool $>$ $>$ $>$ execution\+Priority\+Structure=null, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an event message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a7ecd68960687034495e01f38a8e448ed}{Send\+Attachment\+Request4}} (string request, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an Attachment Request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a7bf6fbbfeb6010f85a4269f738dd2305}{Send\+Attachment\+Request\+ACK5}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_type_data}{Attachment\+Request\+Ack\+Type\+Data}} ack\+Data, string exception=null, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an Attachment Request ACK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a3a49b86709a6a5a546891349e1f53c36}{Send\+Attachment\+Response6}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_result}{Attachment\+Result}} result, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an Attachment Response. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a0edab5f09ec5cb051b388475e16dcaa9}{Send\+Attachment\+Response\+Ack7}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_type_data}{Attachment\+Response\+Ack\+Type\+Data}} ack\+Data, string exception=null, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an Attachment Response ACK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a27d65dda05d3ee7cd5245ae356b52a0a}{Send\+Event\+Document8}} (string table\+Name, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ field\+Descriptors, List$<$ List$<$ object $>$ $>$ records, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an Event Document. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_ad6ca6e886d630a68ec93bf0a954ecf6e}{Send\+Event\+Document\+Ack9}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack_result}{Event\+Document\+Ack\+Result}} $>$ ack\+Data, string exception=null, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends an Event Document ACK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a6ef3f1339a68e4b57101559972484f69}{Send\+Query\+Request10}} (string select\+String\+Block, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_ae7e788a39c3a0bc9e39ff1a27751f828}{Consistency\+Type}} consistency\+Type, long? timeout=null, int? query\+Page\+Size=null, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a47c69287595c8c6a2920f5ef87566c67}{Query\+Type}}? query\+Type=null, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends a Query Request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_aebc3e92668b148bcbde582cbb46180a4}{Send\+Next\+Query\+Page\+Request12}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}} query\+Context\+Descriptor, long timeout, string message\+ID=null, \mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header=null)
+\begin{DoxyCompactList}\small\item\em Sends a Next Query Page Request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a1eb12cfe21a3ff56436fc842c5aaa3cd}{Send\+Message}} (\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}} header, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_message_data}{Message\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Sends a message to the GDS the client is currently connected to. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Operation\+Exception} & If the client state is invalid (ie. sending messages before the connection is ready) or if the header and data types mismatch\\
+\hline
+\end{DoxyExceptions}
+\end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a725db90d3aaa9b05457ef2edefb10681}\label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a725db90d3aaa9b05457ef2edefb10681} 
+void {\bfseries Connect} ()
+\begin{DoxyCompactList}\small\item\em Connects to the GDS instance using the values specified in the constructor. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Operation\+Exception} & If the client state is invalid (ie. was already used)\\
+\hline
+\end{DoxyExceptions}
+\end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_1_1_async_g_d_s_client_builder}{Async\+GDSClient\+Builder}} \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a106313909577d3b8d260330b46139beb}{Get\+Builder}} ()
+\begin{DoxyCompactList}\small\item\em Returns a Builder instance that can be used to customize the parameters more easily. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a04bb9afbb8c831c99a114129ec1e4941}\label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a04bb9afbb8c831c99a114129ec1e4941} 
+int {\bfseries State}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Used to check the current state of the client. See \doxylink{classmessages_1_1_gds_1_1_websocket_1_1_connection_state}{Connection\+State} for possible values. \end{DoxyCompactList}\item 
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a9f6e57ee3611b1f23ede139812ec0e19}\label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a9f6e57ee3611b1f23ede139812ec0e19} 
+bool {\bfseries Is\+Connected}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Used to check whether the client is already connected to the GDS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A client class that can be used to communicate with a GDS instance by Web\+Socket connection. The class is thread-\/safe, meaning can be used from multiple threads to send messages (still only uses one listener). 
+
+\label{doc-constructors}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_ae382f5cbf5cee8b52de47f962f2046c4}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!AsyncGDSClient@{AsyncGDSClient}}
+\index{AsyncGDSClient@{AsyncGDSClient}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{AsyncGDSClient()}{AsyncGDSClient()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_ae382f5cbf5cee8b52de47f962f2046c4} 
+messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Async\+GDSClient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}{IGDSMessage\+Listener}}}]{listener}{, }\item[{string}]{uri}{, }\item[{string}]{user\+Name}{, }\item[{Secure\+String}]{user\+Password}{, }\item[{int}]{timeout}{, }\item[{X509\+Certificate2}]{cert}{, }\item[{ILog}]{log}{, }\item[{int}]{Ping\+Pong\+Interval}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new Client instance with the specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & The Listener used for callbacks\\
+\hline
+{\em uri} & The URI of the GDS instance\\
+\hline
+{\em user\+Name} & The username used for communication. Cannot be null or empty\\
+\hline
+{\em user\+Password} & The password used for password authentication. Null otherwise\\
+\hline
+{\em timeout} & Timeout used for the connection establishment. Value most be strictly positive\\
+\hline
+{\em cert} & The certificate used for TLS authentication\\
+\hline
+{\em log} & The log used by the client.\\
+\hline
+{\em Ping\+Pong\+Interval} & The interval used to send automatic ping-\/pong in seconds\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a5a9647259c4d70fc39de21faa254a0bd}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!AsyncGDSClient@{AsyncGDSClient}}
+\index{AsyncGDSClient@{AsyncGDSClient}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{AsyncGDSClient()}{AsyncGDSClient()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a5a9647259c4d70fc39de21faa254a0bd} 
+messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Async\+GDSClient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}{IGDSMessage\+Listener}}}]{listener}{, }\item[{string}]{uri}{, }\item[{string}]{user\+Name}{, }\item[{Secure\+String}]{user\+Password}{, }\item[{int}]{timeout}{, }\item[{X509\+Certificate2}]{cert}{, }\item[{ILog}]{log}{, }\item[{int}]{Ping\+Pong\+Interval}{, }\item[{bool}]{serve\+On\+The\+Same\+Connection}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new Client instance with the specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & The Listener used for callbacks\\
+\hline
+{\em uri} & The URI of the GDS instance\\
+\hline
+{\em user\+Name} & The username used for communication. Cannot be null or empty\\
+\hline
+{\em user\+Password} & The password used for password authentication. Null otherwise\\
+\hline
+{\em timeout} & Timeout used for the connection establishment. Value most be strictly positive\\
+\hline
+{\em cert} & The certificate used for TLS authentication\\
+\hline
+{\em log} & The log used by the client.\\
+\hline
+{\em Ping\+Pong\+Interval} & The interval used to send automatic ping-\/pong in seconds\\
+\hline
+{\em serve\+On\+The\+Same\+Connection} & Specifies whether the replies should be sent on the same connection as this.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a106313909577d3b8d260330b46139beb}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!GetBuilder@{GetBuilder}}
+\index{GetBuilder@{GetBuilder}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{GetBuilder()}{GetBuilder()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a106313909577d3b8d260330b46139beb} 
+\mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_1_1_async_g_d_s_client_builder}{Async\+GDSClient\+Builder}} messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Get\+Builder (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a Builder instance that can be used to customize the parameters more easily. 
+
+\begin{DoxyReturn}{Returns}
+The new Builder instance
+\end{DoxyReturn}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a7ecd68960687034495e01f38a8e448ed}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendAttachmentRequest4@{SendAttachmentRequest4}}
+\index{SendAttachmentRequest4@{SendAttachmentRequest4}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendAttachmentRequest4()}{SendAttachmentRequest4()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a7ecd68960687034495e01f38a8e448ed} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Attachment\+Request4 (\begin{DoxyParamCaption}\item[{string}]{request}{, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an Attachment Request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a7bf6fbbfeb6010f85a4269f738dd2305}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendAttachmentRequestACK5@{SendAttachmentRequestACK5}}
+\index{SendAttachmentRequestACK5@{SendAttachmentRequestACK5}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendAttachmentRequestACK5()}{SendAttachmentRequestACK5()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a7bf6fbbfeb6010f85a4269f738dd2305} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Attachment\+Request\+ACK5 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_request_ack_type_data}{Attachment\+Request\+Ack\+Type\+Data}}}]{ack\+Data}{, }\item[{string}]{exception}{ = {\ttfamily null}, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an Attachment Request ACK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status code\\
+\hline
+{\em ack\+Data} & The ack data for the request\\
+\hline
+{\em exception} & The global exception\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a3a49b86709a6a5a546891349e1f53c36}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendAttachmentResponse6@{SendAttachmentResponse6}}
+\index{SendAttachmentResponse6@{SendAttachmentResponse6}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendAttachmentResponse6()}{SendAttachmentResponse6()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a3a49b86709a6a5a546891349e1f53c36} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Attachment\+Response6 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_result}{Attachment\+Result}}}]{result}{, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an Attachment Response. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & The result of the attachment\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a0edab5f09ec5cb051b388475e16dcaa9}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendAttachmentResponseAck7@{SendAttachmentResponseAck7}}
+\index{SendAttachmentResponseAck7@{SendAttachmentResponseAck7}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendAttachmentResponseAck7()}{SendAttachmentResponseAck7()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a0edab5f09ec5cb051b388475e16dcaa9} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Attachment\+Response\+Ack7 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_attachment_response_ack_type_data}{Attachment\+Response\+Ack\+Type\+Data}}}]{ack\+Data}{, }\item[{string}]{exception}{ = {\ttfamily null}, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an Attachment Response ACK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status code\\
+\hline
+{\em ack\+Data} & The ack data for the request\\
+\hline
+{\em exception} & The global exception\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a05ee59d26b59dc3a28dad1c3f6927d32}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendEvent2@{SendEvent2}}
+\index{SendEvent2@{SendEvent2}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendEvent2()}{SendEvent2()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a05ee59d26b59dc3a28dad1c3f6927d32} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Event2 (\begin{DoxyParamCaption}\item[{string}]{operations\+String\+Block}{, }\item[{Dictionary$<$ string, byte\mbox{[}$\,$\mbox{]}$>$}]{binary\+Contents\+Mapping}{ = {\ttfamily null}, }\item[{List$<$ List$<$ Dictionary$<$ int, bool $>$ $>$ $>$}]{execution\+Priority\+Structure}{ = {\ttfamily null}, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an event message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operations\+String\+Block} & The operations in standard SQL statements, separated with \textquotesingle{};\textquotesingle{} characters.\\
+\hline
+{\em binary\+Contents\+Mapping} & The mapping of the binary contents.\\
+\hline
+{\em execution\+Priority\+Structure} & The execution priority structure.\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created \doxylink{class_gds_1_1_messages_1_1_data_1_1_event_data}{Event\+Data} object.
+\end{DoxyReturn}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a27d65dda05d3ee7cd5245ae356b52a0a}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendEventDocument8@{SendEventDocument8}}
+\index{SendEventDocument8@{SendEventDocument8}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendEventDocument8()}{SendEventDocument8()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a27d65dda05d3ee7cd5245ae356b52a0a} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Event\+Document8 (\begin{DoxyParamCaption}\item[{string}]{table\+Name}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$}]{field\+Descriptors}{, }\item[{List$<$ List$<$ object $>$ $>$}]{records}{, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an Event Document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & The name of the table\\
+\hline
+{\em field\+Descriptors} & The field descriptors\\
+\hline
+{\em records} & The records\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_ad6ca6e886d630a68ec93bf0a954ecf6e}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendEventDocumentAck9@{SendEventDocumentAck9}}
+\index{SendEventDocumentAck9@{SendEventDocumentAck9}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendEventDocumentAck9()}{SendEventDocumentAck9()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_ad6ca6e886d630a68ec93bf0a954ecf6e} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Event\+Document\+Ack9 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_event_document_ack_result}{Event\+Document\+Ack\+Result}} $>$}]{ack\+Data}{, }\item[{string}]{exception}{ = {\ttfamily null}, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends an Event Document ACK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status code\\
+\hline
+{\em ack\+Data} & The ack data for the request\\
+\hline
+{\em exception} & The global exception\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a1eb12cfe21a3ff56436fc842c5aaa3cd}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a1eb12cfe21a3ff56436fc842c5aaa3cd} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_message_data}{Message\+Data}}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Sends a message to the GDS the client is currently connected to. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Operation\+Exception} & If the client state is invalid (ie. sending messages before the connection is ready) or if the header and data types mismatch\\
+\hline
+\end{DoxyExceptions}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_aebc3e92668b148bcbde582cbb46180a4}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendNextQueryPageRequest12@{SendNextQueryPageRequest12}}
+\index{SendNextQueryPageRequest12@{SendNextQueryPageRequest12}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendNextQueryPageRequest12()}{SendNextQueryPageRequest12()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_aebc3e92668b148bcbde582cbb46180a4} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Next\+Query\+Page\+Request12 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}}}]{query\+Context\+Descriptor}{, }\item[{long}]{timeout}{, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends a Next Query Page Request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\+Context\+Descriptor} & Query status descriptor for querying the next pages.\\
+\hline
+{\em timeout} & The timeout value in milliseconds.\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a6ef3f1339a68e4b57101559972484f69}\index{messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}!SendQueryRequest10@{SendQueryRequest10}}
+\index{SendQueryRequest10@{SendQueryRequest10}!messages.Gds.Websocket.AsyncGDSClient@{messages.Gds.Websocket.AsyncGDSClient}}
+\doxysubsubsection{\texorpdfstring{SendQueryRequest10()}{SendQueryRequest10()}}
+{\footnotesize\ttfamily \label{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client_a6ef3f1339a68e4b57101559972484f69} 
+void messages.\+Gds.\+Websocket.\+Async\+GDSClient.\+Send\+Query\+Request10 (\begin{DoxyParamCaption}\item[{string}]{select\+String\+Block}{, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_ae7e788a39c3a0bc9e39ff1a27751f828}{Consistency\+Type}}}]{consistency\+Type}{, }\item[{long?}]{timeout}{ = {\ttfamily null}, }\item[{int?}]{query\+Page\+Size}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a47c69287595c8c6a2920f5ef87566c67}{Query\+Type}}?}]{query\+Type}{ = {\ttfamily null}, }\item[{string}]{message\+ID}{ = {\ttfamily null}, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header}}}]{header}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Sends a Query Request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em select\+String\+Block} & The SELECT statement.\\
+\hline
+{\em consistency\+Type} & The consistency type used for the query.\\
+\hline
+{\em timeout} & The timeout value in milliseconds.\\
+\hline
+{\em query\+Page\+Size} & The number of records per page.\\
+\hline
+{\em query\+Type} & The query type\\
+\hline
+{\em message\+ID} & The message\+ID to be used. If not present, random one will be generated.\\
+\hline
+{\em header} & The header to be used in the message. If not present, default one will be generated.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Websocket/Async\+GDSClient.\+cs\end{DoxyCompactItemize}

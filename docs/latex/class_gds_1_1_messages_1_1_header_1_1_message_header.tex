@@ -1,0 +1,91 @@
+\doxysection{Gds.\+Messages.\+Header.\+Message\+Header Class Reference}
+\hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header}{}\label{class_gds_1_1_messages_1_1_header_1_1_message_header}\index{Gds.Messages.Header.MessageHeader@{Gds.Messages.Header.MessageHeader}}
+
+
+The \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_header_1_1_message_header_aa6c8c0473e74c13ff16dea5f457eeaa0}{Message\+Header}} (string user\+Name, string message\+Id, long create\+Time, long request\+Time, bool is\+Fragmented, bool? first\+Fragment, bool? last\+Fragment, int? offset, int? full\+Data\+Size, \mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}} data\+Type)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a1eadb99c0438485767c914488212e03d}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a1eadb99c0438485767c914488212e03d} 
+string {\bfseries User\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The name of the user. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a29f665f89b1dc530590dde4cee2d1136}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a29f665f89b1dc530590dde4cee2d1136} 
+string {\bfseries Message\+Id}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The identifier of the message, with which the request can be associated. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_ae008924dfd5b26720c2ceb8bd2123d7d}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_ae008924dfd5b26720c2ceb8bd2123d7d} 
+long {\bfseries Create\+Time}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The time of creating the message, epoch timestamp. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a7f9b68914e397c0f3714de8816f0efca}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a7f9b68914e397c0f3714de8816f0efca} 
+long {\bfseries Request\+Time}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The time of the request, epoch timestamp. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a52c1dea8ac110a2787e3c0dc39e5d3e2}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a52c1dea8ac110a2787e3c0dc39e5d3e2} 
+bool {\bfseries Is\+Fragmented}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether the current message is fragmented or not. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_ad6a958e42adadff007a4a8b9263c6c94}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_ad6a958e42adadff007a4a8b9263c6c94} 
+bool? {\bfseries First\+Fragment}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether it\textquotesingle{}s the first fragment of a fragmented message. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a1bf4047e3ac7c8dc3d7e2caf31731c02}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a1bf4047e3ac7c8dc3d7e2caf31731c02} 
+bool? {\bfseries Last\+Fragment}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether it\textquotesingle{}s the last fragment of a fragmented message. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a4231eefdada8eadd56b979d18f8248ff}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a4231eefdada8eadd56b979d18f8248ff} 
+int? {\bfseries Offset}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The last byte of the original, fragmented message the receiver has yet received or the last byte of the original message that has yet been forwarded. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a6116e452a53738889d40d17784ac7c2e}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a6116e452a53738889d40d17784ac7c2e} 
+int? {\bfseries Full\+Data\+Size}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The size of the full data in bytes. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_a63f61707faba7ef6d2857fa8eaad0da5}\label{class_gds_1_1_messages_1_1_header_1_1_message_header_a63f61707faba7ef6d2857fa8eaad0da5} 
+\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}} {\bfseries Data\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em It specifies what types of information the data carries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{namespace_gds_1_1_messages_1_1_header}{Header} part of the \doxylink{class_gds_1_1_messages_1_1_message}{Message}. 
+
+\label{doc-constructors}
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gds_1_1_messages_1_1_header_1_1_message_header_aa6c8c0473e74c13ff16dea5f457eeaa0}\index{Gds.Messages.Header.MessageHeader@{Gds.Messages.Header.MessageHeader}!MessageHeader@{MessageHeader}}
+\index{MessageHeader@{MessageHeader}!Gds.Messages.Header.MessageHeader@{Gds.Messages.Header.MessageHeader}}
+\doxysubsubsection{\texorpdfstring{MessageHeader()}{MessageHeader()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_header_1_1_message_header_aa6c8c0473e74c13ff16dea5f457eeaa0} 
+Gds.\+Messages.\+Header.\+Message\+Header.\+Message\+Header (\begin{DoxyParamCaption}\item[{string}]{user\+Name}{, }\item[{string}]{message\+Id}{, }\item[{long}]{create\+Time}{, }\item[{long}]{request\+Time}{, }\item[{bool}]{is\+Fragmented}{, }\item[{bool?}]{first\+Fragment}{, }\item[{bool?}]{last\+Fragment}{, }\item[{int?}]{offset}{, }\item[{int?}]{full\+Data\+Size}{, }\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a317c5ed16bcae9503475951baef35526}{Data\+Type}}}]{data\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_header_1_1_message_header}{Message\+Header} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Name} & The name of the user.\\
+\hline
+{\em message\+Id} & The identifier of the message, with which the request can be associated.\\
+\hline
+{\em create\+Time} & The time of creating the message, epoch timestamp.\\
+\hline
+{\em request\+Time} & The time of the request, epoch timestamp.\\
+\hline
+{\em is\+Fragmented} & Whether the current message is fragmented or not.\\
+\hline
+{\em first\+Fragment} & Whether it\textquotesingle{}s the first fragment of a fragmented message.\\
+\hline
+{\em last\+Fragment} & Whether it\textquotesingle{}s the last fragment of a fragmented message.\\
+\hline
+{\em offset} & The last byte of the original, fragmented message the receiver has yet received or the last byte of the original message that has yet been forwarded.\\
+\hline
+{\em full\+Data\+Size} & The size of the full data in bytes.\\
+\hline
+{\em data\+Type} & It specifies what types of information the data carries.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Messages/\+Header/Message\+Header.\+cs\end{DoxyCompactItemize}

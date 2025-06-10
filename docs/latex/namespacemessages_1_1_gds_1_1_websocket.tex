@@ -1,0 +1,11 @@
+\doxysection{messages.\+Gds.\+Websocket Namespace Reference}
+\hypertarget{namespacemessages_1_1_gds_1_1_websocket}{}\label{namespacemessages_1_1_gds_1_1_websocket}\index{messages.Gds.Websocket@{messages.Gds.Websocket}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_async_g_d_s_client}{Async\+GDSClient}}
+\begin{DoxyCompactList}\small\item\em A client class that can be used to communicate with a GDS instance by Web\+Socket connection. The class is thread-\/safe, meaning can be used from multiple threads to send messages (still only uses one listener). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_connection_state}{Connection\+State}}
+\begin{DoxyCompactList}\small\item\em Class holding possible state values. This is a class instead of an enum to make the values useable with Interlocked.\+Compare\+Exchange(..) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classmessages_1_1_gds_1_1_websocket_1_1_i_g_d_s_message_listener}{IGDSMessage\+Listener}}
+\begin{DoxyCompactList}\small\item\em Abstract class used as a Message Listener (callback) for the GDS communication. The methods are not mandatory to be overwritten, but if they are called (that kind of message is received) without an implementation in the subclass most of them will throw a Not\+Implemented\+Exception. \end{DoxyCompactList}\end{DoxyCompactItemize}

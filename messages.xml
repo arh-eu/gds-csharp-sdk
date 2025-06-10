@@ -1508,70 +1508,8 @@
             <typeparam name="T">type of the object</typeparam>
             <param name="o">The object to be checked</param>
             <param name="message">Error message on null value</param>
+            <exception cref="T:System.ArgumentNullException">If the specified object is null</exception>
             <returns>The object specified</returns>
-        </member>
-        <member name="T:Gds.Websocket.WebSocketClient">
-            <summary>
-            Simple websocket class with basic functionality for sending and receiving messages.
-            </summary>
-            
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Gds.Websocket.WebSocketClient"/> class
-            </summary>
-            <param name="uri">websocket server uri</param>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.ConnectAsync">
-            <summary>
-            Connect to the server (specified by the uri) asynchronously
-            </summary>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.ConnectSync">
-            <summary>
-            Connect to the server (specified by the uri) synchronously
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.IsConnected">
-            <summary>
-            Whether the client is connected
-            </summary>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.CloseAsync">
-            <summary>
-            Close the connection asynchronously
-            </summary>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.CloseSync">
-            <summary>
-            Close the connection synchronously
-            </summary>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.IsClosed">
-            <summary>
-            Whether the connection is closed
-            </summary>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.GetState">
-            <summary>
-            Get the client state
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.SendAsync(System.Byte[])">
-            <summary>
-            Send a message to the server asynchronously
-            </summary>
-            <param name="message">The message to be send</param>
-        </member>
-        <member name="M:Gds.Websocket.WebSocketClient.SendSync(System.Byte[],System.Int32)">
-            <summary>
-            Send a message to the server synchronously
-            </summary>
-            <param name="message">The message to be send</param>
-            <param name="timeout">The timeout value in milliseconds</param>
-            <returns></returns>
         </member>
         <member name="T:messages.Gds.Websocket.AsyncGDSClient">
             <summary>
@@ -1580,6 +1518,19 @@
             </summary>
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.#ctor(messages.Gds.Websocket.IGDSMessageListener,System.String,System.String,System.Security.SecureString,System.Int32,System.Security.Cryptography.X509Certificates.X509Certificate2,log4net.ILog,System.Int32)">
+            <summary>
+            Creates a new Client instance with the specified parameters.
+            </summary>
+            <param name="listener">The Listener used for callbacks</param>
+            <param name="uri">The URI of the GDS instance</param>
+            <param name="userName">The username used for communication. Cannot be null or empty</param>
+            <param name="userPassword">The password used for password authentication. Null otherwise</param>
+            <param name="timeout">Timeout used for the connection establishment. Value most be strictly positive</param>
+            <param name="cert">The certificate used for TLS authentication</param>
+            <param name="log">The log used by the client.</param>
+            <param name="PingPongInterval">The interval used to send automatic ping-pong in seconds</param>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.#ctor(messages.Gds.Websocket.IGDSMessageListener,System.String,System.String,System.Security.SecureString,System.Int32,System.Security.Cryptography.X509Certificates.X509Certificate2,log4net.ILog,System.Int32,System.Boolean)">
             <summary>
             Creates a new Client instance with the specified parameters
             </summary>
@@ -1591,10 +1542,11 @@
             <param name="cert">The certificate used for TLS authentication</param>
             <param name="log">The log used by the client.</param>
             <param name="PingPongInterval">The interval used to send automatic ping-pong in seconds</param>
+            <param name="serveOnTheSameConnection">Specifies whether the replies should be sent on the same connection as this.</param>
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.Finalize">
             <summary>
-            disposes the countdown if it was still present and closes the connection if it was still open.
+            Disposes the countdown if it was still present and closes the connection if it was still open.
             </summary>
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.Dispose">
@@ -1619,7 +1571,7 @@
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.SendEvent2(System.String,System.Collections.Generic.Dictionary{System.String,System.Byte[]},System.Collections.Generic.List{System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.Int32,System.Boolean}}},System.String,Gds.Messages.Header.MessageHeader)">
             <summary>
-            Sends an event message
+            Sends an event message.
             </summary>
             <param name="operationsStringBlock">The operations in standard SQL statements, separated with ';' characters.</param>
             <param name="binaryContentsMapping">The mapping of the binary contents.</param>
@@ -1783,6 +1735,16 @@
             Sets the ping-poing interval for the builder to be used when instantiating the client (used to keep the connection alive)
             </summary>
             <param name="value">The interval used to send automatic ping-pong in seconds</param>
+            <returns>itself</returns>
+        </member>
+        <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithServeOnTheSameConnection(System.Boolean)">
+            <summary>
+            Sets whether the GDS should send its replies on the same connection as the original login was sent on.
+            This can make attachment requests be unable to be served if set to true, as if the connection is dropped 
+            before the GDS can retrieve the binary it cannot send it later.
+            Additionally, the client only receives Document8 messages pushed by the GDS (based on the output rights) if its value is false.
+            </summary>
+            <param name="value">Whether the replies should be served on the same connection as this.</param>
             <returns>itself</returns>
         </member>
         <member name="M:messages.Gds.Websocket.AsyncGDSClient.AsyncGDSClientBuilder.WithCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2)">

@@ -30,8 +30,27 @@ namespace messages.Gds.Websocket
         private readonly WebSocket websocketClient;
         private volatile int state;
         private readonly int PingPongInterval;
+        private readonly bool serveOnTheSameConnection;
+        private volatile int isConnectionClosed = 1;
+        private bool IsConnectionClosed => Interlocked.CompareExchange(ref isConnectionClosed, 0, 0) == 1;
 
         private bool disposed = false;
+
+        /// <summary>
+        /// Creates a new Client instance with the specified parameters.
+        /// </summary>
+        /// <param name="listener">The Listener used for callbacks</param>
+        /// <param name="uri">The URI of the GDS instance</param>
+        /// <param name="userName">The username used for communication. Cannot be null or empty</param>
+        /// <param name="userPassword">The password used for password authentication. Null otherwise</param>
+        /// <param name="timeout">Timeout used for the connection establishment. Value most be strictly positive</param>
+        /// <param name="cert">The certificate used for TLS authentication</param>
+        /// <param name="log">The log used by the client.</param>
+        /// <param name="PingPongInterval">The interval used to send automatic ping-pong in seconds</param>
+        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert, ILog log, int PingPongInterval)
+            : this(listener, uri, userName, userPassword, timeout, cert, log, PingPongInterval, true)
+        {
+        }
 
         /// <summary>
         /// Creates a new Client instance with the specified parameters
@@ -44,7 +63,8 @@ namespace messages.Gds.Websocket
         /// <param name="cert">The certificate used for TLS authentication</param>
         /// <param name="log">The log used by the client.</param>
         /// <param name="PingPongInterval">The interval used to send automatic ping-pong in seconds</param>
-        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert, ILog log, int PingPongInterval)
+        /// <param name="serveOnTheSameConnection">Specifies whether the replies should be sent on the same connection as this.</param>
+        public AsyncGDSClient(IGDSMessageListener listener, string uri, string userName, SecureString userPassword, int timeout, X509Certificate2 cert, ILog log, int PingPongInterval, bool serveOnTheSameConnection)
         {
             this.listener = Utils.RequireNonNull(listener, "The message listener cannot be set to null!");
 
@@ -72,6 +92,7 @@ namespace messages.Gds.Websocket
             this.userName = userName;
             this.userPassword = userPassword;
             this.timeout = timeout;
+            this.serveOnTheSameConnection = serveOnTheSameConnection;
 
             if (PingPongInterval < 1)
             {
@@ -93,7 +114,7 @@ namespace messages.Gds.Websocket
         }
 
         /// <summary>
-        /// disposes the countdown if it was still present and closes the connection if it was still open.
+        /// Disposes the countdown if it was still present and closes the connection if it was still open.
         /// </summary>
         ~AsyncGDSClient()
         {
@@ -117,6 +138,7 @@ namespace messages.Gds.Websocket
                     countdown.Dispose();
                     Close();
                 }
+                GC.SuppressFinalize(this);
                 disposed = true;
             }
         }
@@ -140,12 +162,13 @@ namespace messages.Gds.Websocket
             {
                 state = ConnectionState.DISCONNECTED;
             }
+            Interlocked.Exchange(ref isConnectionClosed, 1);
             websocketClient.Close();
         }
 
 
         /// <summary>
-        /// Sends an event message
+        /// Sends an event message.
         /// </summary>
         /// <param name="operationsStringBlock">The operations in standard SQL statements, separated with ';' characters.</param>
         /// <param name="binaryContentsMapping">The mapping of the binary contents.</param>
@@ -371,6 +394,8 @@ namespace messages.Gds.Websocket
 
         private void OnSocketOpened(object sender, EventArgs args)
         {
+            Interlocked.Exchange(ref isConnectionClosed, 0);
+
             LogInfo("WebSocket Connection successfully established");
             int oldState = Interlocked.CompareExchange(ref state, ConnectionState.CONNECTED, ConnectionState.CONNECTING);
             if (oldState != ConnectionState.CONNECTING && oldState != ConnectionState.DISCONNECTED)
@@ -381,7 +406,7 @@ namespace messages.Gds.Websocket
                 userName,
                 DataType.Connection);
             //the current GDS version is 5.1
-            MessageData data = MessageManager.GetConnectionData(true, (5 << 16 | 1), false, null, userPassword?.ToString());
+            MessageData data = MessageManager.GetConnectionData(serveOnTheSameConnection, (5 << 16 | 1), false, null, userPassword?.ToString());
             Message message = MessageManager.GetMessage(header, data);
             byte[] binary = MessageManager.GetBinaryFromMessage(message);
 
@@ -395,8 +420,12 @@ namespace messages.Gds.Websocket
 
         private void OnSocketError(object sender, ErrorEventArgs eventArgs)
         {
-            log.Error(eventArgs.Exception.Message);
-            websocketClient.Close();
+            log.Error(string.Format("WebSocket client error occurred: {0}", eventArgs.Exception.Message));
+            if (!IsConnectionClosed)
+            {
+                log.Debug("A WebSocket error has occurred. The connection is not closed. Closing the connection now.");
+                websocketClient.Close();
+            }
             if (State != ConnectionState.FAILED && State != ConnectionState.LOGGED_IN)
             {
                 state = ConnectionState.FAILED;
@@ -406,6 +435,7 @@ namespace messages.Gds.Websocket
 
         private void OnSocketClosed(object sender, EventArgs args)
         {
+            Interlocked.Exchange(ref isConnectionClosed, 1);
             LogInfo("WebSocket client disconnected");
             if (State == ConnectionState.DISCONNECTED ||
                 ConnectionState.LOGGED_IN == Interlocked.CompareExchange(ref state, ConnectionState.DISCONNECTED, ConnectionState.LOGGED_IN))
@@ -414,7 +444,8 @@ namespace messages.Gds.Websocket
             }
             else if (State != ConnectionState.FAILED)
             {
-                log.Warn(String.Format("The state should be FAILED or LOGGED_IN, but found {0} instead!", ConnectionState.AsText(State)));
+                log.Warn(string.Format("The state should be FAILED or LOGGED_IN, but found {0} instead!", ConnectionState.AsText(State)));
+                listener.OnConnectionFailure(new System.IO.IOException("WebSocket client disconnected"));
             }
         }
 
@@ -545,6 +576,7 @@ namespace messages.Gds.Websocket
             private SecureString userPassword;
             private int timeout;
             private int PingPongInterval;
+            private bool serveOnTheSameConnection;
 
             private X509Certificate2 certificate;
 
@@ -643,6 +675,21 @@ namespace messages.Gds.Websocket
                 PingPongInterval = value;
                 return this;
             }
+
+            /// <summary>
+            /// Sets whether the GDS should send its replies on the same connection as the original login was sent on.
+            /// This can make attachment requests be unable to be served if set to true, as if the connection is dropped 
+            /// before the GDS can retrieve the binary it cannot send it later.
+            /// Additionally, the client only receives Document8 messages pushed by the GDS (based on the output rights) if its value is false.
+            /// </summary>
+            /// <param name="value">Whether the replies should be served on the same connection as this.</param>
+            /// <returns>itself</returns>
+            public AsyncGDSClientBuilder WithServeOnTheSameConnection(bool value)
+            {
+                serveOnTheSameConnection = value;
+                return this;
+            }
+
             /// <summary>
             /// Sets the certificate for the builder to be used when instantiating the client (used in TLS communication)
             /// </summary>
@@ -658,7 +705,7 @@ namespace messages.Gds.Websocket
             /// Builds the client using the values previously specified.
             /// </summary>
             /// <returns>The created client instance</returns>
-            public AsyncGDSClient Build() => new(listener, URI, userName, userPassword, timeout, certificate, log, PingPongInterval);
+            public AsyncGDSClient Build() => new(listener, URI, userName, userPassword, timeout, certificate, log, PingPongInterval, serveOnTheSameConnection);
         }
     }
 }

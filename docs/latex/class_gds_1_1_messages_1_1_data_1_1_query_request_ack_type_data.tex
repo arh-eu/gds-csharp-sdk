@@ -1,0 +1,95 @@
+\doxysection{Gds.\+Messages.\+Data.\+Query\+Request\+Ack\+Type\+Data Class Reference}
+\hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}\index{Gds.Messages.Data.QueryRequestAckTypeData@{Gds.Messages.Data.QueryRequestAckTypeData}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ac86e3de9ca9bbeea1e7ad0d3d81f7a43}{Query\+Request\+Ack\+Type\+Data}} (long number\+Of\+Hits, long number\+Of\+Filtered\+Hits, bool has\+More\+Page, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}} query\+Context\+Descriptor, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ field\+Descriptors, List$<$ List$<$ object $>$ $>$ records)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_af8d43c7bb75d0a78ba606c8c03453aba}{Query\+Request\+Ack\+Type\+Data}} (long number\+Of\+Hits, long number\+Of\+Filtered\+Hits, bool has\+More\+Page, \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}} query\+Context\+Descriptor, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ field\+Descriptors, List$<$ List$<$ object $>$ $>$ records, long number\+Of\+Total\+Hits)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_afd92ceae27870cc498c9df1dce7ced4b}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_afd92ceae27870cc498c9df1dce7ced4b} 
+long {\bfseries Number\+Of\+Hits}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This many hits have been returned in this page. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_a88a6728d1fcfedfc91b095352d0ade6c}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_a88a6728d1fcfedfc91b095352d0ade6c} 
+long {\bfseries Number\+Of\+Filtered\+Hits}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This many records have been filtered from the original result by the lists. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_a15fcdbd1e7b34f56492a0e78884af485}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_a15fcdbd1e7b34f56492a0e78884af485} 
+bool {\bfseries Has\+More\+Page}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Its value is true if the result has not fitted into this page, meaning that there are more records. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_af3842d3323e6d151911f9dc424787672}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_af3842d3323e6d151911f9dc424787672} 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}} {\bfseries Query\+Context\+Descriptor}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Query status descriptor for querying the next pages. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ae523399f1b5f1d04cfe8597c59e0fa82}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ae523399f1b5f1d04cfe8597c59e0fa82} 
+List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ {\bfseries Field\+Descriptors}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The field descriptors. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ae236d9cc2a8c862602ac5223101644d7}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ae236d9cc2a8c862602ac5223101644d7} 
+List$<$ List$<$ object $>$ $>$ {\bfseries Records}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The field values of the query result in the sort order. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_a539c96fde42881b242d8a43624670afa}\label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_a539c96fde42881b242d8a43624670afa} 
+long {\bfseries Number\+Of\+Total\+Hits}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The number of total hits for this query. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ac86e3de9ca9bbeea1e7ad0d3d81f7a43}\index{Gds.Messages.Data.QueryRequestAckTypeData@{Gds.Messages.Data.QueryRequestAckTypeData}!QueryRequestAckTypeData@{QueryRequestAckTypeData}}
+\index{QueryRequestAckTypeData@{QueryRequestAckTypeData}!Gds.Messages.Data.QueryRequestAckTypeData@{Gds.Messages.Data.QueryRequestAckTypeData}}
+\doxysubsubsection{\texorpdfstring{QueryRequestAckTypeData()}{QueryRequestAckTypeData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_ac86e3de9ca9bbeea1e7ad0d3d81f7a43} 
+Gds.\+Messages.\+Data.\+Query\+Request\+Ack\+Type\+Data.\+Query\+Request\+Ack\+Type\+Data (\begin{DoxyParamCaption}\item[{long}]{number\+Of\+Hits}{, }\item[{long}]{number\+Of\+Filtered\+Hits}{, }\item[{bool}]{has\+More\+Page}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}}}]{query\+Context\+Descriptor}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$}]{field\+Descriptors}{, }\item[{List$<$ List$<$ object $>$ $>$}]{records}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+Of\+Hits} & This many hits have been returned in this page.\\
+\hline
+{\em number\+Of\+Filtered\+Hits} & This many records have been filtered from the original result by the lists.\\
+\hline
+{\em has\+More\+Page} & Its value is true if the result has not fitted into this page, meaning that there are more records.\\
+\hline
+{\em query\+Context\+Descriptor} & Query status descriptor for querying the next pages.\\
+\hline
+{\em field\+Descriptors} & The field descriptors.\\
+\hline
+{\em records} & The field values of the query result in the sort order.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_af8d43c7bb75d0a78ba606c8c03453aba}\index{Gds.Messages.Data.QueryRequestAckTypeData@{Gds.Messages.Data.QueryRequestAckTypeData}!QueryRequestAckTypeData@{QueryRequestAckTypeData}}
+\index{QueryRequestAckTypeData@{QueryRequestAckTypeData}!Gds.Messages.Data.QueryRequestAckTypeData@{Gds.Messages.Data.QueryRequestAckTypeData}}
+\doxysubsubsection{\texorpdfstring{QueryRequestAckTypeData()}{QueryRequestAckTypeData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data_af8d43c7bb75d0a78ba606c8c03453aba} 
+Gds.\+Messages.\+Data.\+Query\+Request\+Ack\+Type\+Data.\+Query\+Request\+Ack\+Type\+Data (\begin{DoxyParamCaption}\item[{long}]{number\+Of\+Hits}{, }\item[{long}]{number\+Of\+Filtered\+Hits}{, }\item[{bool}]{has\+More\+Page}{, }\item[{\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_query_context_descriptor}{Query\+Context\+Descriptor}}}]{query\+Context\+Descriptor}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$}]{field\+Descriptors}{, }\item[{List$<$ List$<$ object $>$ $>$}]{records}{, }\item[{long}]{number\+Of\+Total\+Hits}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_query_request_ack_type_data}{Query\+Request\+Ack\+Type\+Data} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+Of\+Hits} & This many hits have been returned in this page.\\
+\hline
+{\em number\+Of\+Filtered\+Hits} & This many records have been filtered from the original result by the lists.\\
+\hline
+{\em has\+More\+Page} & Its value is true if the result has not fitted into this page, meaning that there are more records.\\
+\hline
+{\em query\+Context\+Descriptor} & Query status descriptor for querying the next pages.\\
+\hline
+{\em field\+Descriptors} & The field descriptors.\\
+\hline
+{\em records} & The field values of the query result in the sort order.\\
+\hline
+{\em number\+Of\+Total\+Hits} & The number of total hits (records) across all pages from the query.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Messages/\+Data/Query\+Request\+Ack\+Data.\+cs\end{DoxyCompactItemize}

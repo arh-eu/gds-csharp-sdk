@@ -1,0 +1,53 @@
+\doxysection{Gds.\+Messages.\+Data.\+Operation\+Response Class Reference}
+\hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response}{}\label{class_gds_1_1_messages_1_1_data_1_1_operation_response}\index{Gds.Messages.Data.OperationResponse@{Gds.Messages.Data.OperationResponse}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_operation_response_a559bdf58c6a2a70f1f2444bf3fa0f99d}{Operation\+Response}} (\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} status, string notification, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ field\+Descriptors, List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_sub_result}{Sub\+Result}} $>$ sub\+Results)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_operation_response}{Operation\+Response} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response_a7e5b4cf9d811a2addfb345e11da3ac17}\label{class_gds_1_1_messages_1_1_data_1_1_operation_response_a7e5b4cf9d811a2addfb345e11da3ac17} 
+\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}} {\bfseries Status}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The status of the operation. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response_ac0983c3f2cc40fc54d22113214e9d438}\label{class_gds_1_1_messages_1_1_data_1_1_operation_response_ac0983c3f2cc40fc54d22113214e9d438} 
+string {\bfseries Notification}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The description of the error in case of one. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response_a2001c10ae6b84a65e622580f41475374}\label{class_gds_1_1_messages_1_1_data_1_1_operation_response_a2001c10ae6b84a65e622580f41475374} 
+List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$ {\bfseries Field\+Descriptors}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The field descriptors if the requester demanded a response with specifying the RETURNING clause. \end{DoxyCompactList}\item 
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response_a41c779979614b4591cb52c6c3a831e3c}\label{class_gds_1_1_messages_1_1_data_1_1_operation_response_a41c779979614b4591cb52c6c3a831e3c} 
+List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_sub_result}{Sub\+Result}} $>$ {\bfseries Sub\+Results}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Contains the results of each sub-\/operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gds_1_1_messages_1_1_data_1_1_operation_response_a559bdf58c6a2a70f1f2444bf3fa0f99d}\index{Gds.Messages.Data.OperationResponse@{Gds.Messages.Data.OperationResponse}!OperationResponse@{OperationResponse}}
+\index{OperationResponse@{OperationResponse}!Gds.Messages.Data.OperationResponse@{Gds.Messages.Data.OperationResponse}}
+\doxysubsubsection{\texorpdfstring{OperationResponse()}{OperationResponse()}}
+{\footnotesize\ttfamily \label{class_gds_1_1_messages_1_1_data_1_1_operation_response_a559bdf58c6a2a70f1f2444bf3fa0f99d} 
+Gds.\+Messages.\+Data.\+Operation\+Response.\+Operation\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_gds_1_1_messages_1_1_data_a8f2833bbc5f1a6780789db5f2e44abbd}{Status\+Code}}}]{status}{, }\item[{string}]{notification}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_field_descriptor}{Field\+Descriptor}} $>$}]{field\+Descriptors}{, }\item[{List$<$ \mbox{\hyperlink{class_gds_1_1_messages_1_1_data_1_1_sub_result}{Sub\+Result}} $>$}]{sub\+Results}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \doxylink{class_gds_1_1_messages_1_1_data_1_1_operation_response}{Operation\+Response} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status of the operation.\\
+\hline
+{\em notification} & The description of the error in case of one.\\
+\hline
+{\em field\+Descriptors} & The field descriptors if the requester demanded a response with specifying the RETURNING clause.\\
+\hline
+{\em sub\+Results} & Contains the results of each sub-\/operation.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gds/\+Messages/\+Data/Event\+Ack\+Data.\+cs\end{DoxyCompactItemize}
