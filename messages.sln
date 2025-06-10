@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36202.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "messages", "messages.csproj", "{1386F7CA-D85C-4CB3-ADF9-9D245756F620}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageTesting", "..\..\..\..\Csharp\MessageTesting\MessageTesting.csproj", "{2EF83231-2E76-48D8-9A6A-FC0C02AB319D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EF83231-2E76-48D8-9A6A-FC0C02AB319D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EF83231-2E76-48D8-9A6A-FC0C02AB319D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EF83231-2E76-48D8-9A6A-FC0C02AB319D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EF83231-2E76-48D8-9A6A-FC0C02AB319D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
