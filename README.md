@@ -440,7 +440,9 @@ GDSMessageListener listener = new GDSMessageListener() {
                 new List<EventDocumentAckResult>()
                 {
                     new EventDocumentAckResult(StatusCode.OK, null)
-                }
+                },
+            null,
+            header.MessageId
         );
     }
 }
