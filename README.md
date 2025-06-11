@@ -420,7 +420,8 @@ Note: the GDS may also send an attachment request - `OnAttachmentRequest4(Messag
 A user may be interested in data or changes in specific data. 
 The criteria system, based on which data may be of interest to the user, is included in the configuration of the delivered system. 
 This data is sent automatically by the GDS. For these, you should also send an ACK back for the same reason.\
-Note: the automatic push message only arrives if the "Serve On The Same Connection" connection parameter is `false` (see: `AsyncGDSClientBuilder WithServeOnTheSameConnection(bool value)`).
+Note 1: the automatic push message only arrives if the "Serve On The Same Connection" connection parameter is `false` (see: `AsyncGDSClientBuilder WithServeOnTheSameConnection(bool value)`).\
+Note 2: the response "Event Document ACK 9" header message identifier must match the header message identifier of the received "Event Document 8" (see the code snippet below)!
 
 
 ```csharp
