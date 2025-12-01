@@ -10,7 +10,7 @@
     <PackageId>gds-messages</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>2.0.2</Version>
+    <Version>2.0.4</Version>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Company>Adaptive Recognition Inc.</Company>
     <Authors>Adaptive Recognition Inc.</Authors>

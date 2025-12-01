@@ -189,6 +189,10 @@ namespace Gds.Messages
         /// <returns>The created EventData object.</returns>
         public static EventData GetEventData(string operationsStringBlock, Dictionary<string, byte[]> binaryContentsMapping, List<List<Dictionary<int, bool>>> executionPriorityStructure)
         {
+            if (executionPriorityStructure == null)
+            {
+                executionPriorityStructure = new List<List<Dictionary<int, bool>>>();
+            }
             return new EventData(operationsStringBlock, binaryContentsMapping, executionPriorityStructure);
         }
 
@@ -211,6 +215,10 @@ namespace Gds.Messages
         /// <returns>The created EventData object.</returns>
         public static EventData GetEventData(string operationsStringBlock, List<List<Dictionary<int, bool>>> executionPriorityStructure)
         {
+            if (executionPriorityStructure == null)
+            {
+                executionPriorityStructure = new List<List<Dictionary<int, bool>>>();
+            }
             return new EventData(operationsStringBlock, new Dictionary<string, byte[]>(), executionPriorityStructure);
         }
 

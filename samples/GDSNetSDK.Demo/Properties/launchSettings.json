@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GDSNetSDK.Demo": {
+      "commandName": "Project",
+      "commandLineArgs": "\"ws://192.168.254.98:8889/gate\" device_parkit_001_vrsdev_d27e28d71e4a42471c640bd94bdada2f6f056c68 parkit#001 true "
+    }
+  }
+}

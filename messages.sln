@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "messages", "messages.csproj", "{1386F7CA-D85C-4CB3-ADF9-9D245756F620}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{318B0875-29BE-4B29-AA42-B72C0DD02C3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GDSNetSDK.InsertQueryDemo", "samples\GDSNetSDK.Demo\GDSNetSDK.InsertQueryDemo.csproj", "{3AF155D5-2D56-4855-96AA-03B77D347D14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +15,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1386F7CA-D85C-4CB3-ADF9-9D245756F620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AF155D5-2D56-4855-96AA-03B77D347D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF155D5-2D56-4855-96AA-03B77D347D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF155D5-2D56-4855-96AA-03B77D347D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF155D5-2D56-4855-96AA-03B77D347D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3AF155D5-2D56-4855-96AA-03B77D347D14} = {318B0875-29BE-4B29-AA42-B72C0DD02C3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21104FAD-A8D7-4E2A-A851-58D813344E38}
