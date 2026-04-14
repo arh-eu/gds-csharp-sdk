@@ -23,6 +23,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="gds-messages" Version="2.0.4" />
+		<PackageReference Include="log4net" Version="3.3.0" />
 	</ItemGroup>
 
 </Project>
